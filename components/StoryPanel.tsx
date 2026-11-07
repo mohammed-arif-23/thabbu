@@ -151,7 +151,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
         <div
           style={{
             position: 'relative',
-            margin: '8px 0',
+            margin: '6px 0',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -395,7 +395,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 06: THE TURNING POINT (Centered text + 4 Photo Placeholders) */}
+          {/* PAGE 06: THE TURNING POINT (Centered text + 4 Vertical 9:16 Polaroids) */}
           {screen.artVariant === 'turningPointPhotos' && (
             <div
               style={{
@@ -404,40 +404,38 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 alignItems: 'center',
                 width: '100%',
                 gap: '8px',
-                padding: '4px 0',
+                padding: '2px 0',
               }}
             >
-              {/* Top 2 Polaroids */}
+              {/* Top 2 Vertical 9:16 Polaroids */}
               <div
                 style={{
                   display: 'flex',
-                  gap: '12px',
+                  gap: '14px',
                   justifyContent: 'center',
                   width: '100%',
                 }}
               >
                 <PhotoPlaceholder
                   id="turning-point-1"
-                  caption="cutuu panda 🐼"
-                  width={112}
-                  height={122}
-                  rotate={-4}
+                  caption="panda 🐼"
+                  width={94}
+                  rotate={-3}
                 />
                 <PhotoPlaceholder
                   id="turning-point-2"
                   caption="bamboo bear 🐻"
-                  width={112}
-                  height={122}
+                  width={94}
                   rotate={3}
                 />
               </div>
 
-              {/* Centered Romantic Text Badge */}
+              {/* Centered Romantic Quote Box */}
               <div
                 style={{
                   textAlign: 'center',
-                  padding: '6px 14px',
-                  backgroundColor: 'rgba(255, 254, 252, 0.9)',
+                  padding: '7px 16px',
+                  backgroundColor: 'rgba(255, 254, 252, 0.94)',
                   borderRadius: '12px',
                   border: '1.2px solid var(--color-petal)',
                   boxShadow: '0 4px 12px rgba(201, 78, 104, 0.1)',
@@ -450,7 +448,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                     fontSize: '24px',
                     color: 'var(--color-cherry)',
                     display: 'block',
-                    lineHeight: 1.1,
+                    lineHeight: 1.15,
                   }}
                 >
                   Na una vituduvena
@@ -458,7 +456,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 <span
                   className="text-cursive"
                   style={{
-                    fontSize: '16.5px',
+                    fontSize: '17px',
                     color: 'var(--color-ink)',
                     display: 'block',
                   }}
@@ -467,11 +465,11 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 </span>
               </div>
 
-              {/* Bottom 2 Polaroids */}
+              {/* Bottom 2 Vertical 9:16 Polaroids */}
               <div
                 style={{
                   display: 'flex',
-                  gap: '12px',
+                  gap: '14px',
                   justifyContent: 'center',
                   width: '100%',
                 }}
@@ -479,16 +477,14 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 <PhotoPlaceholder
                   id="turning-point-3"
                   caption="meri teddy 🧸"
-                  width={112}
-                  height={122}
-                  rotate={-3}
+                  width={94}
+                  rotate={-2}
                 />
                 <PhotoPlaceholder
                   id="turning-point-4"
-                  caption="green flag 🌿"
-                  width={112}
-                  height={122}
-                  rotate={4}
+                  caption="green flag 🌱"
+                  width={94}
+                  rotate={3}
                 />
               </div>
             </div>
@@ -558,35 +554,27 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 08: Blue Shirt Swatch + Photo Placeholder */}
+          {/* PAGE 08: Blue Shirt Swatch (No photo, pure original artwork restored) */}
           {screen.artVariant === 'blueShirt' && (
             <div
               style={{
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
-                gap: '16px',
+                gap: '8px',
               }}
             >
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
-                <BlueShirtDoodle size={54} />
-                <span
-                  style={{
-                    fontFamily: 'var(--font-cursive)',
-                    fontSize: '13px',
-                    color: 'var(--color-muted-ink)',
-                  }}
-                >
-                  cute ahh irundhinga 💙
-                </span>
+              <BlueShirtDoodle size={58} />
+              <div
+                style={{
+                  fontFamily: 'var(--font-cursive)',
+                  fontSize: '15px',
+                  color: 'var(--color-muted-ink)',
+                  textAlign: 'center',
+                }}
+              >
+                Indhu mam questioned · girls laughed · Thabbu thought: cute 🤭
               </div>
-              <PhotoPlaceholder
-                id="blue-shirt"
-                caption="that blue shirt day 📸"
-                width={116}
-                height={128}
-                rotate={3}
-              />
             </div>
           )}
 
@@ -638,97 +626,103 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 11: Details Notice */}
+          {/* PAGE 11: Details Notice + 9:16 Vertical Photo Placeholder */}
           {screen.artVariant === 'detailsNotice' && (
             <div
               style={{
-                position: 'relative',
-                width: '270px',
-                height: '110px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                gap: '14px',
+                width: '100%',
               }}
             >
+              {/* Loupe & notes */}
               <div
                 style={{
-                  width: '74px',
-                  height: '74px',
-                  borderRadius: '50%',
-                  border: '2px solid var(--color-cherry)',
                   position: 'relative',
+                  width: '140px',
+                  height: '110px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: 'rgba(255, 254, 252, 0.75)',
                 }}
               >
                 <div
                   style={{
-                    width: '4px',
-                    height: '4px',
+                    width: '64px',
+                    height: '64px',
                     borderRadius: '50%',
-                    backgroundColor: 'var(--color-ink)',
+                    border: '2px solid var(--color-cherry)',
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(255, 254, 252, 0.75)',
                   }}
-                />
-                <span style={{ position: 'absolute', top: -10, right: -8 }}>
-                  <Starburst size={16} color="var(--color-cherry)" />
-                </span>
+                >
+                  <div
+                    style={{
+                      width: '4px',
+                      height: '4px',
+                      borderRadius: '50%',
+                      backgroundColor: 'var(--color-ink)',
+                    }}
+                  />
+                  <span style={{ position: 'absolute', top: -10, right: -8 }}>
+                    <Starburst size={16} color="var(--color-cherry)" />
+                  </span>
+                </div>
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    fontFamily: 'var(--font-hand)',
+                    fontSize: '12px',
+                    color: 'var(--color-muted-ink)',
+                  }}
+                >
+                  cheek pinch 🤭
+                </div>
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                    fontFamily: 'var(--font-hand)',
+                    fontSize: '12px',
+                    color: 'var(--color-muted-ink)',
+                  }}
+                >
+                  mole & lashes ✨
+                </div>
               </div>
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '13px',
-                  color: 'var(--color-muted-ink)',
-                }}
-              >
-                cheek pinch 🤭
-              </div>
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  right: 0,
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '13px',
-                  color: 'var(--color-muted-ink)',
-                }}
-              >
-                mole & lashes ✨
-              </div>
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 8,
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '13px',
-                  color: 'var(--color-cherry)',
-                  fontWeight: 600,
-                }}
-              >
-                nose scrunch 🤣
-              </div>
+
+              {/* 9:16 Vertical Photo */}
+              <PhotoPlaceholder
+                id="her-details"
+                caption="those smiles 🫠"
+                width={92}
+                rotate={2}
+              />
             </div>
           )}
 
-          {/* PAGE 12: The Coffee Plan + Photo Placeholder */}
+          {/* PAGE 12: The Coffee Plan + 9:16 Vertical Photo Placeholder */}
           {screen.artVariant === 'coffeePlan' && (
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '16px',
+                gap: '14px',
               }}
             >
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <CoffeeCup />
                 <WashiTape
-                  width={80}
+                  width={76}
                   height={15}
                   angle={2}
                   label="SAME CUP"
@@ -738,8 +732,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               <PhotoPlaceholder
                 id="coffee"
                 caption="precious coffee ☕"
-                width={116}
-                height={128}
+                width={92}
                 rotate={-2}
               />
             </div>

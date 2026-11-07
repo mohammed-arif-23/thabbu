@@ -7,7 +7,6 @@ interface PhotoPlaceholderProps {
   defaultSrc?: string;
   caption?: string;
   width?: number | string;
-  height?: number | string;
   rotate?: number;
   className?: string;
 }
@@ -16,8 +15,7 @@ export function PhotoPlaceholder({
   id,
   defaultSrc,
   caption,
-  width = 120,
-  height = 135,
+  width = 96,
   rotate = 0,
   className = '',
 }: PhotoPlaceholderProps) {
@@ -28,7 +26,6 @@ export function PhotoPlaceholder({
   const fallbackPath = defaultSrc || `/photos/${id}.jpg`;
 
   useEffect(() => {
-    // Check localStorage for saved custom upload
     const saved = localStorage.getItem(`dear_tamatarr_photo_${id}`);
     if (saved) {
       setPhotoUrl(saved);
@@ -47,7 +44,7 @@ export function PhotoPlaceholder({
           try {
             localStorage.setItem(`dear_tamatarr_photo_${id}`, result);
           } catch {
-            // localStorage quota may be reached, continue with in-memory state
+            // localStorage quota
           }
           setPhotoUrl(result);
           setHasError(false);
@@ -73,24 +70,23 @@ export function PhotoPlaceholder({
           handleClick();
         }
       }}
-      aria-label={`Photo frame: ${caption || id}. Click to select or change photo.`}
+      aria-label={`Photo frame 9:16: ${caption || id}. Click to select photo.`}
       style={{
         width,
-        height,
         backgroundColor: '#FFFEFC',
         border: '1px solid rgba(51, 42, 43, 0.12)',
-        borderRadius: '6px',
-        padding: '6px 6px 16px 6px',
+        borderRadius: '5px',
+        padding: '5px 5px 12px 5px',
         boxShadow: '0 4px 14px rgba(51, 42, 43, 0.08), 0 1px 3px rgba(0,0,0,0.04)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-between',
         transform: `rotate(${rotate}deg)`,
         transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease',
         cursor: 'pointer',
         position: 'relative',
         userSelect: 'none',
+        flexShrink: 0,
       }}
     >
       <input
@@ -101,11 +97,11 @@ export function PhotoPlaceholder({
         style={{ display: 'none' }}
       />
 
-      {/* Photo inner area */}
+      {/* 9:16 Vertical Photo Container */}
       <div
         style={{
           width: '100%',
-          flex: 1,
+          aspectRatio: '9 / 16',
           backgroundColor: '#F5ECE5',
           borderRadius: '3px',
           overflow: 'hidden',
@@ -135,22 +131,22 @@ export function PhotoPlaceholder({
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '4px',
-              padding: '8px',
+              gap: '2px',
+              padding: '4px',
               textAlign: 'center',
             }}
           >
-            <span style={{ fontSize: '18px', opacity: 0.7 }}>📷</span>
+            <span style={{ fontSize: '15px', opacity: 0.75 }}>📷</span>
             <span
               style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: '9.5px',
+                fontSize: '9px',
                 color: 'var(--color-muted-ink)',
-                lineHeight: 1.15,
+                lineHeight: 1.1,
                 fontWeight: 600,
               }}
             >
-              tap to add pic
+              9:16 pic
             </span>
           </div>
         )}
@@ -159,7 +155,7 @@ export function PhotoPlaceholder({
       {/* Polaroid bottom caption */}
       <div
         style={{
-          marginTop: '4px',
+          marginTop: '3px',
           width: '100%',
           textAlign: 'center',
           overflow: 'hidden',
