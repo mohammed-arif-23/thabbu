@@ -53,13 +53,13 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
   };
 
   const boopPhrases = [
-    'tap to boop tamatar 🍅',
-    'Boop 1: Bamboo-bear 🐻',
-    'Boop 2: Meri teddy 🧸',
-    'Boop 3: Moti tamatarrr 🍅',
-    'Boop 4: Tubelight says hi 💡',
-    'Boop 5: Three days over now? 😂',
-    'Forever stuck with me! 🍅',
+    'tamatarr enna click pannu 🍅',
+    'Hey Bamboo-bear 🐻',
+    'Hey Meri teddy 🧸',
+    'Moti tamatarrr 🍅',
+    'Tubelight says hi 💡',
+    'Three days over now? 😂',
+    'Podhum Valikuthu, Now Forever stuck with me! 🍅',
   ];
 
   const deliveryBadges = [
@@ -120,29 +120,11 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
 
         {/* Top Header Section */}
         <header style={{ position: 'relative', zIndex: 3 }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: '6px',
-            }}
-          >
-            {screen.eyebrow && (
+          {screen.eyebrow && (
+            <div style={{ marginBottom: '6px' }}>
               <span className="text-eyebrow">{screen.eyebrow}</span>
-            )}
-            <span
-              style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: '12px',
-                color: 'var(--color-muted-ink)',
-                letterSpacing: '0.08em',
-                fontWeight: 600,
-              }}
-            >
-              {screen.id}&thinsp;/&thinsp;18
-            </span>
-          </div>
+            </div>
+          )}
 
           <h2 className="text-headline">{screen.headline}</h2>
         </header>
@@ -219,7 +201,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                     animation: 'fadeIn 0.3s ease',
                   }}
                 >
-                  Agreement shredded · Swipe to Page 02 →
+                  Irunga naane swipe panren
                 </span>
               )}
             </div>
