@@ -8,39 +8,41 @@ interface EnvelopeEntranceProps {
 }
 
 export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
-  const [isDismissing, setIsDismissing] = useState(false);
-  const [isRemoved, setIsRemoved] = useState(false);
+  const [stage, setStage] = useState<'sealed' | 'opening' | 'opened'>('sealed');
 
   const handleOpen = (e?: React.MouseEvent) => {
-    if (isDismissing || isRemoved) return;
+    if (stage !== 'sealed') return;
 
     if (e) {
-      spawnParticles(e, ['💌', '✨', '🍅', '❤️', '🌸']);
+      spawnParticles(e, ['💌', '✨', '🍅', '❤️', '🌸', '💖']);
     }
 
-    // 1. Immediately start smooth fade out (300ms)
-    setIsDismissing(true);
+    setStage('opening');
 
-    // 2. Notify parent and remove from DOM after fade completes
+    // Fast, crisp, butter-smooth sequence (no stutter)
+    // 0ms: seal pop & flap opens
+    // 350ms: envelope fades out
+    // 650ms: fully removed
     setTimeout(() => {
-      setIsRemoved(true);
-      onOpen();
-    }, 320);
+      setStage('opened');
+      setTimeout(onOpen, 350);
+    }, 350);
   };
 
   const handleSkip = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsRemoved(true);
     onOpen();
   };
 
-  if (isRemoved) {
+  if (stage === 'opened') {
     return null;
   }
 
+  const isOpening = stage === 'opening';
+
   return (
     <div
-      className="envelope-overlay"
+      className={`envelope-overlay ${stage}`}
       style={{
         position: 'fixed',
         inset: 0,
@@ -52,32 +54,33 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '20px',
-        transition: 'opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
-        opacity: isDismissing ? 0 : 1,
-        pointerEvents: isDismissing ? 'none' : 'auto',
-        willChange: 'opacity',
+        padding: '24px 20px',
+        transition: 'opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+        opacity: isOpening ? 0 : 1,
+        transform: isOpening ? 'scale(1.03)' : 'scale(1)',
+        pointerEvents: isOpening ? 'none' : 'auto',
+        willChange: 'opacity, transform',
       }}
     >
       <div
         style={{
           width: '100%',
-          maxWidth: '320px',
+          maxWidth: '340px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           margin: '0 auto',
-          userSelect: 'none',
         }}
       >
-        {/* 1. Header Area — Perfectly Above Envelope */}
+        {/* 1. Header Area — Cleanly above the envelope with plenty of space */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             textAlign: 'center',
-            marginBottom: '22px',
+            marginBottom: '24px',
+            userSelect: 'none',
           }}
         >
           {/* Washi Tape */}
@@ -88,7 +91,7 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
               borderRadius: '2px',
               boxShadow: '0 2px 6px rgba(51, 42, 43, 0.08)',
               transform: 'rotate(-1.5deg)',
-              marginBottom: '10px',
+              marginBottom: '12px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
@@ -97,7 +100,7 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
             <span
               style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: '10.5px',
+                fontSize: '11px',
                 fontWeight: 700,
                 letterSpacing: '0.12em',
                 color: '#554749',
@@ -112,27 +115,27 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
           <h1
             style={{
               fontFamily: 'var(--font-cursive)',
-              fontSize: '34px',
+              fontSize: '36px',
               color: 'var(--color-ink)',
-              margin: '0 0 3px 0',
+              margin: '0 0 4px 0',
               lineHeight: 1.15,
               fontWeight: 700,
             }}
           >
-            For Thabbu 🍅
+            For Thabbu jii🍅
           </h1>
 
           <span
             style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '10px',
-              letterSpacing: '0.14em',
+              fontSize: '10.5px',
+              letterSpacing: '0.15em',
               textTransform: 'uppercase',
               color: 'var(--color-muted-ink)',
               fontWeight: 600,
             }}
           >
-            CONFIDENTIAL · PERSONAL KEEPSAKE
+            with 💗 by Tubelight
           </span>
         </div>
 
@@ -147,22 +150,24 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
               handleOpen();
             }
           }}
-          aria-label="Tap wax seal to open letter"
+          aria-label="Tap to open sealed envelope"
           style={{
             position: 'relative',
-            width: '290px',
-            height: '185px',
+            width: '100%',
+            maxWidth: '320px',
+            height: '210px',
             backgroundColor: '#FFFDF9',
             borderRadius: '12px',
             boxShadow:
-              '0 18px 40px -10px rgba(51, 42, 43, 0.15), 0 0 0 1px rgba(201, 78, 104, 0.12)',
+              '0 20px 45px -10px rgba(51, 42, 43, 0.15), 0 0 0 1px rgba(201, 78, 104, 0.12)',
             cursor: 'pointer',
+            userSelect: 'none',
             overflow: 'hidden',
           }}
         >
-          {/* Envelope Fold Geometry */}
+          {/* Subtle Diagonal Fold Shadows (Pure SVG for 60fps performance) */}
           <svg
-            viewBox="0 0 290 185"
+            viewBox="0 0 320 210"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             style={{
@@ -173,23 +178,32 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
               pointerEvents: 'none',
             }}
           >
-            {/* Left diagonal fold */}
-            <path d="M0 0 L145 100 L0 185 Z" fill="#FFF6EE" opacity="0.85" />
-            {/* Right diagonal fold */}
-            <path d="M290 0 L145 100 L290 185 Z" fill="#FFF3E8" opacity="0.85" />
+            {/* Left fold */}
+            <path d="M0 0 L160 115 L0 210 Z" fill="#FFF6EE" opacity="0.9" />
+            {/* Right fold */}
+            <path d="M320 0 L160 115 L320 210 Z" fill="#FFF4EA" opacity="0.9" />
             {/* Bottom pocket */}
-            <path d="M0 185 L145 100 L290 185 Z" fill="#FFF9F3" />
+            <path d="M0 210 L160 115 L320 210 Z" fill="#FFF9F3" />
             <path
-              d="M0 185 L145 100 L290 185"
+              d="M0 210 L160 115 L320 210"
               stroke="rgba(201, 78, 104, 0.12)"
               strokeWidth="1"
             />
             {/* Top flap */}
-            <path d="M0 0 L145 95 L290 0 Z" fill="#FFF1E4" />
             <path
-              d="M0 0 L145 95 L290 0"
+              d={isOpening ? 'M0 0 L160 -40 L320 0 Z' : 'M0 0 L160 110 L320 0 Z'}
+              fill="#FFF0E4"
+              style={{
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+              }}
+            />
+            <path
+              d={isOpening ? 'M0 0 L160 -40 L320 0' : 'M0 0 L160 110 L320 0'}
               stroke="rgba(201, 78, 104, 0.15)"
               strokeWidth="1"
+              style={{
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+              }}
             />
           </svg>
 
@@ -199,15 +213,16 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
               position: 'absolute',
               top: '50%',
               left: '50%',
-              transform: 'translate(-50%, -50%)',
+              transform: `translate(-50%, -50%) ${isOpening ? 'scale(1.2)' : 'scale(1)'}`,
               zIndex: 10,
+              transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
               pointerEvents: 'none',
             }}
           >
             <div
               style={{
-                width: 60,
-                height: 60,
+                width: 64,
+                height: 64,
                 borderRadius: '50%',
                 backgroundColor: 'var(--color-cherry)',
                 boxShadow:
@@ -216,9 +231,7 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 position: 'relative',
-                animation: isDismissing ? 'none' : 'sealPulse 2.4s infinite ease-in-out',
-                transform: isDismissing ? 'scale(0.92)' : 'scale(1)',
-                transition: 'transform 0.15s ease-out',
+                animation: isOpening ? 'none' : 'sealPulse 2.4s infinite ease-in-out',
               }}
             >
               <div
@@ -233,7 +246,7 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
                 style={{
                   color: '#FFF9F3',
                   fontFamily: 'var(--font-calligraphy)',
-                  fontSize: '30px',
+                  fontSize: '32px',
                   lineHeight: 1,
                   userSelect: 'none',
                   textShadow: '0 1px 2px rgba(0,0,0,0.3)',
@@ -248,12 +261,13 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
         {/* 3. Bottom Guidance & Skip */}
         <div
           style={{
-            marginTop: '22px',
+            marginTop: '26px',
             textAlign: 'center',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             gap: '8px',
+            userSelect: 'none',
           }}
         >
           <span
@@ -265,29 +279,10 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
               lineHeight: 1.2,
             }}
           >
-            {isDismissing ? 'Opening letter...' : 'tap the wax seal to open 🍅'}
+            {isOpening ? 'Opening letter...' : 'tap the seal to open jiii'}
           </span>
 
-          <button
-            type="button"
-            onClick={handleSkip}
-            style={{
-              background: 'none',
-              border: 'none',
-              fontFamily: 'var(--font-sans)',
-              fontSize: '11px',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              color: 'var(--color-muted-ink)',
-              cursor: 'pointer',
-              padding: '6px 12px',
-              textDecoration: 'underline',
-              textUnderlineOffset: '3px',
-              opacity: 0.85,
-            }}
-          >
-            skip to card →
-          </button>
+
         </div>
       </div>
     </div>
