@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { spawnParticles } from './FloatingParticles';
 
 interface PhotoPlaceholderProps {
   id: string;
@@ -21,6 +22,7 @@ export function PhotoPlaceholder({
 }: PhotoPlaceholderProps) {
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [hasError, setHasError] = useState(false);
+  const [isWiggling, setIsWiggling] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fallbackPath = defaultSrc || `/photos/${id}.jpg`;
@@ -54,20 +56,23 @@ export function PhotoPlaceholder({
     }
   };
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    setIsWiggling(true);
+    spawnParticles(e, ['✨', '🌸', '💖']);
+    setTimeout(() => setIsWiggling(false), 550);
     fileInputRef.current?.click();
   };
 
   return (
     <div
-      className={`polaroid-frame ${className}`}
+      className={`polaroid-frame ${isWiggling ? 'is-wiggling' : ''} ${className}`}
       onClick={handleClick}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          handleClick();
+          handleClick(e as unknown as React.MouseEvent);
         }
       }}
       aria-label={`Photo frame 9:16: ${caption || id}. Click to select photo.`}
@@ -82,11 +87,13 @@ export function PhotoPlaceholder({
         flexDirection: 'column',
         alignItems: 'center',
         transform: `rotate(${rotate}deg)`,
-        transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease',
+        transition: 'box-shadow 0.2s ease',
         cursor: 'pointer',
         position: 'relative',
         userSelect: 'none',
         flexShrink: 0,
+        // pass base rotate to CSS for wiggle keyframe
+        ['--base-rotate' as string]: `${rotate}deg`,
       }}
     >
       <input

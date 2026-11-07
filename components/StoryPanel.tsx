@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { StoryScreen } from '../content/story';
 import { PhotoPlaceholder } from './PhotoPlaceholder';
+import { spawnParticles } from './FloatingParticles';
 import {
   TomatoStamp,
   WashiTape,
@@ -119,7 +120,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
         <div className="page-dogear" aria-hidden="true" />
 
         {/* Top Header Section */}
-        <header style={{ position: 'relative', zIndex: 3 }}>
+        <header className="stagger-header" style={{ position: 'relative', zIndex: 3 }}>
           {screen.eyebrow && (
             <div style={{ marginBottom: '6px' }}>
               <span className="text-eyebrow">{screen.eyebrow}</span>
@@ -131,6 +132,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
 
         {/* Center Artwork / Specific Composition */}
         <div
+          className="stagger-art"
           style={{
             position: 'relative',
             margin: '6px 0',
@@ -184,8 +186,9 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 </div>
                 <EnvelopeSeal
                   opened={sealBroken}
-                  onClick={() => {
+                  onClick={(e) => {
                     setSealBroken(!sealBroken);
+                    spawnParticles(e, ['💌', '✨', '🍅', '❤️']);
                     if (!sealBroken && onAdvance) {
                       setTimeout(onAdvance, 500);
                     }
@@ -227,7 +230,10 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 size={74}
                 rotate={boopCount % 2 === 0 ? 8 : -8}
                 interactive={true}
-                onClick={() => setBoopCount((c) => c + 1)}
+                onClick={(e) => {
+                  setBoopCount((c) => c + 1);
+                  spawnParticles(e, ['🍅', '❤️', '💡', '🧸', '✨']);
+                }}
               />
               <div
                 style={{
@@ -819,7 +825,10 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
                 <button
                   type="button"
-                  onClick={() => setOkSpamCount((c) => c + 1)}
+                  onClick={(e) => {
+                    setOkSpamCount((c) => c + 1);
+                    spawnParticles(e, ['🙄', '💅', '✨', '⚡', '🍅']);
+                  }}
                   style={{
                     backgroundColor: 'var(--color-butter)',
                     border: '1px solid rgba(51, 42, 43, 0.2)',
@@ -973,7 +982,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
         </div>
 
         {/* Bottom Copy / Dialogue Section */}
-        <footer style={{ position: 'relative', zIndex: 3 }}>
+        <footer className="stagger-body" style={{ position: 'relative', zIndex: 3 }}>
           {screen.paragraphs && screen.paragraphs.length > 0 && (
             <div
               style={{
@@ -1032,12 +1041,13 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   <button
                     key={i}
                     type="button"
-                    onClick={() =>
+                    onClick={(e) => {
                       setDeliveredItems((prev) => ({
                         ...prev,
                         [i]: !prev[i],
-                      }))
-                    }
+                      }));
+                      spawnParticles(e, ['✅', '🌸', '💖', '✨']);
+                    }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -1140,7 +1150,10 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               {!stampRevealed ? (
                 <button
                   type="button"
-                  onClick={() => setStampRevealed(true)}
+                  onClick={(e) => {
+                    setStampRevealed(true);
+                    spawnParticles(e, ['💖', '🍅', '✨', '💌', '🌸', '⭐']);
+                  }}
                   style={{
                     backgroundColor: 'var(--color-warm-white)',
                     border: '1.5px solid var(--color-cherry)',
