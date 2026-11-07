@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Basic&family=Dancing+Script:wght@400..700&family=TASA+Explorer:wght@400..800&display=swap');
+
 :root {
   color-scheme: light;
 
@@ -13,12 +15,13 @@
   --color-lavender: #DDD6EF;
   --color-sage: #DCE6D8;
 
-  /* Type Tokens: Strong Editorial Serif + Expressive Cursive & Calligraphy */
-  --font-serif: var(--font-serif), 'Playfair Display', Didot, 'Bodoni MT', Georgia, serif;
-  --font-sans: var(--font-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-cursive: var(--font-cursive), 'Dancing Script', cursive;
-  --font-calligraphy: var(--font-calligraphy), 'Alex Brush', cursive;
-  --font-hand: var(--font-cursive);
+  /* Type Tokens: TASA Explorer + Dancing Script + Basic */
+  --font-serif: 'TASA Explorer', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'TASA Explorer', -apple-system, sans-serif;
+  --font-sans: 'Basic', 'TASA Explorer', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-cursive: 'Dancing Script', cursive;
+  --font-calligraphy: 'Dancing Script', cursive;
+  --font-hand: 'Dancing Script', cursive;
 
   /* Spacing & Radii */
   --radius-subtle: 6px;

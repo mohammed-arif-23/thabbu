@@ -1,35 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Playfair_Display, DM_Sans, Dancing_Script, Alex_Brush } from 'next/font/google';
 import './globals.css';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['600', '700', '800', '900'],
-  style: ['normal', 'italic'],
-  variable: '--font-serif',
-  display: 'swap',
-});
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-const dancingScript = Dancing_Script({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  variable: '--font-cursive',
-  display: 'swap',
-});
-
-const alexBrush = Alex_Brush({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-calligraphy',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'DEAR TAMATARR 🍅 — A Keepsake for Thabbu',
@@ -54,11 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${playfair.variable} ${dmSans.variable} ${dancingScript.variable} ${alexBrush.variable}`}
-      style={{ colorScheme: 'light' }}
-    >
+    <html lang="en" style={{ colorScheme: 'light' }}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Basic&family=Dancing+Script:wght@400..700&family=TASA+Explorer:wght@400..800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
