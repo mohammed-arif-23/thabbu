@@ -12,10 +12,10 @@ interface ParticleItem {
   rotate: number;
 }
 
-export function spawnParticles(e: React.MouseEvent | MouseEvent | { clientX: number; clientY: number }, customEmojis?: string[]) {
+export function spawnParticles(e?: React.MouseEvent | MouseEvent | { clientX: number; clientY: number }, customEmojis?: string[]) {
   if (typeof window === 'undefined') return;
-  const x = 'clientX' in e ? e.clientX : (window.innerWidth / 2);
-  const y = 'clientY' in e ? e.clientY : (window.innerHeight / 2);
+  const x = e && 'clientX' in e ? e.clientX : (window.innerWidth / 2);
+  const y = e && 'clientY' in e ? e.clientY : (window.innerHeight / 2);
   
   const emojis = customEmojis || ['❤️', '🍅', '✨', '🌸', '💫'];
   

@@ -33,15 +33,15 @@ export function TomatoStamp({
   className?: string;
   rotate?: number;
   interactive?: boolean;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
 }) {
   const [wobble, setWobble] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e?: React.MouseEvent | React.KeyboardEvent) => {
     if (interactive) {
       setWobble(true);
       setTimeout(() => setWobble(false), 450);
-      onClick?.();
+      onClick?.(e as React.MouseEvent);
     }
   };
 
@@ -183,7 +183,7 @@ export function EnvelopeSeal({
   onClick,
 }: {
   opened?: boolean;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
 }) {
   return (
     <button
