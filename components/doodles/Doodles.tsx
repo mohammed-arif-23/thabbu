@@ -164,11 +164,11 @@ export function WashiTape({
           style={{
             fontFamily: 'var(--font-sans)',
             fontSize: '9.5px',
-            fontWeight: 600,
-            letterSpacing: '0.12em',
+            fontWeight: 700,
+            letterSpacing: '0.14em',
             textTransform: 'uppercase',
             color: '#554749',
-            opacity: 0.8,
+            opacity: 0.85,
           }}
         >
           {label}
@@ -231,9 +231,9 @@ export function EnvelopeSeal({
         <span
           style={{
             color: '#FFF9F3',
-            fontFamily: 'var(--font-serif)',
-            fontSize: '22px',
-            fontWeight: 700,
+            fontFamily: 'var(--font-calligraphy)',
+            fontSize: '28px',
+            fontWeight: 400,
             lineHeight: 1,
             userSelect: 'none',
           }}
@@ -243,11 +243,11 @@ export function EnvelopeSeal({
       </div>
       <span
         style={{
-          fontFamily: 'var(--font-hand)',
-          fontSize: '13.5px',
+          fontFamily: 'var(--font-cursive)',
+          fontSize: '16px',
           color: opened ? '#C94E68' : '#807176',
           letterSpacing: '0.02em',
-          fontWeight: 600,
+          fontWeight: 700,
         }}
       >
         {opened ? 'agreement void 🤭' : 'tap seal to break'}
@@ -350,20 +350,15 @@ export function GiftBoxDoodle({ size = 56 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: 'inline-block' }}
     >
-      {/* Box */}
       <rect x="12" y="24" width="40" height="32" rx="4" fill="#F5DCE2" stroke="#332A2B" strokeWidth="2" />
-      {/* Lid */}
       <rect x="8" y="18" width="48" height="8" rx="2" fill="#FFFEFC" stroke="#332A2B" strokeWidth="2" />
-      {/* Vertical ribbon */}
       <rect x="29" y="18" width="6" height="38" fill="#C94E68" />
-      {/* Bow */}
       <path
         d="M 32 18 C 24 10 16 14 26 18 C 22 8 36 8 32 18 C 38 8 46 12 36 18 C 42 12 40 18 32 18"
         fill="#C94E68"
         stroke="#332A2B"
         strokeWidth="1.2"
       />
-      {/* Tiny tag */}
       <circle cx="44" cy="34" r="5" fill="#F7E7A9" stroke="#332A2B" strokeWidth="1" />
       <path d="M 42 34 L 46 34" stroke="#332A2B" strokeWidth="1" strokeLinecap="round" />
     </svg>
@@ -380,12 +375,9 @@ export function TubelightDoodle({ size = 60 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: 'inline-block' }}
     >
-      {/* Tube body */}
       <rect x="16" y="18" width="68" height="14" rx="7" fill="#FFFEFC" stroke="#332A2B" strokeWidth="2.2" />
-      {/* Metal caps */}
       <rect x="10" y="20" width="8" height="10" rx="2" fill="#E9AAB9" stroke="#332A2B" strokeWidth="1.5" />
       <rect x="82" y="20" width="8" height="10" rx="2" fill="#E9AAB9" stroke="#332A2B" strokeWidth="1.5" />
-      {/* Glowing yellow aura lines */}
       <path d="M 30 8 L 32 14 M 50 6 L 50 13 M 70 8 L 68 14 M 30 42 L 32 36 M 50 44 L 50 37 M 70 42 L 68 36" stroke="#E5B53A" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
@@ -401,7 +393,6 @@ export function BlueShirtDoodle({ size = 52 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: 'inline-block' }}
     >
-      {/* Shirt body */}
       <path
         d="M 14 20 L 24 14 L 32 20 L 40 14 L 50 20 L 46 54 L 18 54 Z"
         fill="#BFDBFE"
@@ -409,7 +400,6 @@ export function BlueShirtDoodle({ size = 52 }: { size?: number }) {
         strokeWidth="2"
         strokeLinejoin="round"
       />
-      {/* Collar */}
       <path
         d="M 24 14 L 32 26 L 40 14"
         fill="#93C5FD"
@@ -417,32 +407,40 @@ export function BlueShirtDoodle({ size = 52 }: { size?: number }) {
         strokeWidth="2"
         strokeLinejoin="round"
       />
-      {/* Buttons */}
       <circle cx="32" cy="32" r="1.5" fill="#1E40AF" />
       <circle cx="32" cy="40" r="1.5" fill="#1E40AF" />
       <circle cx="32" cy="48" r="1.5" fill="#1E40AF" />
-      {/* Pocket */}
       <rect x="36" y="30" width="8" height="9" rx="1.5" fill="none" stroke="#1E40AF" strokeWidth="1.2" />
     </svg>
   );
 }
 
-export function NosePinDoodle({ size = 44 }: { size?: number }) {
+export function NosePinDoodle({ size = 46 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'inline-block' }}
+    <div
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size,
+        height: size,
+      }}
     >
-      {/* Central diamond / pearl stud */}
-      <circle cx="24" cy="24" r="5" fill="#FFFEFC" stroke="#C94E68" strokeWidth="2" />
-      {/* Sparkle rays */}
-      <path d="M 24 8 L 24 16 M 24 32 L 24 40 M 8 24 L 16 24 M 32 24 L 40 24" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-      <path d="M 13 13 L 18 18 M 30 30 L 35 35 M 35 13 L 30 18 M 18 30 L 13 35" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 48 48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="glint-sparkle"
+      >
+        <circle cx="24" cy="24" r="5" fill="#FFF9F3" stroke="#D97706" strokeWidth="2.2" />
+        <circle cx="24" cy="24" r="2.5" fill="#F59E0B" />
+        <path d="M 24 6 L 24 15 M 24 33 L 24 42 M 6 24 L 15 24 M 33 24 L 42 24" stroke="#F59E0B" strokeWidth="2.2" strokeLinecap="round" />
+        <path d="M 11 11 L 17 17 M 31 31 L 37 37 M 37 11 L 31 17 M 17 31 L 11 37" stroke="#F59E0B" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+    </div>
   );
 }
 
@@ -456,14 +454,10 @@ export function IceCreamDoodle({ size = 48 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: 'inline-block' }}
     >
-      {/* Scoop 1 */}
       <circle cx="24" cy="18" r="10" fill="#F5DCE2" stroke="#332A2B" strokeWidth="1.8" />
-      {/* Cherry on top */}
       <circle cx="24" cy="7" r="3" fill="#C94E68" />
       <path d="M 24 7 C 26 3 28 3 29 4" stroke="#4F6D48" strokeWidth="1.2" strokeLinecap="round" />
-      {/* Waffle Cone */}
       <path d="M 16 23 L 24 42 L 32 23 Z" fill="#F7E7A9" stroke="#332A2B" strokeWidth="1.8" strokeLinejoin="round" />
-      {/* Waffle grid */}
       <path d="M 19 28 L 27 34 M 29 28 L 21 34" stroke="#D97706" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
@@ -481,6 +475,38 @@ export function CoffeeCup() {
         justifyContent: 'center',
       }}
     >
+      {/* Animated steam rising */}
+      <svg
+        viewBox="0 0 100 40"
+        width="80"
+        height="32"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          pointerEvents: 'none',
+          zIndex: 3,
+        }}
+      >
+        <path
+          d="M 40 32 C 37 24 43 16 40 8"
+          stroke="#C94E68"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          fill="none"
+          className="coffee-steam-1"
+        />
+        <path
+          d="M 52 30 C 55 22 49 14 53 6"
+          stroke="#C94E68"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          fill="none"
+          className="coffee-steam-2"
+        />
+      </svg>
+
       <svg
         viewBox="0 0 140 140"
         width="125"
@@ -675,15 +701,15 @@ export function WaveformDoodle({ interactive = true }: { interactive?: boolean }
       </div>
       <span
         style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: '11px',
-          fontWeight: 600,
+          fontFamily: 'var(--font-cursive)',
+          fontSize: '14px',
+          fontWeight: 700,
           color: '#807176',
           marginLeft: '6px',
           letterSpacing: '0.04em',
         }}
       >
-        {isPlaying ? 'playing…' : '0:42'}
+        {isPlaying ? 'playing memo…' : '0:42'}
       </span>
     </button>
   );

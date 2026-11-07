@@ -114,6 +114,9 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
       )}
 
       <div className="card-sheet">
+        {/* Luxury Folded Corner Tab */}
+        <div className="page-dogear" aria-hidden="true" />
+
         {/* Top Header Section */}
         <header style={{ position: 'relative', zIndex: 3 }}>
           <div

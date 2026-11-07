@@ -13,10 +13,12 @@
   --color-lavender: #DDD6EF;
   --color-sage: #DCE6D8;
 
-  /* Type Tokens */
-  --font-serif: var(--font-cormorant), 'Cormorant Garamond', 'Bodoni Moda', Didot, 'Hoefler Text', Garamond, 'Times New Roman', serif;
-  --font-sans: var(--font-dm-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-hand: var(--font-caveat), 'Caveat', 'Reenie Beanie', cursive;
+  /* Type Tokens: Strong Editorial Serif + Expressive Cursive & Calligraphy */
+  --font-serif: var(--font-serif), 'Playfair Display', Didot, 'Bodoni MT', Georgia, serif;
+  --font-sans: var(--font-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-cursive: var(--font-cursive), 'Dancing Script', cursive;
+  --font-calligraphy: var(--font-calligraphy), 'Alex Brush', cursive;
+  --font-hand: var(--font-cursive);
 
   /* Spacing & Radii */
   --radius-subtle: 6px;
@@ -170,30 +172,30 @@ button:focus-visible {
 .text-eyebrow {
   font-family: var(--font-sans);
   font-size: 10px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-muted-ink);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
 .text-headline {
   font-family: var(--font-serif);
   color: var(--color-ink);
-  font-size: clamp(26px, 6.5vw, 34px);
-  line-height: 1.14;
-  letter-spacing: -0.015em;
-  font-weight: 600;
+  font-size: clamp(28px, 6.8vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 800;
   margin: 0 0 12px 0;
 }
 
 .text-punchline {
   font-family: var(--font-serif);
   color: var(--color-cherry);
-  font-size: clamp(24px, 6vw, 30px);
-  line-height: 1.15;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: clamp(22px, 5.5vw, 27px);
+  line-height: 1.16;
+  font-weight: 800;
+  letter-spacing: -0.015em;
   margin: 0 0 12px 0;
 }
 
@@ -202,7 +204,7 @@ button:focus-visible {
   color: var(--color-ink);
   font-size: 15px;
   line-height: 1.55;
-  font-weight: 400;
+  font-weight: 450;
   margin: 0 0 10px 0;
 }
 
@@ -215,10 +217,92 @@ button:focus-visible {
 }
 
 .text-hand {
-  font-family: var(--font-hand);
+  font-family: var(--font-cursive);
   color: var(--color-muted-ink);
-  font-size: 17px;
+  font-size: 19px;
   line-height: 1.35;
+  font-weight: 600;
+}
+
+.text-cursive {
+  font-family: var(--font-cursive);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-cherry);
+}
+
+.text-calligraphy {
+  font-family: var(--font-calligraphy);
+  font-size: 28px;
+  color: var(--color-cherry);
+  line-height: 1.2;
+}
+
+/* Luxury Card Dog-Ear Corner */
+.page-dogear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 24px 24px 0;
+  border-color: transparent var(--color-blush) transparent transparent;
+  filter: drop-shadow(-1px 2px 2px rgba(51, 42, 43, 0.08));
+  pointer-events: none;
+  z-index: 5;
+}
+
+.page-dogear::after {
+  content: '✦';
+  position: absolute;
+  top: 3px;
+  right: -21px;
+  font-size: 8px;
+  color: var(--color-cherry);
+  opacity: 0.7;
+}
+
+/* Coffee Steam Animation */
+@keyframes steamDrift {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-16px) scaleX(1.3);
+    opacity: 0;
+  }
+}
+
+.coffee-steam-1 {
+  animation: steamDrift 2.8s ease-out infinite;
+}
+
+.coffee-steam-2 {
+  animation: steamDrift 2.8s ease-out 1.2s infinite;
+}
+
+/* Glint Sparkle Animation */
+@keyframes glintSparkle {
+  0%, 100% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+.glint-sparkle {
+  animation: glintSparkle 2.2s ease-in-out infinite;
 }
 
 /* Washi tape styling */

@@ -1,25 +1,33 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, DM_Sans, Caveat } from 'next/font/google';
+import { Playfair_Display, DM_Sans, Dancing_Script, Alex_Brush } from 'next/font/google';
 import './globals.css';
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-cormorant',
+  weight: ['600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
   display: 'swap',
 });
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-dm-sans',
+  variable: '--font-sans',
   display: 'swap',
 });
 
-const caveat = Caveat({
+const dancingScript = Dancing_Script({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-caveat',
+  weight: ['600', '700'],
+  variable: '--font-cursive',
+  display: 'swap',
+});
+
+const alexBrush = Alex_Brush({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-calligraphy',
   display: 'swap',
 });
 
@@ -48,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${dmSans.variable} ${caveat.variable}`}
+      className={`${playfair.variable} ${dmSans.variable} ${dancingScript.variable} ${alexBrush.variable}`}
       style={{ colorScheme: 'light' }}
     >
       <body>{children}</body>
