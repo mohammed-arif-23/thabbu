@@ -579,7 +579,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   fontWeight: 600,
                 }}
               >
-                Patti took her · first compliment recorded 😌
+                Jii nejama this is the reason i got eager to talk to you 😌
               </div>
             </div>
           )}
@@ -799,7 +799,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                     transform: 'rotate(-3deg)',
                   }}
                 >
-                  NOLE
+                  Nope
                 </div>
                 <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
                 <div
@@ -836,7 +836,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   }}
                   title="Click to spam OK"
                 >
-                  OK {okSpamCount > 0 ? `× ${okSpamCount + 3}` : 'OK OK'}
+                  (ji click) OK {okSpamCount > 0 ? `× ${okSpamCount + 3}` : ' OK OK'}
                 </button>
               </div>
 
@@ -855,7 +855,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 >
                   {okSpamCount >= 8
                     ? 'Tubelight: endless ok spam unlocked! ♾️'
-                    : 'Thabbu: “Idhuku ethana ok?!” 😂'}
+                    : 'Thabbu jii: Ipo neenga edhukku ithana ok? 😂'}
                 </div>
               )}
             </div>
@@ -879,7 +879,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   fontSize: '13.5px',
                 }}
               >
-                first voice note in life · explaining song meanings
+                Unga voice vida enna jii nalla irukka poguthuuu...
               </span>
             </div>
           )}
@@ -904,7 +904,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   lineHeight: 1.3,
                 }}
               >
-                “Neraya ice cream nee saptu enna mooka thodaika vei” 🍦
+                I Wish : “Neraya ice cream nee saptu enna unoda mooka thodaika vei” 🍦
               </div>
             </div>
           )}

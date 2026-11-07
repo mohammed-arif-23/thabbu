@@ -21,7 +21,7 @@ The narrator is Arif. The recipient is Thabbu. Keep the language close to the ac
 - Baddie
 - Unromantic girl
 - Red flag
-- Deewana dola
+- Deewani doli
 - Tubelight
 - Hate u / Hate u more jii
 

@@ -10,24 +10,24 @@ export interface StoryScreen {
   bulletPoints?: string[];
   microNote?: string;
   artVariant:
-    | 'notice'
-    | 'waiting'
-    | 'selectiveMemory'
-    | 'collegeStart'
-    | 'giftThreeWeeks'
-    | 'turningPointPhotos'
-    | 'nicknamesTubelight'
-    | 'blueShirt'
-    | 'nosePin'
-    | 'mirrorFragrance'
-    | 'detailsNotice'
-    | 'coffeePlan'
-    | 'principalFiveSeconds'
-    | 'gamesRules'
-    | 'voiceRecording'
-    | 'careIceCream'
-    | 'savedLetter'
-    | 'finale1111';
+  | 'notice'
+  | 'waiting'
+  | 'selectiveMemory'
+  | 'collegeStart'
+  | 'giftThreeWeeks'
+  | 'turningPointPhotos'
+  | 'nicknamesTubelight'
+  | 'blueShirt'
+  | 'nosePin'
+  | 'mirrorFragrance'
+  | 'detailsNotice'
+  | 'coffeePlan'
+  | 'principalFiveSeconds'
+  | 'gamesRules'
+  | 'voiceRecording'
+  | 'careIceCream'
+  | 'savedLetter'
+  | 'finale1111';
   bgVariant?: 'paper' | 'warmWhite' | 'blushTint';
   interaction?: {
     type: 'seal' | 'sticker' | 'waveform' | 'finalStamp';
@@ -40,8 +40,8 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '01',
     index: 1,
-    eyebrow: 'PAGE 01 — OFFICIAL NOTICE',
-    headline: "I'M DONE WITH YOU, TAMATAR. 🍅",
+    eyebrow: 'Hey - OFFICIAL NOTICE!',
+    headline: "I'M DONE WITH YOU, TAMATARR.",
     paragraphs: [
       'Jiii.',
       '“Reply eh panla neenga pathutuu.”',
@@ -51,22 +51,22 @@ export const storyScreens: StoryScreen[] = [
       'Apram dhaan solra:',
       '“Inga dha iruken unga v2 tu pakkathula.”',
       '😭😭😭',
-      'Pakkathulayே irundhutu “Mm okayy” ah?',
+      'Pakkathulaye irundhutu “Mm okayy” ah?',
       'Enna justice idhu, Thabbu?',
     ],
-    punchline: "I have officially decided that I can't deal with you anymore.",
+    punchline: "I have officially decided that I can't deal with you anymore. Podhummmm",
     artVariant: 'notice',
     bgVariant: 'paper',
     interaction: {
       type: 'seal',
       prompt: 'tap seal to break agreement',
-      revealedText: 'Agreement void · Flip to Page 02 →',
+      revealedText: 'Next page ponga →',
     },
   },
   {
     id: '02',
     index: 2,
-    eyebrow: 'PAGE 02 — THE WAITING PERIOD',
+    eyebrow: 'THE WAITING PERIOD',
     headline: 'THREE MORE DAYS. SERIOUSLY?',
     paragraphs: [
       '“Inu oru 3 days wait pannunga aprm namba nalla cl lahh pesalam ok vahh.”',
@@ -91,7 +91,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '03',
     index: 3,
-    eyebrow: 'PAGE 03 — SELECTIVE MEMORY SYNDROME',
+    eyebrow: 'SELECTIVE MEMORY SYNDROME',
     headline: 'YOUR MEMORY NEEDS AN UPDATE. 😭',
     paragraphs: [
       'Question 1:',
@@ -105,15 +105,15 @@ export const storyScreens: StoryScreen[] = [
       'Question 3: Pending deliveries.',
     ],
     bulletPoints: ['Rathima video.', 'Selfie.', 'Bicep heart.'],
-    microNote: 'And your defence? “Enna pandradhu vayasu aagudhu lahh.” Aiyo madam.',
-    punchline: 'Case closed? Not yet. I have screenshots. 🤭',
+    microNote: 'And your defence? “Enna pandradhu vayasu aagudhu lahh.” Aiyooo pehh, naa veruthutenn.',
+    punchline: 'Enna romba wait panna vekuraa 🤭',
     artVariant: 'selectiveMemory',
     bgVariant: 'paper',
   },
   {
     id: '04',
     index: 4,
-    eyebrow: 'PAGE 04 — WHERE IT ACTUALLY STARTED',
+    eyebrow: 'PWHERE IT ACTUALLY STARTED',
     headline: '“SENIOR INIKU CLG VARALAYA NEEENGA?”',
     paragraphs: [
       '21 September 2026.',
@@ -135,7 +135,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '05',
     index: 5,
-    eyebrow: 'PAGE 05 — THE GIFT YOU PLANNED THREE WEEKS EARLIER',
+    eyebrow: 'THE GIFT YOU PLANNED THREE WEEKS EARLIER',
     headline: 'YOU HAD ALREADY THOUGHT ABOUT IT.',
     paragraphs: [
       'You told me:',
@@ -157,15 +157,15 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '06',
     index: 6,
-    eyebrow: 'PAGE 06 — THE MOMENT EVERYTHING CHANGED',
-    headline: 'THE TURNING POINT',
+    eyebrow: 'THE MOMENT EVERYTHING CHANGED',
+    headline: 'Hehehehhehehheheeee',
     paragraphs: [
       'You had already bought that gift three weeks before.',
       'Already thought about how to give it, even if we were not on speaking terms.',
       'That was the exact moment everything shifted.',
       'So tell me, Thabbu jii...',
     ],
-    punchline: 'Enna aanaalum unna vittu porathilla, madam. 🌱💗',
+    punchline: 'Enna aanaalum unna vittu porathilla, madam. 💗',
     microNote: '“Forever certified best friends.”',
     artVariant: 'turningPointPhotos',
     bgVariant: 'blushTint',
@@ -173,7 +173,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '07',
     index: 7,
-    eyebrow: 'PAGE 07 — THE NICKNAMES GOT OUT OF HAND',
+    eyebrow: 'THE NICKNAMES GOT OUT OF HAND',
     headline: 'TUBELIGHT × TAMATAR 🍅',
     paragraphs: [
       'You started calling me:',
@@ -195,8 +195,8 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '08',
     index: 8,
-    eyebrow: 'PAGE 08 — YOU REMEMBERED MY BLUE SHIRT',
-    headline: "I DIDN'T EXPECT YOU TO REMEMBER THIS.",
+    eyebrow: 'BLUE SHIRT LA BULB',
+    headline: "I DIDN'T EXPECT YOU TO NOTE THIS.",
     paragraphs: [
       'During Truth or Dare, I asked:',
       '“Tell me one random thing, that I did as an idiot but it stays all in ur mind. And u never said to me.”',
@@ -215,7 +215,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '09',
     index: 9,
-    eyebrow: 'PAGE 09 — YOUR NOSE PIN',
+    eyebrow: 'YOUR NOSE PIN',
     headline: 'MY FIRST COMPLIMENT. ACCORDING TO YOU. 😭',
     paragraphs: [
       'October 2.',
@@ -226,7 +226,6 @@ export const storyScreens: StoryScreen[] = [
       '“Ahhh apahh first tym unga kitta irundhu oru compliment 😌”',
       'HAHAHA.',
       'One compliment and you immediately noticed that it was my first.',
-      'You even remembered that little conversation.',
     ],
     artVariant: 'nosePin',
     bgVariant: 'warmWhite',
@@ -234,7 +233,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '10',
     index: 10,
-    eyebrow: 'PAGE 10 — 7 ARTS. THE SIDE MIRROR. YOUR FRAGRANCE.',
+    eyebrow: '7 ARTS. THE SIDE MIRROR EEEEEE. YOUR FRAGRANCE. HEHHEHE',
     headline: 'I HAVE ACTUAL REASONS FOR REMEMBERING THAT RIDE.',
     paragraphs: [
       'I wrote this to you the next morning:',
@@ -256,7 +255,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '11',
     index: 11,
-    eyebrow: 'PAGE 11 — I NOTICED THESE TOO.',
+    eyebrow: 'I NOTICED THESE TOO.',
     headline: "THE LITTLE THINGS YOU DON'T EVEN REALISE.",
     paragraphs: [
       'I actually sent you this whole list after meeting you.',
@@ -270,22 +269,19 @@ export const storyScreens: StoryScreen[] = [
       '“Yaar neenga evlo note pannuvinga nuhh neynaichi kuda pakkala 🫢”',
       '“Mothama kottitinga jii 🫣”',
     ],
-    punchline: 'Yes. I notice. A lot.',
+    punchline: 'Yes. I notice. A lot. Because I think it is worthy to stare and admire you.',
     artVariant: 'detailsNotice',
     bgVariant: 'warmWhite',
   },
   {
     id: '12',
     index: 12,
-    eyebrow: 'PAGE 12 — THE COFFEE PLAN',
-    headline: '“NALAIKU YENKUDA COFFEE KUDIKANUM.”',
+    eyebrow: 'THE COFFEE PLAN',
+    headline: '“EEEE Plan pannama entered into Sera Cafe”',
     paragraphs: [
-      'During Truth or Dare, you gave me a dare:',
-      '“Nalaiku yenkuda coffee kudikanum 😁”',
-      'Then you made sure I wouldn’t escape:',
-      '“Kandipa varanum. Aprm edhavuthu reason sollitu varama iruka kudathu.”',
-      'And then we actually had that coffee. The same coffee. After you drank from it, I drank from the same cup.',
+      'Anga the most unforgettable. The same coffee. After you drank from it, I drank from the same cup.',
       'I even told you the next morning:',
+      'Something too magical, Its me craving for that coffee u drank jii',
       '“My reason for drinking slow is bcoz of u 🤗🤭”',
       '“Ur taste makes it a PRECIOUS coffee ever i drink.”',
       'Yosichi paru. I could explain everything in detail, but when it came to this coffee, I literally said: “I can’t describe this in words viduuu.”',
@@ -297,14 +293,15 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '13',
     index: 13,
-    eyebrow: 'PAGE 13 — THE PRINCIPAL’S CALL & THOSE FIVE SECONDS',
-    headline: 'THE PART YOU SAY YOU DON’T REMEMBER.',
+    eyebrow: 'THE PRINCIPAL’S CALL JIII',
+    headline: 'ALSO THE PART YOU SAY YOU DON’T REMEMBER.',
     paragraphs: [
       'That principal’s call. We were sitting so close.',
-      'I was already anxious, and you made me olara vechitta. I wrote:',
+      'I was anxious, and neee olara vechitta. I wrote in chat jii:',
       '“U made me madly anxious, never a girl I have been this much close with her 😭”',
       'Then there was the hand-holding:',
       '“Haann ennala un kaiya vida ve mudiyalaa. They literally made me forget all my problems.”',
+      '"And suddenly antha 5 seconds, you slept on my shoulder, I’m dead and blessed at same time jii. En heart ah stop pannitinga thabbuu"',
       'And after coffee, when we were sitting simply... You held my hand with both your hands and rested your head on my shoulder. Just about 5 seconds.',
       'I told you: “En kanla thanniye vandhurum happiness la. Ivlo happy ya irundhu months aiduchu thabbuu jii 💗✨”',
     ],
@@ -315,7 +312,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '14',
     index: 14,
-    eyebrow: 'PAGE 14 — OUR GAMES. OUR RULES. OUR LOOSU MOMENTS.',
+    eyebrow: 'OUR GAMES. OUR RULES. OUR LOOSU MOMENTS.',
     headline: 'TRUTH OR DARE WAS NEVER JUST ONE ROUND. 🤭',
     paragraphs: [
       '“Truth or dare velayadalama?”',
@@ -324,7 +321,7 @@ export const storyScreens: StoryScreen[] = [
       'Some questions I still remember:',
       '“Have u ever lied to me? If yes, tell me the last one 😂”',
       'And your question to me: “Neenga yenkitta sollanum nuhh neynachi sollama irundhurukingala”',
-      'We played Truth or Dare on multiple nights. Then came Would You Rather. Then the accidental keyboard spam: “Nole” ↔ “Matten” ↔ endless “Ok Ok Ok Ok”.',
+      'We played Truth or Dare on multiple nights. Then the accidental keyboard spam: “Nope” ↔ “Matten” ↔ endless “Ok Ok Ok Ok”.',
       'You: “Idhuku ethana ok”',
       'And our little arguments, teasing, mood-offs and the way we’d eventually start talking normally again.',
     ],
@@ -335,17 +332,16 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '15',
     index: 15,
-    eyebrow: 'PAGE 15 — YOUR FIRST VOICE RECORDING',
+    eyebrow: 'YOUR FIRST VOICE RECORDING',
     headline: '“IT’S BEEN A YEAR...”',
     paragraphs: [
       'October 12.',
       'You sent an audio. Then wrote:',
       '“It’s been a year... and this is my very first voice recording 😁”',
       'I replied: “You made my day. Romba nalla irukkuu. Soo cute.”',
-      'A few days later, I asked you for your favourite song. You: “Yen fav song venuma??” I said happy song. And you sent it: “Idhu dha yen romba fav song.”',
-      'Then I did something I had never done in my life. I started sending voice messages too. Just to explain song meanings.',
+      'Seriously sometimes, I hear it which makes me feel too gud jii'
     ],
-    punchline: 'One little audio from you. A first voice message from me.',
+    punchline: 'One little audio from you. Is Enough to make me fall for u!',
     artVariant: 'voiceRecording',
     bgVariant: 'paper',
     interaction: {
@@ -356,7 +352,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '16',
     index: 16,
-    eyebrow: 'PAGE 16 — THE LITTLE WAYS WE LOOKED AFTER EACH OTHER',
+    eyebrow: 'THE LITTLE WAYS WE LOOKED AFTER EACH OTHER',
     headline: 'NOT EVERY MEMORY NEEDS A SPECIAL DAY.',
     paragraphs: [
       'Your regular messages:',
@@ -365,8 +361,8 @@ export const storyScreens: StoryScreen[] = [
       '“Achoo sari vanga oru hug vangikonga 🫂” · “Vanga vanga 🤗🤗” · “Neenga sad ahh irukuradha yenaku pakka pudikala. Adhuku dhana frnd nuhh na iruken kuda 🫂”',
       'Then my ice cream line: “Neraya ice cream nee saptu enna Mooka thodaika vei, sad aayi kanna thodaika vekkatha 🤭”',
       'And: “My shoulders and shirt is always available for it 😊” You replied: “Wow 🤌🏻💗🫶🏻🫂”',
-      'And that day I told you Ammi was feeding me because I was sad. Your reply:',
-      '“Illa vena ammi ooti vidatum yenakum ammi dhana apo nanum avanga kaiyala sapduven 🙂↔️”',
+      'And you said several times, Enaku ooti vidura nu, but it is still a dream for me jii.',
+
     ],
     punchline: 'See? These are the things I remember.',
     artVariant: 'careIceCream',
@@ -375,9 +371,10 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '17',
     index: 17,
-    eyebrow: 'PAGE 17 — YOUR MESSAGE. I SAVED EVERY WORD.',
-    headline: 'DEAR ARIF JII 💗🫂',
+    eyebrow: 'YOUR MESSAGE. I SAVED EVERY WORD MERI YAAR.',
+    headline: 'DEAR ARIF JII nu start panna💗🫂',
     paragraphs: [
+      'Mudikkum bodhu enna konnutta jii nee',
       'You once sent me that long message. Some lines deserve their own page.',
       '“You’re one of the most special people in my life.”',
       '“Sometimes neenga solra chinna compliments kooda en face la smile vara vechurum.”',
@@ -394,7 +391,7 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '18',
     index: 18,
-    eyebrow: 'PAGE 18 — 11:11 💗',
+    eyebrow: '11:11 💗',
     headline: 'TWO WISHES. ONE LITTLE CODE.',
     paragraphs: [
       'November 5. You sent: “11:11💗”',
@@ -404,13 +401,13 @@ export const storyScreens: StoryScreen[] = [
       'I don’t know how many more nicknames, games, silly fights, random calls, coffee plans and “Saptingala?” messages we still have left. But I know I don’t want to forget these.',
       'So, Thabbu... This was supposed to be a breakup letter. I tried listing your mistakes for three whole pages. But I ended up writing 15 more pages about why I remember you.',
     ],
-    punchline: 'HATE U SOO SOO SOOO MUCH, THABBU JII! 💗🫂',
+    punchline: 'HATE U SOO SOO SOOO MUCH, THABBU JII! 💗🫂 You are not an ideal Yaar, You are always MERI PYAARI YAAR!',
     microNote: 'And you know what you’re supposed to say.',
     artVariant: 'finale1111',
     bgVariant: 'paper',
     interaction: {
       type: 'finalStamp',
-      prompt: 'Hate u more jii 🤭',
+      prompt: '🤭 No chance for breakup!',
       revealedText: '“Hate u more jii” · Received & sealed forever 🍅💌',
     },
   },
