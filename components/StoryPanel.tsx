@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { StoryScreen } from '../content/story';
+import { PhotoPlaceholder } from './PhotoPlaceholder';
 import {
   TomatoStamp,
   WashiTape,
@@ -36,7 +37,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
   // Easter Egg 1: Page 03 Interactive Delivery Checklist
   const [deliveredItems, setDeliveredItems] = useState<Record<number, boolean>>({});
 
-  // Easter Egg 2: Page 13 "OK" spam multiplier
+  // Easter Egg 2: Page 14 "OK" spam multiplier (previously Page 13)
   const [okSpamCount, setOkSpamCount] = useState(0);
 
   const getBgClass = () => {
@@ -71,9 +72,9 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
     <section
       id={`panel-${screen.id}`}
       className={`story-panel ${getBgClass()}`}
-      aria-label={`Panel ${screen.index} of 17: ${screen.headline}`}
+      aria-label={`Panel ${screen.index} of 18: ${screen.headline}`}
     >
-      {/* Page 17 Floating Stardust Sky */}
+      {/* Page 18 Floating Stardust Sky */}
       {screen.artVariant === 'finale1111' && (
         <div
           aria-hidden="true"
@@ -139,7 +140,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 fontWeight: 600,
               }}
             >
-              {screen.id}&thinsp;/&thinsp;17
+              {screen.id}&thinsp;/&thinsp;18
             </span>
           </div>
 
@@ -394,7 +395,106 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 06: Tubelight x Tamatar Nicknames */}
+          {/* PAGE 06: THE TURNING POINT (Centered text + 4 Photo Placeholders) */}
+          {screen.artVariant === 'turningPointPhotos' && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '100%',
+                gap: '8px',
+                padding: '4px 0',
+              }}
+            >
+              {/* Top 2 Polaroids */}
+              <div
+                style={{
+                  display: 'flex',
+                  gap: '12px',
+                  justifyContent: 'center',
+                  width: '100%',
+                }}
+              >
+                <PhotoPlaceholder
+                  id="turning-point-1"
+                  caption="cutuu panda 🐼"
+                  width={112}
+                  height={122}
+                  rotate={-4}
+                />
+                <PhotoPlaceholder
+                  id="turning-point-2"
+                  caption="bamboo bear 🐻"
+                  width={112}
+                  height={122}
+                  rotate={3}
+                />
+              </div>
+
+              {/* Centered Romantic Text Badge */}
+              <div
+                style={{
+                  textAlign: 'center',
+                  padding: '6px 14px',
+                  backgroundColor: 'rgba(255, 254, 252, 0.9)',
+                  borderRadius: '12px',
+                  border: '1.2px solid var(--color-petal)',
+                  boxShadow: '0 4px 12px rgba(201, 78, 104, 0.1)',
+                  margin: '2px 0',
+                }}
+              >
+                <span
+                  className="text-calligraphy"
+                  style={{
+                    fontSize: '24px',
+                    color: 'var(--color-cherry)',
+                    display: 'block',
+                    lineHeight: 1.1,
+                  }}
+                >
+                  Na una vituduvena
+                </span>
+                <span
+                  className="text-cursive"
+                  style={{
+                    fontSize: '16.5px',
+                    color: 'var(--color-ink)',
+                    display: 'block',
+                  }}
+                >
+                  cutuu little green flag? 😭🌱💗
+                </span>
+              </div>
+
+              {/* Bottom 2 Polaroids */}
+              <div
+                style={{
+                  display: 'flex',
+                  gap: '12px',
+                  justifyContent: 'center',
+                  width: '100%',
+                }}
+              >
+                <PhotoPlaceholder
+                  id="turning-point-3"
+                  caption="meri teddy 🧸"
+                  width={112}
+                  height={122}
+                  rotate={-3}
+                />
+                <PhotoPlaceholder
+                  id="turning-point-4"
+                  caption="green flag 🌿"
+                  width={112}
+                  height={122}
+                  rotate={4}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* PAGE 07: Tubelight x Tamatar Nicknames */}
           {screen.artVariant === 'nicknamesTubelight' && (
             <div
               style={{
@@ -458,31 +558,39 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 07: Blue Shirt Swatch */}
+          {/* PAGE 08: Blue Shirt Swatch + Photo Placeholder */}
           {screen.artVariant === 'blueShirt' && (
             <div
               style={{
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                gap: '8px',
+                justifyContent: 'center',
+                gap: '16px',
               }}
             >
-              <BlueShirtDoodle size={54} />
-              <div
-                style={{
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '14px',
-                  color: 'var(--color-muted-ink)',
-                  textAlign: 'center',
-                }}
-              >
-                Indhu mam questioned · girls laughed · Thabbu thought: cute 🤭
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+                <BlueShirtDoodle size={54} />
+                <span
+                  style={{
+                    fontFamily: 'var(--font-cursive)',
+                    fontSize: '13px',
+                    color: 'var(--color-muted-ink)',
+                  }}
+                >
+                  cute ahh irundhinga 💙
+                </span>
               </div>
+              <PhotoPlaceholder
+                id="blue-shirt"
+                caption="that blue shirt day 📸"
+                width={116}
+                height={128}
+                rotate={3}
+              />
             </div>
           )}
 
-          {/* PAGE 08: Nose Pin Sparkle */}
+          {/* PAGE 09: Nose Pin Sparkle */}
           {screen.artVariant === 'nosePin' && (
             <div
               style={{
@@ -506,7 +614,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 09: Motorbike Side Mirror */}
+          {/* PAGE 10: Motorbike Side Mirror */}
           {screen.artVariant === 'mirrorFragrance' && (
             <div
               style={{
@@ -530,7 +638,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 10: Details Notice */}
+          {/* PAGE 11: Details Notice */}
           {screen.artVariant === 'detailsNotice' && (
             <div
               style={{
@@ -607,28 +715,37 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 11: The Coffee Plan */}
+          {/* PAGE 12: The Coffee Plan + Photo Placeholder */}
           {screen.artVariant === 'coffeePlan' && (
             <div
               style={{
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                position: 'relative',
+                justifyContent: 'center',
+                gap: '16px',
               }}
             >
-              <CoffeeCup />
-              <WashiTape
-                width={85}
-                height={16}
-                angle={2}
-                label="SAME CUP"
-                style={{ marginTop: '6px' }}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <CoffeeCup />
+                <WashiTape
+                  width={80}
+                  height={15}
+                  angle={2}
+                  label="SAME CUP"
+                  style={{ marginTop: '4px' }}
+                />
+              </div>
+              <PhotoPlaceholder
+                id="coffee"
+                caption="precious coffee ☕"
+                width={116}
+                height={128}
+                rotate={-2}
               />
             </div>
           )}
 
-          {/* PAGE 12: Principal's Call & 5 Seconds */}
+          {/* PAGE 13: Principal's Call & 5 Seconds */}
           {screen.artVariant === 'principalFiveSeconds' && (
             <div
               style={{
@@ -677,7 +794,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 13: Games & Rules (with Interactive "OK" spam multiplier) */}
+          {/* PAGE 14: Games & Rules (with Interactive "OK" spam multiplier) */}
           {screen.artVariant === 'gamesRules' && (
             <div
               style={{
@@ -725,7 +842,6 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   MATTEN
                 </div>
                 <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
-                {/* Interactive OK button */}
                 <button
                   type="button"
                   onClick={() => setOkSpamCount((c) => c + 1)}
@@ -770,7 +886,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 14: Voice Recording */}
+          {/* PAGE 15: Voice Recording */}
           {screen.artVariant === 'voiceRecording' && (
             <div
               style={{
@@ -793,7 +909,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 15: Care & Ice Cream */}
+          {/* PAGE 16: Care & Ice Cream */}
           {screen.artVariant === 'careIceCream' && (
             <div
               style={{
@@ -818,7 +934,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 16: Saved Letter */}
+          {/* PAGE 17: Saved Letter */}
           {screen.artVariant === 'savedLetter' && (
             <div
               style={{
@@ -855,7 +971,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 17: Finale 11:11 */}
+          {/* PAGE 18: Finale 11:11 */}
           {screen.artVariant === 'finale1111' && (
             <div
               style={{
@@ -894,9 +1010,8 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               {screen.paragraphs.map((p, idx) => {
                 const isQuote = p.startsWith('“') || p.startsWith('"');
 
-                // Easter Egg 3: Page 16 authentic highlighter on key saved lines
-                const isPage16Special =
-                  screen.id === '16' &&
+                const isPage17Special =
+                  screen.id === '17' &&
                   (p.includes('most special people') ||
                     p.includes('never replace you') ||
                     p.includes('love being your friend') ||
@@ -915,7 +1030,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                       lineHeight: 1.45,
                     }}
                   >
-                    {isPage16Special ? (
+                    {isPage17Special ? (
                       <span className="stationery-highlight">{p}</span>
                     ) : (
                       p
@@ -1036,7 +1151,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* Screen 17: Official Dual-Ring Rubber Stamp */}
+          {/* Screen 18: Official Dual-Ring Rubber Stamp */}
           {screen.interaction?.type === 'finalStamp' && (
             <div
               style={{

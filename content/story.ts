@@ -15,6 +15,7 @@ export interface StoryScreen {
     | 'selectiveMemory'
     | 'collegeStart'
     | 'giftThreeWeeks'
+    | 'turningPointPhotos'
     | 'nicknamesTubelight'
     | 'blueShirt'
     | 'nosePin'
@@ -156,7 +157,23 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '06',
     index: 6,
-    eyebrow: 'PAGE 06 — THE NICKNAMES GOT OUT OF HAND',
+    eyebrow: 'PAGE 06 — THE TURNING POINT',
+    headline: 'NA UNA VITUDUVENA CUTUU LITTLE GREEN FLAG? 😭',
+    paragraphs: [
+      'From this very moment, everything shifted.',
+      'You had already bought the gift. Already planned how to give it. Even if we weren’t talking, you were still going to give it.',
+      'So tell me, Thabbu jii...',
+      'Epdi unna vittu poga mudiyum?',
+    ],
+    punchline: 'Na una vituduvena cutuu little green flag? 😭🌱💗',
+    microNote: '“The turning point of us.”',
+    artVariant: 'turningPointPhotos',
+    bgVariant: 'blushTint',
+  },
+  {
+    id: '07',
+    index: 7,
+    eyebrow: 'PAGE 07 — THE NICKNAMES GOT OUT OF HAND',
     headline: 'TUBELIGHT × TAMATAR 🍅',
     paragraphs: [
       'You started calling me:',
@@ -173,12 +190,12 @@ export const storyScreens: StoryScreen[] = [
     ],
     punchline: 'At this point, even our names are confused. 😂',
     artVariant: 'nicknamesTubelight',
-    bgVariant: 'blushTint',
+    bgVariant: 'warmWhite',
   },
   {
-    id: '07',
-    index: 7,
-    eyebrow: 'PAGE 07 — YOU REMEMBERED MY BLUE SHIRT',
+    id: '08',
+    index: 8,
+    eyebrow: 'PAGE 08 — YOU REMEMBERED MY BLUE SHIRT',
     headline: "I DIDN'T EXPECT YOU TO REMEMBER THIS.",
     paragraphs: [
       'During Truth or Dare, I asked:',
@@ -196,9 +213,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'paper',
   },
   {
-    id: '08',
-    index: 8,
-    eyebrow: 'PAGE 08 — YOUR NOSE PIN',
+    id: '09',
+    index: 9,
+    eyebrow: 'PAGE 09 — YOUR NOSE PIN',
     headline: 'MY FIRST COMPLIMENT. ACCORDING TO YOU. 😭',
     paragraphs: [
       'October 2.',
@@ -215,9 +232,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'warmWhite',
   },
   {
-    id: '09',
-    index: 9,
-    eyebrow: 'PAGE 09 — 7 ARTS. THE SIDE MIRROR. YOUR FRAGRANCE.',
+    id: '10',
+    index: 10,
+    eyebrow: 'PAGE 10 — 7 ARTS. THE SIDE MIRROR. YOUR FRAGRANCE.',
     headline: 'I HAVE ACTUAL REASONS FOR REMEMBERING THAT RIDE.',
     paragraphs: [
       'I wrote this to you the next morning:',
@@ -237,9 +254,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'paper',
   },
   {
-    id: '10',
-    index: 10,
-    eyebrow: 'PAGE 10 — I NOTICED THESE TOO.',
+    id: '11',
+    index: 11,
+    eyebrow: 'PAGE 11 — I NOTICED THESE TOO.',
     headline: "THE LITTLE THINGS YOU DON'T EVEN REALISE.",
     paragraphs: [
       'I actually sent you this whole list after meeting you.',
@@ -258,9 +275,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'warmWhite',
   },
   {
-    id: '11',
-    index: 11,
-    eyebrow: 'PAGE 11 — THE COFFEE PLAN',
+    id: '12',
+    index: 12,
+    eyebrow: 'PAGE 12 — THE COFFEE PLAN',
     headline: '“NALAIKU YENKUDA COFFEE KUDIKANUM.”',
     paragraphs: [
       'During Truth or Dare, you gave me a dare:',
@@ -278,9 +295,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'paper',
   },
   {
-    id: '12',
-    index: 12,
-    eyebrow: 'PAGE 12 — THE PRINCIPAL’S CALL & THOSE FIVE SECONDS',
+    id: '13',
+    index: 13,
+    eyebrow: 'PAGE 13 — THE PRINCIPAL’S CALL & THOSE FIVE SECONDS',
     headline: 'THE PART YOU SAY YOU DON’T REMEMBER.',
     paragraphs: [
       'That principal’s call. We were sitting so close.',
@@ -296,9 +313,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'blushTint',
   },
   {
-    id: '13',
-    index: 13,
-    eyebrow: 'PAGE 13 — OUR GAMES. OUR RULES. OUR LOOSU MOMENTS.',
+    id: '14',
+    index: 14,
+    eyebrow: 'PAGE 14 — OUR GAMES. OUR RULES. OUR LOOSU MOMENTS.',
     headline: 'TRUTH OR DARE WAS NEVER JUST ONE ROUND. 🤭',
     paragraphs: [
       '“Truth or dare velayadalama?”',
@@ -316,9 +333,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'warmWhite',
   },
   {
-    id: '14',
-    index: 14,
-    eyebrow: 'PAGE 14 — YOUR FIRST VOICE RECORDING',
+    id: '15',
+    index: 15,
+    eyebrow: 'PAGE 15 — YOUR FIRST VOICE RECORDING',
     headline: '“IT’S BEEN A YEAR...”',
     paragraphs: [
       'October 12.',
@@ -337,9 +354,9 @@ export const storyScreens: StoryScreen[] = [
     },
   },
   {
-    id: '15',
-    index: 15,
-    eyebrow: 'PAGE 15 — THE LITTLE WAYS WE LOOKED AFTER EACH OTHER',
+    id: '16',
+    index: 16,
+    eyebrow: 'PAGE 16 — THE LITTLE WAYS WE LOOKED AFTER EACH OTHER',
     headline: 'NOT EVERY MEMORY NEEDS A SPECIAL DAY.',
     paragraphs: [
       'Your regular messages:',
@@ -356,9 +373,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'warmWhite',
   },
   {
-    id: '16',
-    index: 16,
-    eyebrow: 'PAGE 16 — YOUR MESSAGE. I SAVED EVERY WORD.',
+    id: '17',
+    index: 17,
+    eyebrow: 'PAGE 17 — YOUR MESSAGE. I SAVED EVERY WORD.',
     headline: 'DEAR ARIF JII 💗🫂',
     paragraphs: [
       'You once sent me that long message. Some lines deserve their own page.',
@@ -375,9 +392,9 @@ export const storyScreens: StoryScreen[] = [
     bgVariant: 'blushTint',
   },
   {
-    id: '17',
-    index: 17,
-    eyebrow: 'PAGE 17 — 11:11 💗',
+    id: '18',
+    index: 18,
+    eyebrow: 'PAGE 18 — 11:11 💗',
     headline: 'TWO WISHES. ONE LITTLE CODE.',
     paragraphs: [
       'November 5. You sent: “11:11💗”',
@@ -385,7 +402,7 @@ export const storyScreens: StoryScreen[] = [
       'Your wish: “Yen deewana dola vahh nalla pathukanum avana aluga vida kudathu so yenga Kula distance vandhuda kudathu nuhh wish panna....”',
       'And you told me something else. You had written “Deewana Dola” on the last bench in your chemistry lab. 🤭',
       'I don’t know how many more nicknames, games, silly fights, random calls, coffee plans and “Saptingala?” messages we still have left. But I know I don’t want to forget these.',
-      'So, Thabbu... This was supposed to be a breakup letter. I tried listing your mistakes for three whole pages. But I ended up writing 14 more pages about why I remember you.',
+      'So, Thabbu... This was supposed to be a breakup letter. I tried listing your mistakes for three whole pages. But I ended up writing 15 more pages about why I remember you.',
     ],
     punchline: 'HATE U SOO SOO SOOO MUCH, THABBU JII! 💗🫂',
     microNote: 'And you know what you’re supposed to say.',
