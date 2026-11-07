@@ -311,18 +311,90 @@ button:focus-visible {
   transform: none;
 }
 
+/* Stationery Highlighter Effect */
+.stationery-highlight {
+  background: linear-gradient(
+    104deg,
+    rgba(247, 231, 169, 0.1) 0.5%,
+    rgba(247, 231, 169, 0.75) 2.5%,
+    rgba(247, 231, 169, 0.68) 97%,
+    rgba(247, 231, 169, 0.1) 99.5%
+  );
+  border-radius: 3px;
+  padding: 1px 4px;
+  margin: 0 -2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  display: inline;
+}
+
+/* Stardust Particle Float for Page 17 */
+@keyframes stardustFloat {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.15);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.3;
+  }
+}
+
+.stardust-particle {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-serif);
+  color: var(--color-petal);
+  animation: stardustFloat 3.5s ease-in-out infinite;
+}
+
+/* Rubber Stamp Official Badge */
+.official-rubber-stamp {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 3.5px dashed var(--color-cherry);
+  padding: 8px;
+  box-shadow: 
+    0 0 0 3px rgba(201, 78, 104, 0.2),
+    inset 0 0 0 3px rgba(201, 78, 104, 0.2);
+  background-color: rgba(245, 220, 226, 0.35);
+  animation: stampThud 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform: rotate(-5deg);
+  user-select: none;
+}
+
+.official-rubber-stamp::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-cherry);
+  pointer-events: none;
+}
+
 /* Animations */
 @keyframes stampThud {
   0% {
     opacity: 0;
-    transform: scale(1.4) rotate(-8deg);
+    transform: scale(1.6) rotate(-18deg);
   }
   60% {
-    transform: scale(0.98) rotate(1deg);
+    transform: scale(0.95) rotate(2deg);
   }
   100% {
     opacity: 1;
-    transform: scale(1.05) rotate(-2deg);
+    transform: scale(1) rotate(-5deg);
   }
 }
 

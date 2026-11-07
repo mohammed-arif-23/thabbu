@@ -33,6 +33,12 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
   const [boopCount, setBoopCount] = useState(0);
   const [activeNickIndex, setActiveNickIndex] = useState<number | null>(null);
 
+  // Easter Egg 1: Page 03 Interactive Delivery Checklist
+  const [deliveredItems, setDeliveredItems] = useState<Record<number, boolean>>({});
+
+  // Easter Egg 2: Page 13 "OK" spam multiplier
+  const [okSpamCount, setOkSpamCount] = useState(0);
+
   const getBgClass = () => {
     switch (screen.bgVariant) {
       case 'warmWhite':
@@ -55,12 +61,58 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
     'Forever stuck with me! 🍅',
   ];
 
+  const deliveryBadges = [
+    'Pending since Sep ⏳',
+    'Awaiting Delivery 📸',
+    'Outstanding Order 💪💗',
+  ];
+
   return (
     <section
       id={`panel-${screen.id}`}
       className={`story-panel ${getBgClass()}`}
       aria-label={`Panel ${screen.index} of 17: ${screen.headline}`}
     >
+      {/* Page 17 Floating Stardust Sky */}
+      {screen.artVariant === 'finale1111' && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            zIndex: 1,
+          }}
+        >
+          {[
+            { top: '8%', left: '12%', delay: '0s', glyph: '✦', size: '14px', color: '#E9AAB9' },
+            { top: '15%', right: '15%', delay: '1.2s', glyph: '⋆', size: '18px', color: '#F7E7A9' },
+            { top: '35%', left: '8%', delay: '0.8s', glyph: '✧', size: '12px', color: '#C94E68' },
+            { top: '48%', right: '10%', delay: '2s', glyph: '✦', size: '16px', color: '#E9AAB9' },
+            { top: '70%', left: '14%', delay: '1.5s', glyph: '⋆', size: '20px', color: '#F7E7A9' },
+            { top: '82%', right: '18%', delay: '0.4s', glyph: '✧', size: '13px', color: '#C94E68' },
+            { top: '22%', left: '45%', delay: '2.5s', glyph: '•', size: '10px', color: '#E9AAB9' },
+            { top: '65%', right: '40%', delay: '1.8s', glyph: '✦', size: '15px', color: '#F7E7A9' },
+          ].map((star, i) => (
+            <span
+              key={i}
+              className="stardust-particle"
+              style={{
+                top: star.top,
+                left: star.left,
+                right: star.right,
+                fontSize: star.size,
+                color: star.color,
+                animationDelay: star.delay,
+              }}
+            >
+              {star.glyph}
+            </span>
+          ))}
+        </div>
+      )}
+
       <div className="card-sheet">
         {/* Top Header Section */}
         <header style={{ position: 'relative', zIndex: 3 }}>
@@ -259,12 +311,12 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               </div>
               <div
                 style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '12px',
-                  color: 'var(--color-ink)',
+                  fontFamily: 'var(--font-hand)',
+                  fontSize: '13px',
+                  color: 'var(--color-muted-ink)',
                 }}
               >
-                Pending deliveries: Rathima video · Selfie · Bicep heart
+                tap items below to check status 🔎
               </div>
             </div>
           )}
@@ -622,59 +674,96 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 13: Games & Rules */}
+          {/* PAGE 13: Games & Rules (with Interactive "OK" spam multiplier) */}
           {screen.artVariant === 'gamesRules' && (
             <div
               style={{
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
                 gap: '8px',
+                width: '100%',
               }}
             >
               <div
                 style={{
-                  border: '1.5px solid var(--color-cherry)',
-                  borderRadius: '6px',
-                  padding: '4px 10px',
-                  fontFamily: 'var(--font-serif)',
-                  fontWeight: 700,
-                  fontSize: '15px',
-                  color: 'var(--color-cherry)',
-                  transform: 'rotate(-3deg)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
                 }}
               >
-                NOLE
+                <div
+                  style={{
+                    border: '1.5px solid var(--color-cherry)',
+                    borderRadius: '6px',
+                    padding: '4px 10px',
+                    fontFamily: 'var(--font-serif)',
+                    fontWeight: 700,
+                    fontSize: '15px',
+                    color: 'var(--color-cherry)',
+                    transform: 'rotate(-3deg)',
+                  }}
+                >
+                  NOLE
+                </div>
+                <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
+                <div
+                  style={{
+                    border: '1.5px solid var(--color-ink)',
+                    borderRadius: '6px',
+                    padding: '4px 10px',
+                    fontFamily: 'var(--font-serif)',
+                    fontWeight: 700,
+                    fontSize: '15px',
+                    color: 'var(--color-ink)',
+                    transform: 'rotate(2deg)',
+                  }}
+                >
+                  MATTEN
+                </div>
+                <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
+                {/* Interactive OK button */}
+                <button
+                  type="button"
+                  onClick={() => setOkSpamCount((c) => c + 1)}
+                  style={{
+                    backgroundColor: 'var(--color-butter)',
+                    border: '1px solid rgba(51, 42, 43, 0.2)',
+                    borderRadius: '6px',
+                    padding: '4px 12px',
+                    fontFamily: 'var(--font-serif)',
+                    fontWeight: 700,
+                    fontSize: '15px',
+                    color: 'var(--color-ink)',
+                    cursor: 'pointer',
+                    transform: `rotate(${okSpamCount % 2 === 0 ? -2 : 2}deg) scale(${1 + Math.min(0.2, okSpamCount * 0.03)})`,
+                    boxShadow: '0 2px 6px rgba(51, 42, 43, 0.08)',
+                    transition: 'all 0.15s ease',
+                  }}
+                  title="Click to spam OK"
+                >
+                  OK {okSpamCount > 0 ? `× ${okSpamCount + 3}` : 'OK OK'}
+                </button>
               </div>
-              <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
-              <div
-                style={{
-                  border: '1.5px solid var(--color-ink)',
-                  borderRadius: '6px',
-                  padding: '4px 10px',
-                  fontFamily: 'var(--font-serif)',
-                  fontWeight: 700,
-                  fontSize: '15px',
-                  color: 'var(--color-ink)',
-                  transform: 'rotate(2deg)',
-                }}
-              >
-                MATTEN
-              </div>
-              <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
-              <div
-                style={{
-                  backgroundColor: 'var(--color-butter)',
-                  borderRadius: '6px',
-                  padding: '4px 10px',
-                  fontFamily: 'var(--font-serif)',
-                  fontWeight: 700,
-                  fontSize: '15px',
-                  color: 'var(--color-ink)',
-                  transform: 'rotate(-2deg)',
-                }}
-              >
-                OK OK OK
-              </div>
+
+              {okSpamCount >= 3 && (
+                <div
+                  className="text-hand"
+                  style={{
+                    color: 'var(--color-cherry)',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    backgroundColor: 'var(--color-blush)',
+                    padding: '3px 12px',
+                    borderRadius: '12px',
+                    animation: 'fadeIn 0.2s ease',
+                  }}
+                >
+                  {okSpamCount >= 8
+                    ? 'Tubelight: endless ok spam unlocked! ♾️'
+                    : 'Thabbu: “Idhuku ethana ok?!” 😂'}
+                </div>
+              )}
             </div>
           )}
 
@@ -733,7 +822,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 backgroundColor: 'var(--color-warm-white)',
                 border: '1px solid var(--color-petal)',
                 borderRadius: '8px',
-                padding: '12px 16px',
+                padding: '10px 16px',
                 position: 'relative',
                 boxShadow: '0 4px 14px rgba(51, 42, 43, 0.05)',
                 maxWidth: '290px',
@@ -776,9 +865,9 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               <span
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '22px',
+                  fontSize: '24px',
                   fontWeight: 700,
-                  letterSpacing: '0.1em',
+                  letterSpacing: '0.12em',
                   color: 'var(--color-cherry)',
                 }}
               >
@@ -801,6 +890,15 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             >
               {screen.paragraphs.map((p, idx) => {
                 const isQuote = p.startsWith('“') || p.startsWith('"');
+
+                // Easter Egg 3: Page 16 authentic highlighter on key saved lines
+                const isPage16Special =
+                  screen.id === '16' &&
+                  (p.includes('most special people') ||
+                    p.includes('never replace you') ||
+                    p.includes('love being your friend') ||
+                    p.includes('favourite person'));
+
                 return (
                   <p
                     key={idx}
@@ -814,29 +912,76 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                       lineHeight: 1.45,
                     }}
                   >
-                    {p}
+                    {isPage16Special ? (
+                      <span className="stationery-highlight">{p}</span>
+                    ) : (
+                      p
+                    )}
                   </p>
                 );
               })}
             </div>
           )}
 
-          {/* Bullet points if any (Page 03) */}
+          {/* Bullet points if any (Page 03 Interactive Delivery Checklist) */}
           {screen.bulletPoints && (
-            <ul
+            <div
               style={{
-                margin: '6px 0',
-                paddingLeft: '20px',
-                fontFamily: 'var(--font-sans)',
-                fontSize: '13.5px',
-                color: 'var(--color-ink)',
-                lineHeight: 1.5,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '6px',
+                margin: '8px 0',
               }}
             >
-              {screen.bulletPoints.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
+              {screen.bulletPoints.map((item, i) => {
+                const isChecked = !!deliveredItems[i];
+                return (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() =>
+                      setDeliveredItems((prev) => ({
+                        ...prev,
+                        [i]: !prev[i],
+                      }))
+                    }
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '5px 10px',
+                      backgroundColor: 'var(--color-warm-white)',
+                      border: isChecked
+                        ? '1.2px solid var(--color-cherry)'
+                        : '1px solid rgba(51, 42, 43, 0.15)',
+                      borderRadius: '6px',
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '13px',
+                      color: 'var(--color-ink)',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      boxShadow: '0 1px 3px rgba(51, 42, 43, 0.03)',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <span>• {item}</span>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-hand)',
+                        fontSize: '12.5px',
+                        fontWeight: 600,
+                        color: isChecked ? 'var(--color-cherry)' : 'var(--color-muted-ink)',
+                        backgroundColor: isChecked ? 'var(--color-blush)' : 'transparent',
+                        padding: '1px 6px',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      {isChecked ? `[ ${deliveryBadges[i]} ]` : '[ tap to check ]'}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           )}
 
           {/* Punchline */}
@@ -888,12 +1033,15 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* Screen 17 final stamp */}
+          {/* Screen 17: Official Dual-Ring Rubber Stamp */}
           {screen.interaction?.type === 'finalStamp' && (
             <div
               style={{
-                marginTop: '10px',
+                marginTop: '12px',
                 textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
               }}
             >
               {!stampRevealed ? (
@@ -906,11 +1054,11 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                     borderRadius: '24px',
                     padding: '8px 22px',
                     fontFamily: 'var(--font-sans)',
-                    fontSize: '13.5px',
+                    fontSize: '14px',
                     fontWeight: 600,
                     color: 'var(--color-cherry)',
                     cursor: 'pointer',
-                    boxShadow: '0 3px 10px rgba(201, 78, 104, 0.18)',
+                    boxShadow: '0 3px 12px rgba(201, 78, 104, 0.2)',
                     transition: 'all 0.2s ease',
                   }}
                   onMouseEnter={(e) => {
@@ -924,24 +1072,66 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   {screen.interaction.prompt}
                 </button>
               ) : (
-                <div
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    border: '2px dashed var(--color-cherry)',
-                    borderRadius: '8px',
-                    padding: '6px 16px',
-                    backgroundColor: 'var(--color-blush)',
-                    fontFamily: 'var(--font-hand)',
-                    fontSize: '16px',
-                    color: 'var(--color-cherry)',
-                    transform: 'rotate(-2deg) scale(1.05)',
-                    boxShadow: '0 4px 12px rgba(201, 78, 104, 0.2)',
-                    animation: 'stampThud 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                  }}
-                >
-                  <span>{screen.interaction.revealedText}</span>
+                <div className="official-rubber-stamp">
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '8.5px',
+                      fontWeight: 700,
+                      letterSpacing: '0.14em',
+                      color: 'var(--color-cherry)',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    ★ TUBELIGHT & TAMATAR ★
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: '15px',
+                      fontWeight: 700,
+                      color: 'var(--color-cherry)',
+                      lineHeight: 1.1,
+                      margin: '4px 0 2px 0',
+                      letterSpacing: '0.04em',
+                    }}
+                  >
+                    BEST FRIENDS
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      color: 'var(--color-cherry)',
+                      lineHeight: 1,
+                      letterSpacing: '0.08em',
+                    }}
+                  >
+                    EST. 2026
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-hand)',
+                      fontSize: '12px',
+                      color: 'var(--color-ink)',
+                      marginTop: '6px',
+                      lineHeight: 1,
+                    }}
+                  >
+                    “Hate u more jii 🤭”
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '8px',
+                      letterSpacing: '0.1em',
+                      color: 'var(--color-muted-ink)',
+                      marginTop: '3px',
+                    }}
+                  >
+                    OFFICIALLY SEALED 🍅
+                  </span>
                 </div>
               )}
             </div>
