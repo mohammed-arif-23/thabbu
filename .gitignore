@@ -22,5 +22,7 @@ yarn-error.log*
 .env*.local
 .env
 
-# Private chat files
+# Private chat & personal photos
 message_*.json
+public/photos/
+*.zip
