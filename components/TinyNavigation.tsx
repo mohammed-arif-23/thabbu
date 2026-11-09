@@ -48,9 +48,23 @@ export function TinyNavigation({
     }
   };
 
+  const isDarkScene = currentIndex < 14;
+  const progressPercent = Math.round(((currentIndex + 1) / total) * 100);
+
   return (
     <nav className="nav-overlay" aria-label="Card scenes navigation">
-      <div className="nav-pill">
+      <div
+        className="nav-pill"
+        style={{
+          backgroundColor: isDarkScene ? 'rgba(25, 20, 23, 0.92)' : 'rgba(255, 254, 252, 0.95)',
+          borderColor: isDarkScene ? 'rgba(201, 78, 104, 0.45)' : 'rgba(201, 78, 104, 0.25)',
+          color: isDarkScene ? '#F7EBEF' : 'var(--color-ink)',
+          boxShadow: isDarkScene
+            ? '0 6px 20px rgba(0, 0, 0, 0.5), 0 0 12px rgba(201, 78, 104, 0.2)'
+            : '0 4px 16px rgba(51, 42, 43, 0.1)',
+          transition: 'all 0.3s ease',
+        }}
+      >
         <button
           type="button"
           onClick={onPrev}
@@ -69,35 +83,59 @@ export function TinyNavigation({
           </svg>
         </button>
 
-        {/* 17 subtle dots */}
+        {/* Sleek Mini Progress Bar with Chapter Tag */}
         <div
           style={{
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            gap: '4px',
+            gap: '3px',
+            minWidth: '70px',
+            cursor: 'pointer',
           }}
-          role="tablist"
-          aria-label="Scene progress"
+          title={`Scene ${currentIndex + 1} of ${total}`}
         >
-          {Array.from({ length: total }).map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              role="tab"
-              aria-selected={idx === currentIndex}
-              aria-label={`Go to scene ${idx + 1}`}
-              onClick={() => onJump(idx)}
-              className={`nav-dot ${idx === currentIndex ? 'active' : ''}`}
+          <div
+            style={{
+              width: '100%',
+              height: '4px',
+              backgroundColor: isDarkScene ? 'rgba(255, 255, 255, 0.12)' : 'rgba(51, 42, 43, 0.08)',
+              borderRadius: '2px',
+              overflow: 'hidden',
+            }}
+          >
+            <div
               style={{
-                border: 'none',
-                padding: 0,
-                cursor: 'pointer',
+                width: `${progressPercent}%`,
+                height: '100%',
+                backgroundColor: isDarkScene ? '#FF5C80' : 'var(--color-cherry)',
+                borderRadius: '2px',
+                transition: 'width 0.25s ease',
               }}
             />
-          ))}
+          </div>
+          <span
+            style={{
+              fontSize: '9px',
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: isDarkScene ? '#FFA5BA' : 'var(--color-muted-ink)',
+            }}
+          >
+            {currentIndex < 14 ? 'PART 1: THE CHARGES 💔' : currentIndex === 14 ? 'PLOT TWIST ⚡' : 'PART 2: UNLIMITED LOVE 💗'}
+          </span>
         </div>
 
-        <span className="nav-counter" aria-live="polite">
+        <span
+          className="nav-counter"
+          aria-live="polite"
+          style={{
+            color: isDarkScene ? '#FFF' : 'var(--color-cherry)',
+            fontWeight: 700,
+          }}
+        >
           {String(currentIndex + 1).padStart(2, '0')}&thinsp;/&thinsp;{total}
         </span>
 

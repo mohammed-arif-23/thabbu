@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { StoryScreen } from '../content/story';
 import { PhotoPlaceholder } from './PhotoPlaceholder';
 import { spawnParticles } from './FloatingParticles';
@@ -25,6 +26,19 @@ import {
   RetroCassetteDoodle,
   TwoSmilesDoodle,
   OrigamiHeartDoodle,
+  MissedCallsDoodle,
+  DryRepliesDoodle,
+  ShoulderDenialDoodle,
+  BrokenPromisesDoodle,
+  SecretThoughtsDoodle,
+  WhiteHeartMysteryDoodle,
+  NoComplimentsTrapDoodle,
+  JealousyTrialsDoodle,
+  StubbornPillsDoodle,
+  TwentyDaysAwayDoodle,
+  UnromanticRedFlagDoodle,
+  PossessiveRadarDoodle,
+  DeewanaDolaBenchDoodle,
 } from './doodles/Doodles';
 
 interface StoryPanelProps {
@@ -40,13 +54,73 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
   const [boopCount, setBoopCount] = useState(0);
   const [activeNickIndex, setActiveNickIndex] = useState<number | null>(null);
 
-  // Easter Egg 1: Page 03 Interactive Delivery Checklist
+  // Easter Egg: Page 07 Broken Promises Checklist
   const [deliveredItems, setDeliveredItems] = useState<Record<number, boolean>>({});
 
-  // Easter Egg 2: Page 14 "OK" spam multiplier (previously Page 13)
+  // Easter Egg: Page 27 "OK" spam multiplier
   const [okSpamCount, setOkSpamCount] = useState(0);
 
+  // Runaway button physics for Page 14 "Sign Breakup Papers"
+  const [runawayOffset, setRunawayOffset] = useState({ x: 0, y: 0 });
+  const [runawayAttempts, setRunawayAttempts] = useState(0);
+  const [breakupSigned, setBreakupSigned] = useState(false);
+
+  // Plot Twist on Page 15: Choice State
+  const [plotChoice, setPlotChoice] = useState<'unselected' | 'yes' | 'no'>('unselected');
+
+  const isDarkBreakup = screen.index <= 14;
+
+  const handleRunawayDodge = () => {
+    if (runawayAttempts < 3) {
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 70 + Math.random() * 50;
+      setRunawayOffset({
+        x: Math.cos(angle) * dist,
+        y: Math.sin(angle) * dist,
+      });
+      setRunawayAttempts((prev) => prev + 1);
+    }
+  };
+
+  const fireHeartConfettiRain = () => {
+    try {
+      const count = 70;
+      const defaults = { origin: { y: 0.6 } };
+
+      const fire = (particleRatio: number, opts: confetti.Options) => {
+        confetti({
+          ...defaults,
+          ...opts,
+          particleCount: Math.floor(count * particleRatio),
+        });
+      };
+
+      // Layer 1: Emoji shapes
+      confetti({
+        particleCount: 50,
+        spread: 90,
+        origin: { y: 0.6 },
+        shapes: [
+          confetti.shapeFromText({ text: '🍅' }),
+          confetti.shapeFromText({ text: '💗' }),
+          confetti.shapeFromText({ text: '🐼' }),
+          confetti.shapeFromText({ text: '🫂' }),
+          confetti.shapeFromText({ text: '✨' }),
+        ],
+        scalar: 2.2,
+      });
+
+      // Layer 2: Pastel sparks
+      fire(0.25, { spread: 26, startVelocity: 45, colors: ['#C94E68', '#FFA5BA', '#F7E7A9'] });
+      fire(0.2, { spread: 60, colors: ['#FFB3C4', '#FFF9F3'] });
+      fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+    } catch {
+      // fallback gracefully if canvas is blocked
+    }
+  };
+
   const getBgClass = () => {
+    if (isDarkBreakup) return 'bg-dark-paper';
     switch (screen.bgVariant) {
       case 'warmWhite':
         return 'bg-warm-white';
@@ -65,22 +139,16 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
     'Moti tamatarrr 🍅',
     'Tubelight says hi 💡',
     'Three days over now? 😂',
-    'Podhum Valikuthu, Now Forever stuck with me! 🍅',
-  ];
-
-  const deliveryBadges = [
-    'Pending since Sep ⏳',
-    'Awaiting Delivery 📸',
-    'Outstanding Order 💪💗',
+    'Still mad at you though! 😤',
   ];
 
   return (
     <section
       id={`panel-${screen.id}`}
-      className={`story-panel ${getBgClass()}`}
-      aria-label={`Panel ${screen.index} of 18: ${screen.headline}`}
+      className={`story-panel ${getBgClass()} ${isDarkBreakup ? 'theme-dark-breakup' : ''}`}
+      aria-label={`Panel ${screen.index} of 30: ${screen.headline}`}
     >
-      {/* Page 18 Floating Stardust Sky */}
+      {/* Page 30 Floating Stardust Sky */}
       {screen.artVariant === 'finale1111' && (
         <div
           aria-hidden="true"
@@ -120,7 +188,10 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
         </div>
       )}
 
-      <div className="card-sheet">
+      <div className={`card-sheet ${plotChoice === 'no' ? 'romantic-glow-burst' : ''}`}>
+        {/* Rainy Atmospheric Overlay for Dark Breakup Dossier */}
+        {isDarkBreakup && <div className="rain-overlay" aria-hidden="true" />}
+
         {/* Luxury Folded Corner Tab */}
         <div className="page-dogear" aria-hidden="true" />
 
@@ -145,10 +216,14 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: '110px',
+            minHeight: '105px',
             zIndex: 2,
           }}
         >
+          {/* ================================================================== */}
+          {/* PART 1: COMPLAINT DOODLES (PAGES 01–14)                            */}
+          {/* ================================================================== */}
+
           {/* PAGE 01: Breakup Foil / Official Notice */}
           {screen.artVariant === 'notice' && (
             <div
@@ -161,39 +236,33 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               }}
             >
               <WashiTape
-                width={140}
+                width={150}
                 height={20}
                 angle={-2}
-                color="#F7E7A9"
-                label="OFFICIAL NOTICE TO TAMATAR"
+                color="#5A1A26"
+                label="OFFICIAL COMPLAINT DOSSIER"
               />
               <div
                 style={{
                   position: 'relative',
                   padding: '12px 18px',
-                  backgroundColor: 'var(--color-warm-white)',
-                  border: '1.2px solid rgba(201, 78, 104, 0.25)',
+                  backgroundColor: '#261B20',
+                  border: '1.2px solid #C94E68',
                   borderRadius: '12px',
-                  boxShadow: '0 4px 14px rgba(51, 42, 43, 0.05)',
+                  boxShadow: '0 6px 20px rgba(0, 0, 0, 0.45)',
                   textAlign: 'center',
                   maxWidth: '280px',
                   width: '100%',
                 }}
               >
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: -10,
-                    right: -8,
-                  }}
-                >
+                <div style={{ position: 'absolute', top: -10, right: -8 }}>
                   <TomatoStamp size={42} rotate={8} />
                 </div>
                 <EnvelopeSeal
                   opened={sealBroken}
                   onClick={(e) => {
                     setSealBroken(!sealBroken);
-                    spawnParticles(e, ['💌', '✨', '🍅', '❤️']);
+                    spawnParticles(e, ['💔', '🌧️', '🍅', '⚡']);
                     if (!sealBroken && onAdvance) {
                       setTimeout(onAdvance, 500);
                     }
@@ -204,18 +273,18 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 <span
                   className="text-hand"
                   style={{
-                    color: 'var(--color-cherry)',
+                    color: '#FFA5BA',
                     fontSize: '15px',
                     animation: 'fadeIn 0.3s ease',
                   }}
                 >
-                  Irunga naane swipe panren
+                  13 more charges loading... swipe next →
                 </span>
               )}
             </div>
           )}
 
-          {/* PAGE 02: Waiting Period */}
+          {/* PAGE 02: Waiting Period (Cute Pouting Tomato Mascot) */}
           {screen.artVariant === 'waiting' && (
             <div
               style={{
@@ -225,37 +294,31 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 alignItems: 'center',
               }}
             >
-              <HandDrawnArrow
-                style={{
-                  marginBottom: '4px',
-                  transform: 'rotate(-10deg)',
-                }}
-              />
               <CuteTomatoMascot
-                size={86}
+                size={84}
                 onClick={(e) => {
                   setBoopCount((c) => c + 1);
-                  spawnParticles(e, ['🍅', '❤️', '💡', '🧸', '✨']);
+                  spawnParticles(e, ['🍅', '💔', '⚡', '😤', '✨']);
                 }}
               />
               <div
                 style={{
-                  backgroundColor: 'var(--color-warm-white)',
-                  border: '1.2px solid var(--color-petal)',
+                  backgroundColor: '#261C21',
+                  border: '1.2px solid #C94E68',
                   borderRadius: '16px',
                   padding: '5px 16px',
                   marginTop: '8px',
-                  boxShadow: '0 3px 10px rgba(201, 78, 104, 0.08)',
+                  boxShadow: '0 3px 10px rgba(0, 0, 0, 0.35)',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
                 }}
               >
-                <span style={{ fontSize: '14px' }}>✨</span>
+                <span style={{ fontSize: '14px' }}>⚡</span>
                 <span
                   className="text-hand"
                   style={{
-                    color: 'var(--color-cherry)',
+                    color: '#FFA5BA',
                     fontSize: '14.5px',
                     fontWeight: 700,
                   }}
@@ -266,61 +329,279 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 03: Selective Memory Checklist */}
+          {/* PAGE 03: Missed Calls / Vanishing Acts */}
+          {screen.artVariant === 'missedCalls' && <MissedCallsDoodle />}
+
+          {/* PAGE 04: Dry Replies & Stone Heart */}
+          {screen.artVariant === 'dryReplies' && <DryRepliesDoodle />}
+
+          {/* PAGE 05: Selective Memory Part 1 (Shirt color) */}
           {screen.artVariant === 'selectiveMemory' && (
-            <div
-              style={{
-                backgroundColor: 'var(--color-warm-white)',
-                border: '1.2px solid var(--color-petal)',
-                borderRadius: '12px',
-                padding: '12px 18px',
-                width: '100%',
-                maxWidth: '290px',
-                position: 'relative',
-                boxShadow: '0 4px 14px rgba(51, 42, 43, 0.04)',
-              }}
-            >
-              <WashiTape
-                width={70}
-                height={16}
-                angle={-3}
-                label="EVIDENCE"
-                style={{ position: 'absolute', top: -8, right: 14 }}
-              />
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  marginBottom: '8px',
-                }}
-              >
-                <span style={{ fontSize: '16px' }}>📸</span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontWeight: 700,
-                    fontSize: '12.5px',
-                    color: 'var(--color-cherry)',
-                    letterSpacing: '0.04em',
-                  }}
-                >
-                  SCREENSHOT ARCHIVE
-                </span>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <div style={{ filter: 'grayscale(0.7) contrast(1.2)' }}>
+                <BlueShirtDoodle size={64} />
               </div>
               <div
                 style={{
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '13px',
-                  color: 'var(--color-muted-ink)',
+                  backgroundColor: '#261C20',
+                  border: '1px solid #7D4C5B',
+                  borderRadius: '14px',
+                  padding: '4px 14px',
                 }}
               >
-                tap items below to check status 🔎
+                <span style={{ fontFamily: 'var(--font-hand)', color: '#FFA5BA', fontSize: '13.5px' }}>
+                  “Na marandhuten... vayasu aagudhu lahh 👵”
+                </span>
               </div>
             </div>
           )}
 
-          {/* PAGE 04: Where it Actually Started (College) */}
+          {/* PAGE 06: Shoulder Denial */}
+          {screen.artVariant === 'shoulderDenial' && <ShoulderDenialDoodle />}
+
+          {/* PAGE 07: Broken Promises Checklist */}
+          {screen.artVariant === 'pendingDeliveries' && <BrokenPromisesDoodle />}
+
+          {/* PAGE 08: Cliffhangers & Secret Thoughts */}
+          {screen.artVariant === 'secretThoughts' && <SecretThoughtsDoodle />}
+
+          {/* PAGE 09: The White Heart Mystery */}
+          {screen.artVariant === 'whiteHeartMystery' && <WhiteHeartMysteryDoodle />}
+
+          {/* PAGE 10: Cruel Punishments (No Compliments) */}
+          {screen.artVariant === 'noComplimentsTrap' && <NoComplimentsTrapDoodle />}
+
+          {/* PAGE 11: Jealousy & Double Standards */}
+          {screen.artVariant === 'jealousyTrials' && <JealousyTrialsDoodle />}
+
+          {/* PAGE 12: Stubborn Pills & Skipping Dinner */}
+          {screen.artVariant === 'stubbornPills' && <StubbornPillsDoodle />}
+
+          {/* PAGE 13: 20 Days Away / Holiday Shocks */}
+          {screen.artVariant === 'twentyDaysAway' && <TwentyDaysAwayDoodle />}
+
+          {/* PAGE 14: Final Straw / Unromantic Red Flag & Runaway Button */}
+          {screen.artVariant === 'unromanticRedFlag' && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+              <UnromanticRedFlagDoodle />
+              <div
+                style={{
+                  transform: `translate(${runawayOffset.x}px, ${runawayOffset.y}px)`,
+                  transition: 'transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  position: 'relative',
+                  zIndex: 10,
+                }}
+                onMouseEnter={handleRunawayDodge}
+                onTouchStart={handleRunawayDodge}
+              >
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    if (runawayAttempts < 3) {
+                      handleRunawayDodge();
+                    } else {
+                      setBreakupSigned(true);
+                      spawnParticles(e, ['💔', '🏃‍♂️', '💨', '🤣']);
+                      if (onAdvance) setTimeout(onAdvance, 700);
+                    }
+                  }}
+                  style={{
+                    backgroundColor: '#B63E56',
+                    color: '#FFF',
+                    border: '1.5px solid #FF7B95',
+                    borderRadius: '24px',
+                    padding: '8px 20px',
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '13.5px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 14px rgba(0,0,0,0.5)',
+                  }}
+                >
+                  {runawayAttempts === 0 && 'tap to sign breakup papers 📑'}
+                  {runawayAttempts === 1 && 'Hey wait, think again! 🏃‍♂️💨'}
+                  {runawayAttempts === 2 && "Can't touch this! 😜"}
+                  {runawayAttempts >= 3 && 'Vaaipe illa! Stuck with me! 😂'}
+                </button>
+              </div>
+              {breakupSigned && (
+                <span
+                  style={{
+                    color: '#FFA5BA',
+                    fontFamily: 'var(--font-hand)',
+                    fontSize: '14.5px',
+                    animation: 'fadeIn 0.3s ease',
+                  }}
+                >
+                  ERROR 404: Breakup Impossible. Next page ponga →
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* ================================================================== */}
+          {/* PART 2: PAGE 15 — THE MOVIE PLOT TWIST (THE CLIMAX MOMENT)         */}
+          {/* ================================================================== */}
+          {screen.artVariant === 'plotTwistSwitch' && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '12px',
+                width: '100%',
+                maxWidth: '320px',
+              }}
+            >
+              {plotChoice === 'unselected' && (
+                <div
+                  style={{
+                    backgroundColor: '#FFFDF9',
+                    border: '1.5px solid var(--color-cherry)',
+                    borderRadius: '16px',
+                    padding: '16px 14px',
+                    textAlign: 'center',
+                    boxShadow: '0 8px 24px rgba(201, 78, 104, 0.15)',
+                    width: '100%',
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-cursive)',
+                      fontSize: '22px',
+                      color: 'var(--color-cherry)',
+                      fontWeight: 700,
+                      margin: '0 0 14px 0',
+                    }}
+                  >
+                    “Nejama breakup paniduven nu nenaikuriya?”
+                  </p>
+                  <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+                    <button
+                      type="button"
+                      onClick={() => setPlotChoice('yes')}
+                      style={{
+                        backgroundColor: '#FFF2F5',
+                        border: '1.2px solid #C94E68',
+                        color: '#C94E68',
+                        borderRadius: '20px',
+                        padding: '8px 18px',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '13px',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Aama / Yes 💔
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPlotChoice('no');
+                        fireHeartConfettiRain();
+                      }}
+                      style={{
+                        backgroundColor: 'var(--color-cherry)',
+                        border: 'none',
+                        color: '#FFF',
+                        borderRadius: '20px',
+                        padding: '8px 20px',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '13.5px',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 12px rgba(201, 78, 104, 0.35)',
+                      }}
+                    >
+                      Illa / No 💗
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* IF SHE SELECTED YES: SILLY CRYING SCOLD */}
+              {plotChoice === 'yes' && (
+                <div
+                  className="cry-shake"
+                  style={{
+                    backgroundColor: '#FFF4F6',
+                    border: '1.5px solid #FF4D6D',
+                    borderRadius: '16px',
+                    padding: '14px 16px',
+                    textAlign: 'center',
+                    width: '100%',
+                  }}
+                >
+                  <div style={{ fontSize: '32px', marginBottom: '6px' }}>😭💔</div>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: '14.5px',
+                      color: '#C94E68',
+                      lineHeight: 1.4,
+                      margin: '0 0 10px 0',
+                    }}
+                  >
+                    “Nee enna purinjikave ila innum kuda... 😭 Unna vittu poga mudiyuma ennala? Pehh! Ada looseyyyy!”
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPlotChoice('no');
+                      fireHeartConfettiRain();
+                    }}
+                    style={{
+                      backgroundColor: 'var(--color-cherry)',
+                      color: '#FFF',
+                      border: 'none',
+                      borderRadius: '18px',
+                      padding: '7px 16px',
+                      fontSize: '12.5px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Thirumba Sollu: Illa / No! 💗
+                  </button>
+                </div>
+              )}
+
+              {/* IF SHE SELECTED NO: CINEMATIC LOVE EXPLOSION */}
+              {plotChoice === 'no' && (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '10px',
+                    textAlign: 'center',
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: 'var(--color-cherry)',
+                      color: '#FFF',
+                      borderRadius: '50px',
+                      padding: '6px 18px',
+                      fontSize: '14px',
+                      fontWeight: 800,
+                      letterSpacing: '0.08em',
+                      boxShadow: '0 4px 15px rgba(201, 78, 104, 0.4)',
+                    }}
+                  >
+                    🎉 VAAIPE ILA PO! UNLIMITED LOVE ACTIVATED! 💗
+                  </div>
+                  <OrigamiHeartDoodle size={68} />
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ================================================================== */}
+          {/* PART 3: SWEET MEMORIES & ROMANTIC SAGA (PAGES 16–30)               */}
+          {/* ================================================================== */}
+
+          {/* PAGE 16: Where it Actually Started (College) */}
           {screen.artVariant === 'collegeStart' && (
             <div
               style={{
@@ -336,7 +617,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               }}
             >
               <WashiTape
-                width={85}
+                width={90}
                 height={16}
                 angle={2}
                 label="SEPTEMBER 2026"
@@ -353,194 +634,66 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               >
                 “Senior iniku clg varalaya neenga”
               </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '13px',
-                  color: 'var(--color-muted-ink)',
-                }}
-              >
+              <div style={{ fontFamily: 'var(--font-hand)', fontSize: '13px', color: 'var(--color-muted-ink)' }}>
                 21 Sep · Just class bore adikudhu
               </div>
             </div>
           )}
 
-          {/* PAGE 05: The Gift Planned Three Weeks Earlier */}
+          {/* PAGE 17: The Gift Planned Three Weeks Earlier */}
           {screen.artVariant === 'giftThreeWeeks' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              <GiftBoxDoodle size={60} />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <GiftBoxDoodle size={64} />
               <div
                 style={{
                   fontFamily: 'var(--font-hand)',
-                  fontSize: '14px',
+                  fontSize: '14.5px',
                   color: 'var(--color-cherry)',
                   fontWeight: 600,
-                  textAlign: 'center',
                 }}
               >
-                Bought 3 weeks in advance 🥹
+                3 weeks before... secretly kept ready 🎁
               </div>
             </div>
           )}
 
-          {/* PAGE 06: THE TURNING POINT (Centered text + 4 Vertical 9:16 Polaroids) */}
-          {screen.artVariant === 'turningPointPhotos' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                width: '100%',
-                gap: '8px',
-                padding: '2px 0',
-                position: 'relative',
-              }}
-            >
-              {/* Floating ambient green flags & hearts */}
-              <div
-                aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  pointerEvents: 'none',
-                  overflow: 'hidden',
-                  zIndex: 0,
-                }}
-              >
-                <span className="stardust-particle" style={{ top: '8%', left: '4%', fontSize: '14px', animationDelay: '0s' }}>🌱</span>
-                <span className="stardust-particle" style={{ top: '15%', right: '5%', fontSize: '13px', animationDelay: '1.5s' }}>💗</span>
-                <span className="stardust-particle" style={{ top: '78%', left: '4%', fontSize: '15px', animationDelay: '0.8s' }}>✨</span>
-                <span className="stardust-particle" style={{ top: '82%', right: '5%', fontSize: '13px', animationDelay: '2.1s' }}>🌱</span>
-              </div>
-              {/* Top 2 Vertical 9:16 Polaroids */}
+          {/* PAGE 18: Possessive Rules */}
+          {screen.artVariant === 'possessiveRules' && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <PossessiveRadarDoodle />
               <div
                 style={{
-                  display: 'flex',
-                  gap: '14px',
-                  justifyContent: 'center',
-                  width: '100%',
-                }}
-              >
-                <PhotoPlaceholder
-                  id="turning-point-1"
-                  caption="panda 🐼"
-                  width={94}
-                  rotate={-3}
-                />
-                <PhotoPlaceholder
-                  id="turning-point-2"
-                  caption="bamboo bear 🐻"
-                  width={94}
-                  rotate={3}
-                />
-              </div>
-
-              {/* Centered Romantic Quote Box with Living Glow */}
-              <div
-                className="quote-glow"
-                style={{
-                  textAlign: 'center',
-                  padding: '7px 16px',
-                  backgroundColor: 'rgba(255, 254, 252, 0.94)',
-                  borderRadius: '12px',
+                  backgroundColor: 'var(--color-warm-white)',
                   border: '1.2px solid var(--color-petal)',
-                  margin: '2px 0',
-                  position: 'relative',
-                  zIndex: 2,
+                  borderRadius: '12px',
+                  padding: '8px 14px',
                 }}
               >
-                <span
-                  className="text-calligraphy"
-                  style={{
-                    fontSize: '24px',
-                    color: 'var(--color-cherry)',
-                    display: 'block',
-                    lineHeight: 1.15,
-                  }}
-                >
-                  Na una vituduvena
-                </span>
-                <span
-                  className="text-cursive"
-                  style={{
-                    fontSize: '17px',
-                    color: 'var(--color-ink)',
-                    display: 'block',
-                  }}
-                >
-                  cutuu little green flag? 😭🌱💗
-                </span>
-              </div>
-
-              {/* Bottom 2 Vertical 9:16 Polaroids */}
-              <div
-                style={{
-                  display: 'flex',
-                  gap: '14px',
-                  justifyContent: 'center',
-                  width: '100%',
-                }}
-              >
-                <PhotoPlaceholder
-                  id="turning-point-3"
-                  caption="meri teddy 🧸"
-                  width={94}
-                  rotate={-2}
-                />
-                <PhotoPlaceholder
-                  id="turning-point-4"
-                  caption="green flag 🌱"
-                  width={94}
-                  rotate={3}
-                />
+                <div style={{ color: 'var(--color-cherry)', fontWeight: 700, fontSize: '13px' }}>
+                  “Yaru kuda? Ava kudaya?” 🧐
+                </div>
+                <div style={{ fontSize: '11px', color: 'var(--color-muted-ink)' }}>
+                  A tasty, gorgeous tomato detected 🍅
+                </div>
               </div>
             </div>
           )}
 
-          {/* PAGE 07: Tubelight x Tamatar Nicknames */}
+          {/* PAGE 19: Tubelight x Tamatar x Bamboobear */}
           {screen.artVariant === 'nicknamesTubelight' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '10px',
-                width: '100%',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '14px',
-                }}
-              >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <TubelightDoodle size={58} />
                 <span style={{ fontSize: '18px' }}>⚡</span>
                 <TomatoStamp size={48} rotate={6} />
+                <span style={{ fontSize: '18px' }}>🐼</span>
               </div>
-
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '6px',
-                  justifyContent: 'center',
-                  maxWidth: '300px',
-                }}
-              >
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', maxWidth: '300px' }}>
                 {[
                   { name: 'Tubelight yaar 😁', bg: '#F7E7A9' },
                   { name: 'Moti tamatarrr 🍅', bg: '#FAF0F2' },
                   { name: 'Bamboobear 👀', bg: '#DCE6D8' },
-                  { name: 'Bamboo-bear 💗', bg: '#F5DCE2' },
+                  { name: 'Meri deewani dolii 💗', bg: '#F5DCE2' },
                 ].map((tag, idx) => (
                   <button
                     key={idx}
@@ -553,10 +706,9 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                       padding: '4px 10px',
                       fontFamily: 'var(--font-sans)',
                       fontSize: '11.5px',
-                      fontWeight: 500,
+                      fontWeight: 600,
                       color: 'var(--color-ink)',
                       transform: activeNickIndex === idx ? 'scale(1.12)' : 'scale(1)',
-                      boxShadow: '0 1px 4px rgba(51, 42, 43, 0.05)',
                       cursor: 'pointer',
                       transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
@@ -568,151 +720,72 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 08: Blue Shirt Swatch (No photo, pure original artwork restored) */}
+          {/* PAGE 20: Blue Shirt La Bulb */}
           {screen.artVariant === 'blueShirt' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              <BlueShirtDoodle size={58} />
-              <div
-                style={{
-                  fontFamily: 'var(--font-cursive)',
-                  fontSize: '15px',
-                  color: 'var(--color-muted-ink)',
-                  textAlign: 'center',
-                }}
-              >
-                Indhu mam questioned · girls laughed · Thabbu thought: cute 🤭
-              </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', width: '100%' }}>
+              <BlueShirtDoodle size={64} />
+              <PhotoPlaceholder id="2" caption="indha shirt dhaan 🤭" width={86} rotate={-3} />
             </div>
           )}
 
-          {/* PAGE 09: Nose Pin Sparkle */}
+          {/* PAGE 21: Nose Pin */}
           {screen.artVariant === 'nosePin' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              <NosePinDoodle size={50} />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <NosePinDoodle size={56} />
               <div
                 style={{
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '14.5px',
-                  color: 'var(--color-cherry)',
-                  fontWeight: 600,
-                }}
-              >
-                Jii nejama this is the reason i got eager to talk to you 😌
-              </div>
-            </div>
-          )}
-
-          {/* PAGE 10: Motorbike Side Mirror */}
-          {screen.artVariant === 'mirrorFragrance' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '6px',
-              }}
-            >
-              <SideMirror />
-              <div
-                style={{
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '13.5px',
-                  color: 'var(--color-muted-ink)',
-                  textAlign: 'center',
-                }}
-              >
-                20–30 km/h · smelling shirt shoulder · “Ada looseyyyy 😂”
-              </div>
-            </div>
-          )}
-
-          {/* PAGE 11: Details Notice + 9:16 Vertical Photo Placeholder */}
-          {screen.artVariant === 'detailsNotice' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '8px',
-                width: '100%',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  width: '100%',
-                  maxWidth: '320px',
+                  gap: '6px',
+                  backgroundColor: 'var(--color-warm-white)',
+                  padding: '3px 14px',
+                  borderRadius: '14px',
+                  border: '1px solid var(--color-petal)',
                 }}
               >
-                {/* 9:16 Vertical Photo */}
-                <PhotoPlaceholder
-                  id="her-details"
-                  caption="those smiles 🫠"
-                  width={82}
-                  rotate={-2}
-                />
-                {/* Two Smiles Bespoke SVG Doodle */}
-                <TwoSmilesDoodle />
+                <span style={{ fontSize: '13px' }}>✨</span>
+                <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13.5px', color: 'var(--color-cherry)' }}>
+                  1st Compliment Ever: Pierced by Patti 😌
+                </span>
               </div>
             </div>
           )}
 
-          {/* PAGE 12: The Coffee Plan + 9:16 Vertical Photo Placeholder */}
+          {/* PAGE 22: 7 Arts · Side Mirror · Fragrance */}
+          {screen.artVariant === 'mirrorFragrance' && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', width: '100%' }}>
+              <SideMirror />
+              <PhotoPlaceholder id="3" caption="20-30 km/h smiling 🫠" width={88} rotate={3} />
+            </div>
+          )}
+
+          {/* PAGE 23: Every Micro-Detail I Admire */}
+          {screen.artVariant === 'detailsNotice' && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', width: '100%' }}>
+              <PhotoPlaceholder id="her-details" caption="those smiles 🫠" width={84} rotate={-2} />
+              <TwoSmilesDoodle />
+            </div>
+          )}
+
+          {/* PAGE 24: Two Smiles & Princess */}
+          {screen.artVariant === 'twoSmiles' && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '28px' }}>👑</span>
+              <TwoSmilesDoodle />
+            </div>
+          )}
+
+          {/* PAGE 25: Sera Cafe · Shared Coffee */}
           {screen.artVariant === 'coffeePlan' && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '14px',
-              }}
-            >
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <CoffeeCup />
-                <WashiTape
-                  width={76}
-                  height={15}
-                  angle={2}
-                  label="SAME CUP"
-                  style={{ marginTop: '4px' }}
-                />
-              </div>
-              <PhotoPlaceholder
-                id="coffee"
-                caption="precious coffee ☕"
-                width={92}
-                rotate={-2}
-              />
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', width: '100%' }}>
+              <CoffeeCup />
+              <PhotoPlaceholder id="coffee" caption="the same coffee ☕💗" width={90} rotate={-2} />
             </div>
           )}
 
-          {/* PAGE 13: Principal's Call & 5 Seconds */}
+          {/* PAGE 26: Principal's Call & 5 Seconds */}
           {screen.artVariant === 'principalFiveSeconds' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
               <StopwatchDoodle size={76} />
               <div
                 style={{
@@ -727,176 +800,46 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 }}
               >
                 <HandDrawnHeart size={16} />
-                <span
-                  style={{
-                    fontFamily: 'var(--font-hand)',
-                    fontSize: '14px',
-                    color: 'var(--color-cherry)',
-                    fontWeight: 600,
-                  }}
-                >
+                <span style={{ fontFamily: 'var(--font-hand)', fontSize: '14px', color: 'var(--color-cherry)', fontWeight: 600 }}>
                   5 seconds · head on shoulder 🫠
                 </span>
               </div>
             </div>
           )}
 
-          {/* PAGE 14: Games & Rules (with Interactive "OK" spam multiplier) */}
-          {screen.artVariant === 'gamesRules' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '8px',
-                width: '100%',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                }}
-              >
-                <div
-                  style={{
-                    border: '1.5px solid var(--color-cherry)',
-                    borderRadius: '6px',
-                    padding: '4px 10px',
-                    fontFamily: 'var(--font-serif)',
-                    fontWeight: 700,
-                    fontSize: '15px',
-                    color: 'var(--color-cherry)',
-                    transform: 'rotate(-3deg)',
-                  }}
-                >
-                  Nope
-                </div>
-                <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
-                <div
-                  style={{
-                    border: '1.5px solid var(--color-ink)',
-                    borderRadius: '6px',
-                    padding: '4px 10px',
-                    fontFamily: 'var(--font-serif)',
-                    fontWeight: 700,
-                    fontSize: '15px',
-                    color: 'var(--color-ink)',
-                    transform: 'rotate(2deg)',
-                  }}
-                >
-                  MATTEN
-                </div>
-                <span style={{ fontSize: '14px', color: 'var(--color-muted-ink)' }}>↔</span>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    setOkSpamCount((c) => c + 1);
-                    spawnParticles(e, ['🙄', '💅', '✨', '⚡', '🍅']);
-                  }}
-                  style={{
-                    backgroundColor: 'var(--color-butter)',
-                    border: '1px solid rgba(51, 42, 43, 0.2)',
-                    borderRadius: '6px',
-                    padding: '4px 12px',
-                    fontFamily: 'var(--font-serif)',
-                    fontWeight: 700,
-                    fontSize: '15px',
-                    color: 'var(--color-ink)',
-                    cursor: 'pointer',
-                    transform: `rotate(${okSpamCount % 2 === 0 ? -2 : 2}deg) scale(${1 + Math.min(0.2, okSpamCount * 0.03)})`,
-                    boxShadow: '0 2px 6px rgba(51, 42, 43, 0.08)',
-                    transition: 'all 0.15s ease',
-                  }}
-                  title="Click to spam OK"
-                >
-                  (ji click) OK {okSpamCount > 0 ? `× ${okSpamCount + 3}` : ' OK OK'}
-                </button>
-              </div>
-
-              {okSpamCount >= 3 && (
-                <div
-                  className="text-hand"
-                  style={{
-                    color: 'var(--color-cherry)',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    backgroundColor: 'var(--color-blush)',
-                    padding: '3px 12px',
-                    borderRadius: '12px',
-                    animation: 'fadeIn 0.2s ease',
-                  }}
-                >
-                  {okSpamCount >= 8
-                    ? 'Tubelight: endless ok spam unlocked! ♾️'
-                    : 'Thabbu jii: Ipo neenga edhukku ithana ok? 😂'}
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* PAGE 15: Voice Recording */}
+          {/* PAGE 27: Voice Recording & Bouncing Equalizer Bars */}
           {screen.artVariant === 'voiceRecording' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              <RetroCassetteDoodle size={130} />
-              <WaveformDoodle interactive={true} />
-              <span
-                className="text-hand"
-                style={{
-                  color: 'var(--color-cherry)',
-                  fontSize: '13.5px',
-                  fontWeight: 600,
-                }}
-              >
-                Unga voice vida enna jii nalla irukka poguthuuu... 🎧
-              </span>
-            </div>
-          )}
-
-          {/* PAGE 16: Care & Ice Cream */}
-          {screen.artVariant === 'careIceCream' && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-              }}
-            >
-              <IceCreamDoodle size={48} />
-              <div
-                style={{
-                  fontFamily: 'var(--font-hand)',
-                  fontSize: '14px',
-                  color: 'var(--color-cherry)',
-                  fontWeight: 600,
-                  maxWidth: '200px',
-                  lineHeight: 1.3,
-                }}
-              >
-                I Wish : “Neraya ice cream nee saptu enna unoda mooka thodaika vei” 🍦
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <RetroCassetteDoodle size={124} />
+              {/* Dynamic Equalizer Spectrum Bars */}
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: '4px', height: '34px', padding: '0 8px' }}>
+                {[1, 2, 3, 4, 1, 3, 2, 4, 2, 1, 3, 4].map((bar, i) => (
+                  <span
+                    key={i}
+                    className={`eq-bar-${bar}`}
+                    style={{
+                      width: '4px',
+                      backgroundColor: i % 2 === 0 ? 'var(--color-cherry)' : '#F7E7A9',
+                      borderRadius: '2px',
+                    }}
+                  />
+                ))}
               </div>
+              <WaveformDoodle interactive={true} />
             </div>
           )}
 
-          {/* PAGE 17: Saved Letter */}
+          {/* PAGE 28: Care & Ice Cream */}
+          {screen.artVariant === 'careIceCream' && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <IceCreamDoodle size={52} />
+              <PhotoPlaceholder id="4" caption="hug vangikonga 🫂" width={86} rotate={2} />
+            </div>
+          )}
+
+          {/* PAGE 29: Saved Letter */}
           {screen.artVariant === 'savedLetter' && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '8px',
-                width: '100%',
-              }}
-            >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', width: '100%' }}>
               <OrigamiHeartDoodle size={62} />
               <div
                 style={{
@@ -910,13 +853,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   width: '100%',
                 }}
               >
-                <PaperClip
-                  style={{
-                    position: 'absolute',
-                    top: -14,
-                    right: 18,
-                  }}
-                />
+                <PaperClip style={{ position: 'absolute', top: -14, right: 18 }} />
                 <p
                   style={{
                     fontFamily: 'var(--font-serif)',
@@ -935,28 +872,25 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             </div>
           )}
 
-          {/* PAGE 18: Finale 11:11 */}
+          {/* PAGE 30: Finale 11:11 & Chemistry Lab Bench Carving */}
           {screen.artVariant === 'finale1111' && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              <Starburst size={20} color="var(--color-cherry)" />
-              <span
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '24px',
-                  fontWeight: 700,
-                  letterSpacing: '0.12em',
-                  color: 'var(--color-cherry)',
-                }}
-              >
-                11:11 💗
-              </span>
-              <Starburst size={20} color="var(--color-cherry)" />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%' }}>
+              <DeewanaDolaBenchDoodle />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Starburst size={18} color="var(--color-cherry)" />
+                <span
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '22px',
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    color: 'var(--color-cherry)',
+                  }}
+                >
+                  11:11 💗
+                </span>
+                <Starburst size={18} color="var(--color-cherry)" />
+              </div>
             </div>
           )}
         </div>
@@ -964,23 +898,9 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
         {/* Bottom Copy / Dialogue Section */}
         <footer className="stagger-body" style={{ position: 'relative', zIndex: 3 }}>
           {screen.paragraphs && screen.paragraphs.length > 0 && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '5px',
-              }}
-            >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
               {screen.paragraphs.map((p, idx) => {
                 const isQuote = p.startsWith('“') || p.startsWith('"');
-
-                const isPage17Special =
-                  screen.id === '17' &&
-                  (p.includes('most special people') ||
-                    p.includes('never replace you') ||
-                    p.includes('love being your friend') ||
-                    p.includes('favourite person'));
-
                 return (
                   <p
                     key={idx}
@@ -989,84 +909,62 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                       margin: 0,
                       fontFamily: isQuote ? 'var(--font-serif)' : 'var(--font-sans)',
                       fontStyle: isQuote ? 'italic' : 'normal',
-                      fontSize: isQuote ? '15px' : '14px',
-                      color: isQuote ? 'var(--color-cherry)' : 'var(--color-ink)',
+                      fontSize: isQuote ? '14.5px' : '13.5px',
+                      color: isQuote
+                        ? isDarkBreakup
+                          ? '#FFA5BA'
+                          : 'var(--color-cherry)'
+                        : isDarkBreakup
+                        ? '#E2D3D8'
+                        : 'var(--color-ink)',
                       lineHeight: 1.45,
                     }}
                   >
-                    {isPage17Special ? (
-                      <span className="stationery-highlight">{p}</span>
-                    ) : (
-                      p
-                    )}
+                    {p}
                   </p>
                 );
               })}
             </div>
           )}
 
-          {/* Bullet points if any (Page 03 Interactive Delivery Checklist) */}
+          {/* Bullet Points */}
           {screen.bulletPoints && (
-            <div
+            <ul
               style={{
+                margin: '8px 0 0 0',
+                paddingLeft: '18px',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '6px',
-                margin: '8px 0',
+                gap: '4px',
               }}
             >
-              {screen.bulletPoints.map((item, i) => {
-                const isChecked = !!deliveredItems[i];
-                return (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={(e) => {
-                      setDeliveredItems((prev) => ({
-                        ...prev,
-                        [i]: !prev[i],
-                      }));
-                      spawnParticles(e, ['✅', '🌸', '💖', '✨']);
-                    }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '5px 10px',
-                      backgroundColor: 'var(--color-warm-white)',
-                      border: isChecked
-                        ? '1.2px solid var(--color-cherry)'
-                        : '1px solid rgba(51, 42, 43, 0.15)',
-                      borderRadius: '6px',
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '13px',
-                      color: 'var(--color-ink)',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      boxShadow: isChecked
-                        ? '0 3px 8px rgba(201, 78, 104, 0.15)'
-                        : '0 1px 3px rgba(51, 42, 43, 0.03)',
-                      transform: isChecked ? 'scale(1.02)' : 'scale(1)',
-                      transition: 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    }}
-                  >
-                    <span>• {item}</span>
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-hand)',
-                        fontSize: '12.5px',
-                        fontWeight: 600,
-                        color: isChecked ? 'var(--color-cherry)' : 'var(--color-muted-ink)',
-                        backgroundColor: isChecked ? 'var(--color-blush)' : 'transparent',
-                        padding: '1px 6px',
-                        borderRadius: '4px',
-                      }}
-                    >
-                      {isChecked ? `[ ${deliveryBadges[i]} ]` : '[ tap to check ]'}
-                    </span>
-                  </button>
-                );
-              })}
+              {screen.bulletPoints.map((item, idx) => (
+                <li
+                  key={idx}
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '13.5px',
+                    color: isDarkBreakup ? '#FFB3C4' : 'var(--color-cherry)',
+                    fontWeight: 600,
+                  }}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* MicroNote */}
+          {screen.microNote && (
+            <div
+              className="text-micronote"
+              style={{
+                marginTop: '8px',
+                fontFamily: 'var(--font-hand)',
+                fontSize: '13.5px',
+              }}
+            >
+              {screen.microNote}
             </div>
           )}
 
@@ -1075,51 +973,18 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             <div
               className="text-punchline"
               style={{
-                fontSize: '16.5px',
-                marginTop: '8px',
-                marginBottom: '4px',
+                marginTop: '10px',
+                fontFamily: 'var(--font-serif)',
+                fontWeight: 600,
+                fontSize: '14.5px',
+                lineHeight: 1.35,
               }}
             >
               {screen.punchline}
             </div>
           )}
 
-          {/* MicroNote */}
-          {screen.microNote && (
-            <div
-              className="text-hand"
-              style={{
-                color: 'var(--color-muted-ink)',
-                marginTop: '4px',
-                marginBottom: '4px',
-                fontSize: '15px',
-              }}
-            >
-              {screen.microNote}
-            </div>
-          )}
-
-          {/* First screen swipe guidance */}
-          {isFirst && (
-            <div
-              className="text-hand"
-              style={{
-                color: 'var(--color-cherry)',
-                fontSize: '15.5px',
-                textAlign: 'center',
-                marginTop: '6px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-              }}
-            >
-              <span>swipe to open</span>
-              <span style={{ fontSize: '18px' }}>→</span>
-            </div>
-          )}
-
-          {/* Screen 18: Official Dual-Ring Rubber Stamp */}
+          {/* Screen 30: Official Dual-Ring Rubber Stamp */}
           {screen.interaction?.type === 'finalStamp' && (
             <div
               style={{
@@ -1135,10 +1000,8 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   type="button"
                   onClick={(e) => {
                     setStampRevealed(true);
+                    fireHeartConfettiRain();
                     spawnParticles(e, ['💖', '🍅', '✨', '💌', '🌸', '⭐', '🎉', '🫂', '💡', '🥂']);
-                    setTimeout(() => {
-                      spawnParticles(e, ['🍅', '❤️', '✨', '🌟', '🎊']);
-                    }, 200);
                   }}
                   style={{
                     backgroundColor: 'var(--color-warm-white)',
@@ -1157,8 +1020,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                     e.currentTarget.style.backgroundColor = 'var(--color-blush)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor =
-                      'var(--color-warm-white)';
+                    e.currentTarget.style.backgroundColor = 'var(--color-warm-white)';
                   }}
                 >
                   {screen.interaction.prompt}
@@ -1167,6 +1029,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 <div
                   className="official-rubber-stamp"
                   onClick={(e) => {
+                    fireHeartConfettiRain();
                     spawnParticles(e, ['💖', '🍅', '✨', '💌', '🌸', '⭐', '🎉', '🫂', '💡']);
                   }}
                   role="button"

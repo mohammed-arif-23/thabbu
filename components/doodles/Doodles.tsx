@@ -1204,3 +1204,602 @@ export function OrigamiHeartDoodle({ size = 68 }: { size?: number }) {
     </div>
   );
 }
+
+/* ============================================================================
+   NEW MOVIE DOODLES FOR 30-PAGE SAGA
+   ============================================================================ */
+
+/* 6. Missed Calls / Vanishing Act Doodle */
+export function MissedCallsDoodle({ size = 100 }: { size?: number }) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '6px',
+        maxWidth: '280px',
+        width: '100%',
+      }}
+    >
+      <div
+        className="doodle-bob"
+        style={{
+          backgroundColor: '#1E191C',
+          border: '1.2px solid #C94E68',
+          borderRadius: '14px',
+          padding: '10px 14px',
+          boxShadow: '0 8px 22px rgba(0,0,0,0.4), 0 0 14px rgba(201, 78, 104, 0.25)',
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+        }}
+      >
+        <div
+          style={{
+            width: 42,
+            height: 42,
+            borderRadius: '50%',
+            backgroundColor: '#C94E68',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '20px',
+            boxShadow: '0 0 12px rgba(201, 78, 104, 0.5)',
+          }}
+        >
+          📵
+        </div>
+        <div style={{ flex: 1 }}>
+          <div style={{ color: '#FFB3C4', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            Call Cut by Thabbu
+          </div>
+          <div style={{ color: '#FFF', fontSize: '13.5px', fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+            “Nani vantanga jii...”
+          </div>
+        </div>
+        <span style={{ fontSize: '11px', color: '#B8A6AC', fontFamily: 'monospace' }}>1s ago</span>
+      </div>
+      <div
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          backgroundColor: 'rgba(201, 78, 104, 0.18)',
+          border: '1px dashed #C94E68',
+          borderRadius: '16px',
+          padding: '3px 12px',
+        }}
+      >
+        <span style={{ fontSize: '11px', color: '#FFA5BA', fontWeight: 600 }}>
+          ⚠️ 4 Missed Calls from Tubelight
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* 7. Dry Replies / Stone Heart Doodle */
+export function DryRepliesDoodle() {
+  const replies = ['Mmm.', 'Hmm.', 'Nope.', 'Illaye.'];
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '8px',
+        width: '100%',
+        maxWidth: '280px',
+      }}
+    >
+      <div
+        className="shiver-ice"
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '8px',
+          justifyContent: 'center',
+          padding: '10px 14px',
+          backgroundColor: 'rgba(25, 20, 24, 0.85)',
+          borderRadius: '14px',
+          border: '1.2px solid #5A4850',
+          boxShadow: 'inset 0 0 15px rgba(100, 160, 220, 0.15)',
+        }}
+      >
+        {replies.map((r, i) => (
+          <span
+            key={i}
+            style={{
+              backgroundColor: '#2F242A',
+              border: '1px solid #7D4C5B',
+              borderRadius: '8px',
+              padding: '4px 10px',
+              fontFamily: 'monospace',
+              fontSize: '13px',
+              color: '#B0D8FF',
+              textShadow: '0 0 6px rgba(176, 216, 255, 0.5)',
+            }}
+          >
+            ❄️ {r}
+          </span>
+        ))}
+      </div>
+      <span style={{ fontFamily: 'var(--font-cursive)', fontSize: '13.5px', color: '#FFA5BA' }}>
+        Antarctica weather detected in chat 🥶
+      </span>
+    </div>
+  );
+}
+
+/* 8. Shoulder Denial Doodle */
+export function ShoulderDenialDoodle() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '8px',
+        width: '100%',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          backgroundColor: '#241B1F',
+          border: '1.2px solid #C94E68',
+          borderRadius: '12px',
+          padding: '8px 14px',
+        }}
+      >
+        <span style={{ fontSize: '20px' }}>🚑</span>
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ color: '#FFB3C4', fontSize: '11px', fontWeight: 700 }}>AMBULANCE vs MOHAN SENIOR</div>
+          <div style={{ color: '#FFF', fontSize: '13px', fontFamily: 'var(--font-hand)' }}>
+            “Illa illa na mohan senior ku cl pandra 🤭”
+          </div>
+        </div>
+      </div>
+      <span style={{ color: '#B8A6AC', fontSize: '11.5px', fontStyle: 'italic' }}>
+        Actual event: 5 precious seconds on shoulder 🫠
+      </span>
+    </div>
+  );
+}
+
+/* 9. Broken Promises Checklist Doodle */
+export function BrokenPromisesDoodle() {
+  const items = [
+    { title: 'Rathima video', status: 'PENDING ❌' },
+    { title: 'Proper Selfie', status: 'PENDING ❌' },
+    { title: 'Bicep Heart', status: 'PENDING ❌' },
+  ];
+  return (
+    <div
+      style={{
+        backgroundColor: '#201A1E',
+        border: '1.2px solid #C94E68',
+        borderRadius: '12px',
+        padding: '10px 16px',
+        maxWidth: '280px',
+        width: '100%',
+        boxShadow: '0 6px 18px rgba(0,0,0,0.4)',
+      }}
+    >
+      <div style={{ color: '#FFA5BA', fontSize: '11px', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '8px' }}>
+        📋 SHIPMENT STATUS · OVERDUE
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        {items.map((it, idx) => (
+          <div
+            key={idx}
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              backgroundColor: '#2D1F25',
+              padding: '5px 10px',
+              borderRadius: '6px',
+            }}
+          >
+            <span style={{ color: '#F7EBEF', fontSize: '13px', fontFamily: 'var(--font-serif)' }}>{it.title}</span>
+            <span style={{ color: '#FF4D6D', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.06em' }}>{it.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* 10. Secret Thoughts / Cliffhanger Doodle */
+export function SecretThoughtsDoodle() {
+  return (
+    <div
+      className="doodle-bob"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px',
+        backgroundColor: '#22191D',
+        border: '1.2px solid #C94E68',
+        borderRadius: '14px',
+        padding: '10px 16px',
+        maxWidth: '280px',
+      }}
+    >
+      <div style={{ fontSize: '28px' }}>🔒</div>
+      <div style={{ textAlign: 'left' }}>
+        <div style={{ color: '#FFA5BA', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.08em' }}>TOP SECRET FILE</div>
+        <div style={{ color: '#FFF', fontSize: '13.5px', fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+          “Iruku na cl lahh solluren... Mudiyadhu.”
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* 11. White Heart Mystery Doodle */
+export function WhiteHeartMysteryDoodle() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '6px',
+      }}
+    >
+      <div
+        style={{
+          position: 'relative',
+          width: 70,
+          height: 70,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <span
+          className="heart-beat"
+          style={{
+            fontSize: '44px',
+            filter: 'drop-shadow(0 0 14px rgba(255, 255, 255, 0.7))',
+          }}
+        >
+          🤍
+        </span>
+        <span
+          style={{
+            position: 'absolute',
+            bottom: -2,
+            right: 0,
+            fontSize: '22px',
+          }}
+        >
+          🔍
+        </span>
+      </div>
+      <div
+        style={{
+          backgroundColor: '#261C20',
+          border: '1px solid #C94E68',
+          borderRadius: '16px',
+          padding: '4px 14px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+        }}
+      >
+        <span style={{ fontSize: '12px' }}>👀</span>
+        <span style={{ color: '#FFA5BA', fontSize: '12px', fontWeight: 600 }}>
+          Investigation: “thabu 🤍” — Who is that?
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* 12. No Compliments Trap Doodle */
+export function NoComplimentsTrapDoodle() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '6px',
+        maxWidth: '280px',
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: '#261B20',
+          border: '1.2px solid #FF4D6D',
+          borderRadius: '14px',
+          padding: '10px 16px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          boxShadow: '0 0 16px rgba(255, 77, 109, 0.2)',
+        }}
+      >
+        <span style={{ fontSize: '26px' }}>🚫</span>
+        <div>
+          <div style={{ color: '#FF7B95', fontSize: '11px', fontWeight: 800, letterSpacing: '0.1em' }}>
+            BAN IMPOSED BY THABBU
+          </div>
+          <div style={{ color: '#FFF', fontSize: '13px', fontFamily: 'monospace' }}>
+            NO COMPLIMENTS ALLOWED 🤐
+          </div>
+        </div>
+      </div>
+      <span style={{ color: '#FFA5BA', fontSize: '11px', fontStyle: 'italic' }}>
+        Penalty: Ban extended to next day! 😭
+      </span>
+    </div>
+  );
+}
+
+/* 13. Jealousy Trials Doodle */
+export function JealousyTrialsDoodle() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '6px',
+        maxWidth: '290px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          backgroundColor: '#251A1E',
+          border: '1.2px solid #C94E68',
+          borderRadius: '12px',
+          padding: '8px 12px',
+          width: '100%',
+        }}
+      >
+        <span style={{ fontSize: '24px' }}>🌶️</span>
+        <div style={{ textAlign: 'left', flex: 1 }}>
+          <div style={{ color: '#FF9EAE', fontSize: '10.5px', fontWeight: 700 }}>DOUBLE STANDARD METER: 100°C</div>
+          <div style={{ color: '#FFF', fontSize: '13px', fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>
+            “Yaru kuda? Ava kudaya? 🧐”
+          </div>
+        </div>
+      </div>
+      <span style={{ color: '#FFA5BA', fontSize: '11.5px', fontFamily: 'var(--font-cursive)' }}>
+        Unaku thakkali chutney, enakku ratham ah! 😂
+      </span>
+    </div>
+  );
+}
+
+/* 14. Stubborn Pills & Skipped Dinner Doodle */
+export function StubbornPillsDoodle() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '6px',
+        maxWidth: '280px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          backgroundColor: '#241A1E',
+          border: '1.2px solid #C94E68',
+          borderRadius: '12px',
+          padding: '8px 14px',
+          width: '100%',
+        }}
+      >
+        <span style={{ fontSize: '24px' }}>💊</span>
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ color: '#FF9EAE', fontSize: '10.5px', fontWeight: 700 }}>SKIPPING DINNER + PILLS</div>
+          <div style={{ color: '#FFF', fontSize: '12.5px', fontFamily: 'monospace' }}>
+            “FORBIDDEN WORD: SRY ⚠️”
+          </div>
+        </div>
+      </div>
+      <span style={{ color: '#FF7B95', fontSize: '11px', fontWeight: 600 }}>
+        Heyy konruven una again sry use pannina! 😤
+      </span>
+    </div>
+  );
+}
+
+/* 15. Twenty Days Away Doodle */
+export function TwentyDaysAwayDoodle() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '6px',
+        maxWidth: '280px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          backgroundColor: '#261C20',
+          border: '1.2px solid #C94E68',
+          borderRadius: '12px',
+          padding: '8px 14px',
+          width: '100%',
+        }}
+      >
+        <span style={{ fontSize: '28px' }}>✈️</span>
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ color: '#FFA5BA', fontSize: '10.5px', fontWeight: 700 }}>20 DAYS OORU TRIP + YERCAUD</div>
+          <div style={{ color: '#FFF', fontSize: '12.5px', fontFamily: 'var(--font-serif)' }}>
+            “Monday govt holiday jii! 💡”
+          </div>
+        </div>
+      </div>
+      <span style={{ color: '#B8A6AC', fontSize: '11px', fontStyle: 'italic' }}>
+        Always giving tubelight moment to Arif 🤦🏻‍♂️
+      </span>
+    </div>
+  );
+}
+
+/* 16. Unromantic Red Flag Doodle */
+export function UnromanticRedFlagDoodle() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '8px',
+      }}
+    >
+      <div
+        className="doodle-float"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          backgroundColor: '#2D1B22',
+          border: '1.5px solid #FF4D6D',
+          borderRadius: '20px',
+          padding: '6px 16px',
+          boxShadow: '0 0 18px rgba(255, 77, 109, 0.3)',
+        }}
+      >
+        <span style={{ fontSize: '22px' }}>🚩</span>
+        <span style={{ color: '#FFF', fontSize: '13px', fontWeight: 700, letterSpacing: '0.04em' }}>
+          HELLO RED FLAG · HELLO UNROMANTIC GIRL
+        </span>
+      </div>
+      <span style={{ color: '#FFA5BA', fontSize: '12px', fontFamily: 'var(--font-cursive)' }}>
+        I need to modify ur gender! 😭😂
+      </span>
+    </div>
+  );
+}
+
+/* 17. Possessive Radar Doodle */
+export function PossessiveRadarDoodle() {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width: 72,
+        height: 72,
+        borderRadius: '50%',
+        border: '1.5px solid #C94E68',
+        backgroundColor: '#FFF8FA',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        boxShadow: '0 4px 12px rgba(201, 78, 104, 0.15)',
+      }}
+    >
+      <div
+        className="radar-sweep-arm"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'conic-gradient(from 0deg, rgba(201, 78, 104, 0.4) 0deg, transparent 60deg)',
+          borderRadius: '50%',
+        }}
+      />
+      <span style={{ fontSize: '20px', position: 'relative', zIndex: 2 }}>🧐</span>
+    </div>
+  );
+}
+
+/* 18. Wooden Chemistry Lab Desk Carving "deewana dola" Doodle (Page 30) */
+export function DeewanaDolaBenchDoodle() {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        backgroundColor: '#3E2723',
+        backgroundImage: 'repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 16px)',
+        border: '2px solid #5D4037',
+        borderRadius: '10px',
+        padding: '12px 18px',
+        boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.6), 0 6px 16px rgba(0,0,0,0.25)',
+        textAlign: 'center',
+        maxWidth: '300px',
+        width: '100%',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: -8,
+          left: 14,
+          backgroundColor: '#F7E7A9',
+          color: '#554749',
+          fontSize: '9px',
+          fontWeight: 700,
+          letterSpacing: '0.1em',
+          padding: '2px 8px',
+          borderRadius: '2px',
+          transform: 'rotate(-2deg)',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+        }}
+      >
+        CHEMISTRY LAB · LAST BENCH
+      </div>
+
+      <div style={{ marginTop: '4px' }}>
+        <svg viewBox="0 0 220 50" width="220" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Wood Carving Shadow */}
+          <text
+            x="110"
+            y="35"
+            fontFamily="var(--font-cursive)"
+            fontSize="26"
+            fontWeight="bold"
+            fill="#271815"
+            textAnchor="middle"
+          >
+            deewana dola 💗
+          </text>
+          {/* Hand Carved Animated Chalky Pink Stroke */}
+          <text
+            x="110"
+            y="34"
+            fontFamily="var(--font-cursive)"
+            fontSize="26"
+            fontWeight="bold"
+            fill="none"
+            stroke="#FFA5BA"
+            strokeWidth="1.6"
+            className="carve-handwriting"
+            textAnchor="middle"
+          >
+            deewana dola 💗
+          </text>
+        </svg>
+      </div>
+      <div style={{ color: '#D7CCC8', fontSize: '10px', letterSpacing: '0.08em', marginTop: '2px' }}>
+        carved forever into history 🤭
+      </div>
+    </div>
+  );
+}
+

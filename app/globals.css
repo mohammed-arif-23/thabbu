@@ -948,6 +948,202 @@ button:focus-visible {
   will-change: opacity, transform;
 }
 
+/* ============================================================================
+   DARK SAD / ANGRY BREAKUP THEME (PAGES 01–14)
+   ============================================================================ */
+.theme-dark-breakup .card-sheet {
+  background: linear-gradient(155deg, #181417 0%, #231B1F 55%, #1A1316 100%) !important;
+  border: 1.5px solid rgba(201, 78, 104, 0.45) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(201, 78, 104, 0.12) !important;
+  color: #F7EBEF !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-dark-breakup .page-dogear {
+  border-color: #2D2227 #2D2227 transparent transparent !important;
+}
+
+.theme-dark-breakup .text-eyebrow {
+  color: #FFA5BA !important;
+  text-shadow: 0 0 10px rgba(255, 165, 186, 0.4);
+}
+
+.theme-dark-breakup .text-headline {
+  color: #FFF2F5 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.theme-dark-breakup .text-body {
+  color: #E2D3D8 !important;
+}
+
+.theme-dark-breakup .text-punchline {
+  color: #FFB3C4 !important;
+  background-color: rgba(201, 78, 104, 0.22) !important;
+  border-left: 3px solid #FF5C80 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.theme-dark-breakup .text-micronote {
+  color: #B8A6AC !important;
+}
+
+/* Rain streaks overlay inside dark card sheet */
+.rain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    105deg,
+    transparent,
+    transparent 14px,
+    rgba(255, 165, 186, 0.05) 15px,
+    transparent 16px
+  );
+  animation: rainStreak 1.8s linear infinite;
+  z-index: 1;
+}
+
+@keyframes rainStreak {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -40px 100px;
+  }
+}
+
+/* Shivering / Ice freezing animation */
+@keyframes shiverIce {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-1.5px, 1px) rotate(-0.5deg);
+  }
+  40% {
+    transform: translate(1.5px, -1px) rotate(0.5deg);
+  }
+  60% {
+    transform: translate(-1px, -1px) rotate(-0.3deg);
+  }
+  80% {
+    transform: translate(1px, 1px) rotate(0.3deg);
+  }
+}
+
+.shiver-ice {
+  animation: shiverIce 0.35s infinite;
+}
+
+/* Crying / Heartbreak shake */
+@keyframes cryShake {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(-4px, 2px);
+  }
+  30% {
+    transform: translate(4px, -2px);
+  }
+  45% {
+    transform: translate(-3px, -1px);
+  }
+  60% {
+    transform: translate(3px, 2px);
+  }
+  75% {
+    transform: translate(-2px, 1px);
+  }
+}
+
+.cry-shake {
+  animation: cryShake 0.6s ease-in-out;
+}
+
+/* Falling tear drops */
+@keyframes tearFall {
+  0% {
+    transform: translateY(-8px) scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(28px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.tear-drop {
+  animation: tearFall 1.8s ease-in infinite;
+}
+
+/* Radar sweep rotation */
+@keyframes radarSweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.radar-sweep-arm {
+  transform-origin: 36px 36px;
+  animation: radarSweep 3s linear infinite;
+}
+
+/* Carving handwriting stroke animation */
+@keyframes carveStroke {
+  0% {
+    stroke-dashoffset: 400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.carve-handwriting {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: carveStroke 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Equalizer spectrum bars bounce */
+@keyframes eqBounce1 { 0%, 100% { height: 6px; } 50% { height: 26px; } }
+@keyframes eqBounce2 { 0%, 100% { height: 18px; } 50% { height: 8px; } }
+@keyframes eqBounce3 { 0%, 100% { height: 10px; } 50% { height: 32px; } }
+@keyframes eqBounce4 { 0%, 100% { height: 24px; } 50% { height: 12px; } }
+
+.eq-bar-1 { animation: eqBounce1 0.7s ease-in-out infinite alternate; }
+.eq-bar-2 { animation: eqBounce2 0.55s ease-in-out infinite alternate; }
+.eq-bar-3 { animation: eqBounce3 0.8s ease-in-out infinite alternate; }
+.eq-bar-4 { animation: eqBounce4 0.65s ease-in-out infinite alternate; }
+
+/* Theme switch romantic flash */
+@keyframes romanticGlowBurst {
+  0% {
+    box-shadow: 0 0 0 rgba(233, 170, 185, 0);
+    transform: scale(0.96);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(201, 78, 104, 0.5), 0 0 90px rgba(247, 231, 169, 0.4);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(51, 42, 43, 0.08);
+    transform: scale(1);
+  }
+}
+
+.romantic-glow-burst {
+  animation: romanticGlowBurst 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Floating Particles */
 .floating-particle {
   position: absolute;
