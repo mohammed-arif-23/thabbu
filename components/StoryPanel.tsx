@@ -700,7 +700,7 @@ export function StoryPanel({
                 <PhotoPlaceholder
                   id="four-in-one"
                   defaultSrc="/photos/four-in-one.jpg"
-                  caption="bamboo bear 🐼💗"
+                  caption="see how cute my bamboo bear here 🐼💗"
                   width={130}
                   aspectRatio="1 / 1"
                   rotate={-1.5}
