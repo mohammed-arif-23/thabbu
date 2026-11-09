@@ -571,22 +571,19 @@ export function StoryPanel({
 
               {/* IF CONFIRMED NO: CINEMATIC LOVE EXPLOSION */}
               {!isPage15Locked && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', textAlign: 'center' }}>
-                  <div
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', textAlign: 'center', margin: '2px 0 8px 0' }}>
+                  <OrigamiHeartDoodle size={64} />
+                  <span
                     style={{
-                      backgroundColor: 'var(--color-cherry)',
-                      color: '#FFF',
-                      borderRadius: '50px',
-                      padding: '8px 24px',
-                      fontSize: '14.5px',
-                      fontWeight: 800,
-                      letterSpacing: '0.08em',
-                      boxShadow: '0 4px 15px rgba(201, 78, 104, 0.35)',
+                      color: 'var(--color-cherry)',
+                      fontSize: '12.5px',
+                      fontWeight: 700,
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
                     }}
                   >
-                    🎉 VAAIPE ILA PO! UNLIMITED LOVE ACTIVATED! 💗
-                  </div>
-                  <OrigamiHeartDoodle size={72} />
+                    ✨ Unlimited Love Mode Activated ✨
+                  </span>
                 </div>
               )}
             </div>

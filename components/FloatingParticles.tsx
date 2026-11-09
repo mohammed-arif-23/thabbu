@@ -12,6 +12,8 @@ interface ParticleItem {
   rotate: number;
 }
 
+let particleIdCounter = 0;
+
 export function spawnParticles(e?: React.MouseEvent | MouseEvent | { clientX: number; clientY: number }, customEmojis?: string[]) {
   if (typeof window === 'undefined') return;
   const x = e && 'clientX' in e ? e.clientX : (window.innerWidth / 2);
@@ -38,7 +40,7 @@ export function FloatingParticles() {
       const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
       const speed = 40 + Math.random() * 50;
       newItems.push({
-        id: Date.now() + Math.random(),
+        id: ++particleIdCounter,
         x,
         y,
         emoji: emojis[Math.floor(Math.random() * emojis.length)],

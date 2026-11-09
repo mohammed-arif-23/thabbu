@@ -123,69 +123,34 @@ button:focus-visible {
   z-index: 4;
 }
 
-/* Stage Container Base (Mobile) */
+/* Stage Container Base - Fullscreen Edge-to-Edge across all devices */
 .stage-wrapper {
   width: 100vw;
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
   position: relative;
+  background: transparent;
 }
 
 .stage-frame {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   position: relative;
   overflow: hidden;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
-/* Desktop Presentation Container */
-@media (min-width: 768px) {
-  .stage-wrapper {
-    background-color: #F7EFE8;
-    background-image: 
-      radial-gradient(#E8D5CE 0.75px, transparent 0.75px);
-    background-size: 28px 28px;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .stage-frame {
-    width: 480px;
-    height: 860px;
-    max-height: 94vh;
-    border-radius: 28px;
-    box-shadow: 
-      0 24px 60px -12px rgba(51, 42, 43, 0.18),
-      0 0 0 1px rgba(233, 170, 185, 0.25),
-      0 8px 16px -4px rgba(51, 42, 43, 0.06);
-    overflow: hidden;
-    position: relative;
-  }
-
-  .stage-frame .story-track {
-    width: 100%;
-    height: 100%;
-  }
-
-  .stage-frame .story-panel {
-    flex: 0 0 100%;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-/* Card Content Stage - Fills Overall Container Generously */
+/* Card Content Stage - Fills Overall Container Generously with Clean Reading Measure */
 .card-sheet {
   width: 100%;
-  max-width: 440px;
+  max-width: 520px;
   height: 100%;
   margin: 0 auto;
-  padding: calc(var(--safe-top) + 24px) 24px calc(var(--safe-bottom) + 80px) 24px;
+  padding: calc(var(--safe-top) + 20px) 24px calc(var(--safe-bottom) + 80px) 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -193,6 +158,9 @@ button:focus-visible {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .card-sheet::-webkit-scrollbar {
@@ -234,17 +202,19 @@ button:focus-visible {
 }
 
 .text-punchline {
-  font-family: var(--font-serif);
+  font-family: var(--font-cursive);
   color: var(--color-cherry);
-  font-size: clamp(17px, 4.4vw, 21px);
+  font-size: clamp(21px, 5.2vw, 26px);
   line-height: 1.35;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  margin: 12px 0 0 0;
-  padding: 10px 16px;
-  background-color: rgba(201, 78, 104, 0.08);
-  border-left: 3.5px solid var(--color-cherry);
-  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 14px 0 0 0;
+  padding: 6px 0;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-align: center;
 }
 
 .text-body {
@@ -970,9 +940,9 @@ body.global-dark-mode .stage-wrapper {
 
 html.global-dark-mode .stage-frame,
 body.global-dark-mode .stage-frame {
-  background-color: #161214 !important;
-  border-color: rgba(201, 78, 104, 0.25) !important;
-  box-shadow: 0 0 0 1px rgba(201, 78, 104, 0.25) !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 html.global-dark-mode .story-panel.bg-dark-paper {
@@ -982,10 +952,17 @@ html.global-dark-mode .story-panel.bg-dark-paper {
 /* ============================================================================
    DARK SAD / ANGRY BREAKUP THEME (PAGES 01–14)
    ============================================================================ */
+.story-panel.theme-dark-breakup {
+  background: linear-gradient(155deg, #140F12 0%, #1E161A 55%, #161114 100%) !important;
+  color: #F7EBEF !important;
+  border: none !important;
+}
+
 .theme-dark-breakup .card-sheet {
-  background: linear-gradient(155deg, #181417 0%, #231B1F 55%, #1A1316 100%) !important;
-  border: 1.5px solid rgba(201, 78, 104, 0.45) !important;
-  box-shadow: none !important; /* Flat container without drop shadow */
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   color: #F7EBEF !important;
   position: relative;
   overflow: hidden;
@@ -1010,10 +987,11 @@ html.global-dark-mode .story-panel.bg-dark-paper {
 }
 
 .theme-dark-breakup .text-punchline {
-  color: #FFB3C4 !important;
-  background-color: rgba(201, 78, 104, 0.22) !important;
-  border-left: 3px solid #FF5C80 !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  color: #FFA5BA !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 0 12px rgba(255, 165, 186, 0.45);
 }
 
 .theme-dark-breakup .text-micronote {

@@ -1225,11 +1225,12 @@ export function MissedCallsDoodle({ size = 100 }: { size?: number }) {
       <div
         className="doodle-bob"
         style={{
-          backgroundColor: '#1E191C',
-          border: '1.2px solid #C94E68',
-          borderRadius: '14px',
+          backgroundColor: 'rgba(201, 78, 104, 0.12)',
+          border: '1px solid rgba(201, 78, 104, 0.25)',
+          borderRadius: '16px',
           padding: '10px 14px',
-          boxShadow: '0 8px 22px rgba(0,0,0,0.4), 0 0 14px rgba(201, 78, 104, 0.25)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           width: '100%',
           display: 'flex',
           alignItems: 'center',
@@ -1238,15 +1239,14 @@ export function MissedCallsDoodle({ size = 100 }: { size?: number }) {
       >
         <div
           style={{
-            width: 42,
-            height: 42,
+            width: 40,
+            height: 40,
             borderRadius: '50%',
             backgroundColor: '#C94E68',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '20px',
-            boxShadow: '0 0 12px rgba(201, 78, 104, 0.5)',
+            fontSize: '19px',
           }}
         >
           📵
@@ -1266,15 +1266,13 @@ export function MissedCallsDoodle({ size = 100 }: { size?: number }) {
           display: 'inline-flex',
           alignItems: 'center',
           gap: '6px',
-          backgroundColor: 'rgba(201, 78, 104, 0.18)',
-          border: '1px dashed #C94E68',
-          borderRadius: '16px',
-          padding: '3px 12px',
+          color: '#FFA5BA',
+          fontSize: '12px',
+          fontWeight: 600,
+          padding: '2px 8px',
         }}
       >
-        <span style={{ fontSize: '11px', color: '#FFA5BA', fontWeight: 600 }}>
-          ⚠️ 4 Missed Calls from Tubelight
-        </span>
+        ⚠️ 4 Missed Calls from Tubelight
       </div>
     </div>
   );
