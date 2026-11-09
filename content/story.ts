@@ -9,6 +9,7 @@ export interface StoryScreen {
   quotes?: { speaker?: string; text: string }[];
   bulletPoints?: string[];
   microNote?: string;
+  isUncounted?: boolean;
   artVariant:
     | 'notice'
     | 'waiting'
@@ -25,6 +26,7 @@ export interface StoryScreen {
     | 'twentyDaysAway'
     | 'unromanticRedFlag'
     | 'plotTwistSwitch'
+    | 'moonPolaroids'
     | 'collegeStart'
     | 'giftThreeWeeks'
     | 'possessiveRules'
@@ -351,6 +353,24 @@ export const storyScreens: StoryScreen[] = [
       prompt: 'tap to unlock the real book 💗',
       revealedText: '💗 Theme switched: Unlimited Love Mode Activated!',
     },
+  },
+
+  // ============================================================================
+  // UNCOUNTED SPECIAL SCREEN — THE MOON & 4 POLAROIDS (AFTER ACCEPTANCE)
+  // ============================================================================
+  {
+    id: 'moon',
+    index: 15.5,
+    isUncounted: true,
+    eyebrow: 'A SPECIAL SECRET FOR YOU',
+    headline: 'See, This is the moon!',
+    paragraphs: [
+      'Nee eppovum solluva la... moon romba romba pidikkum nu.',
+      'Aana enaku therinja real moon idho enkooda dhaan irukku. 🥹💗',
+    ],
+    punchline: 'Always my favourite moon, Thabbu. 🌙✨',
+    artVariant: 'moonPolaroids',
+    bgVariant: 'warmWhite',
   },
 
   // ============================================================================

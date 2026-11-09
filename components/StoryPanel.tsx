@@ -47,6 +47,8 @@ interface StoryPanelProps {
   isConfirmedPlotTwistNo?: boolean;
   onConfirmPlotTwistNo?: () => void;
   onAdvance?: () => void;
+  isActive?: boolean;
+  isAdjacent?: boolean;
 }
 
 export function StoryPanel({
@@ -56,6 +58,8 @@ export function StoryPanel({
   isConfirmedPlotTwistNo = false,
   onConfirmPlotTwistNo,
   onAdvance,
+  isActive = false,
+  isAdjacent = false,
 }: StoryPanelProps) {
   const [sealBroken, setSealBroken] = useState(false);
   const [stampRevealed, setStampRevealed] = useState(false);
@@ -226,8 +230,8 @@ export function StoryPanel({
   return (
     <section
       id={`panel-${screen.id}`}
-      className={`story-panel ${getBgClass()} ${isDarkBreakup ? 'theme-dark-breakup' : ''}`}
-      aria-label={`Panel ${screen.index} of 30: ${screen.headline}`}
+      className={`story-panel ${getBgClass()} ${isDarkBreakup ? 'theme-dark-breakup' : ''} ${isActive ? 'is-active' : ''} ${isAdjacent ? 'is-adjacent' : ''}`}
+      aria-label={`Panel ${screen.index}: ${screen.headline}`}
     >
       {/* Floating Stardust Sky on Finale */}
       {screen.artVariant === 'finale1111' && (
@@ -589,6 +593,31 @@ export function StoryPanel({
                   </span>
                 </div>
               )}
+            </div>
+          )}
+
+          {/* ================================================================== */}
+          {/* UNCOUNTED SPECIAL SCREEN: See, This is the moon! (4 Polaroids)     */}
+          {/* ================================================================== */}
+          {screen.artVariant === 'moonPolaroids' && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '8px', margin: '4px 0' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                <span style={{ fontSize: '24px' }}>🌙</span>
+                <span style={{ fontFamily: 'var(--font-cursive)', fontSize: '22px', color: 'var(--color-cherry)', fontWeight: 700 }}>
+                  my favourite moon
+                </span>
+                <span style={{ fontSize: '18px' }}>✨</span>
+              </div>
+
+              {/* 4 Polaroids 2x2 Grid */}
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', width: '100%' }}>
+                <PhotoPlaceholder id="turning-point-1" caption="panda 🐼" width={92} rotate={-2} />
+                <PhotoPlaceholder id="turning-point-2" caption="bamboo bear 🐻" width={92} rotate={2} />
+              </div>
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', width: '100%' }}>
+                <PhotoPlaceholder id="turning-point-3" caption="meri teddy 🧸" width={92} rotate={-2} />
+                <PhotoPlaceholder id="turning-point-4" caption="green flag 🌱" width={92} rotate={2} />
+              </div>
             </div>
           )}
 

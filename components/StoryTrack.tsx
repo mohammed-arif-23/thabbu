@@ -110,6 +110,12 @@ export function StoryTrack() {
     };
   }, []);
 
+  const currentScreen = storyScreens[currentIndex];
+  const totalNumbered = storyScreens.filter((s) => !s.isUncounted).length;
+  const displayNumber = currentScreen?.isUncounted
+    ? null
+    : storyScreens.slice(0, currentIndex + 1).filter((s) => !s.isUncounted).length;
+
   return (
     <>
       <main
@@ -118,22 +124,29 @@ export function StoryTrack() {
         tabIndex={0}
         aria-label="Story narrative carousel"
       >
-        {storyScreens.map((screen, index) => (
-          <StoryPanel
-            key={screen.id}
-            screen={screen}
-            isFirst={index === 0}
-            isLast={index === storyScreens.length - 1}
-            isConfirmedPlotTwistNo={hasConfirmedPlotTwistNo}
-            onConfirmPlotTwistNo={() => setHasConfirmedPlotTwistNo(true)}
-            onAdvance={() => scrollToScreen(index + 1)}
-          />
-        ))}
+        {storyScreens.map((screen, index) => {
+          const isCurrent = index === currentIndex;
+          const isAdjacent = Math.abs(index - currentIndex) <= 1;
+          return (
+            <StoryPanel
+              key={screen.id}
+              screen={screen}
+              isFirst={index === 0}
+              isLast={index === storyScreens.length - 1}
+              isConfirmedPlotTwistNo={hasConfirmedPlotTwistNo}
+              onConfirmPlotTwistNo={() => setHasConfirmedPlotTwistNo(true)}
+              onAdvance={() => scrollToScreen(index + 1)}
+              isActive={isCurrent}
+              isAdjacent={isAdjacent}
+            />
+          );
+        })}
       </main>
 
       <TinyNavigation
         currentIndex={currentIndex}
-        total={storyScreens.length}
+        total={totalNumbered}
+        displayNumber={displayNumber}
         onPrev={handlePrev}
         onNext={handleNext}
         onJump={scrollToScreen}

@@ -5,6 +5,7 @@ import React from 'react';
 interface TinyNavigationProps {
   currentIndex: number;
   total: number;
+  displayNumber?: number | null;
   onPrev: () => void;
   onNext: () => void;
   onJump: (index: number) => void;
@@ -13,6 +14,7 @@ interface TinyNavigationProps {
 export function TinyNavigation({
   currentIndex,
   total,
+  displayNumber,
   onPrev,
   onNext,
   onJump,
@@ -83,17 +85,15 @@ export function TinyNavigation({
           </svg>
         </button>
 
-        {/* Sleek Mini Progress Bar with Chapter Tag */}
+        {/* Sleek Mini Progress Bar (Chapter text removed) */}
         <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
-            gap: '3px',
-            minWidth: '70px',
+            width: '48px',
             cursor: 'pointer',
           }}
-          title={`Scene ${currentIndex + 1} of ${total}`}
+          title={displayNumber ? `Page ${displayNumber} of ${total}` : 'Special Screen'}
         >
           <div
             style={{
@@ -114,18 +114,6 @@ export function TinyNavigation({
               }}
             />
           </div>
-          <span
-            style={{
-              fontSize: '9px',
-              fontFamily: 'var(--font-sans)',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              color: isDarkScene ? '#FFA5BA' : 'var(--color-muted-ink)',
-            }}
-          >
-            {currentIndex < 14 ? 'PART 1: THE CHARGES 💔' : currentIndex === 14 ? 'PLOT TWIST ⚡' : 'PART 2: UNLIMITED LOVE 💗'}
-          </span>
         </div>
 
         <span
@@ -134,9 +122,13 @@ export function TinyNavigation({
           style={{
             color: isDarkScene ? '#FFF' : 'var(--color-cherry)',
             fontWeight: 700,
+            fontSize: '13px',
+            letterSpacing: '0.02em',
           }}
         >
-          {String(currentIndex + 1).padStart(2, '0')}&thinsp;/&thinsp;{total}
+          {displayNumber === null || displayNumber === undefined
+            ? '🌙 MOON'
+            : `${String(displayNumber).padStart(2, '0')}\u2009/\u2009${total}`}
         </span>
 
         <button

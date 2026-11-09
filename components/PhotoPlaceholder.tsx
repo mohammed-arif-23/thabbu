@@ -25,7 +25,6 @@ export function PhotoPlaceholder({
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [hasError, setHasError] = useState(false);
   const [isWiggling, setIsWiggling] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fallbackPath = defaultSrc || `/photos/${id}.jpg`;
 
@@ -38,31 +37,10 @@ export function PhotoPlaceholder({
     }
   }, [id, fallbackPath]);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const result = event.target?.result as string;
-        if (result) {
-          try {
-            localStorage.setItem(`dear_tamatarr_photo_${id}`, result);
-          } catch {
-            // localStorage quota
-          }
-          setPhotoUrl(result);
-          setHasError(false);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleClick = (e: React.MouseEvent) => {
     setIsWiggling(true);
     spawnParticles(e, ['✨', '🌸', '💖']);
     setTimeout(() => setIsWiggling(false), 550);
-    fileInputRef.current?.click();
   };
 
   return (
@@ -77,7 +55,7 @@ export function PhotoPlaceholder({
           handleClick(e as unknown as React.MouseEvent);
         }
       }}
-      aria-label={`Photo frame 9:16: ${caption || id}. Click to select photo.`}
+      aria-label={`Photo: ${caption || id}`}
       style={{
         width,
         backgroundColor: '#FFFEFC',
@@ -114,13 +92,6 @@ export function PhotoPlaceholder({
           zIndex: 4,
           pointerEvents: 'none',
         }}
-      />
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/*"
-        onChange={handleFileChange}
-        style={{ display: 'none' }}
       />
 
       {/* Photo Container */}

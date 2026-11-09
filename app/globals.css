@@ -60,7 +60,7 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-/* Story Track - Horizontal Scroll Container */
+/* Story Track - Horizontal Scroll Container (GPU-accelerated) */
 .story-track {
   display: flex;
   flex-direction: row;
@@ -75,6 +75,8 @@ button:focus-visible {
   overscroll-behavior-x: contain;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
+  will-change: scroll-position;
+  transform: translateZ(0);
 }
 
 .story-track::-webkit-scrollbar {
@@ -96,6 +98,14 @@ button:focus-visible {
   padding: 0;
   user-select: text;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 100vw 100vh;
+  transform: translateZ(0);
+}
+
+/* Mobile performance: Pause animations on off-screen panels */
+.story-panel:not(.is-active):not(.is-adjacent) * {
+  animation-play-state: paused !important;
 }
 
 /* Editorial Page Transitions: Book gutter seams */
@@ -355,6 +365,8 @@ button:focus-visible {
 .tubelight-glow {
   animation: tubelightGlow 2.4s ease-in-out infinite;
   display: inline-block;
+  will-change: filter, transform;
+  transform: translateZ(0);
 }
 
 /* Audio Waveform Equalizer Dancing Bars */
@@ -1010,7 +1022,8 @@ html.global-dark-mode .story-panel.bg-dark-paper {
     rgba(255, 165, 186, 0.05) 15px,
     transparent 16px
   );
-  animation: rainStreak 1.8s linear infinite;
+  animation: rainStreak 2.4s linear infinite;
+  transform: translateZ(0);
   z-index: 1;
 }
 

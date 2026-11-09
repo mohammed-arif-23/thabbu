@@ -9,14 +9,13 @@ export function PaperTexture() {
         inset: 0,
         pointerEvents: 'none',
         zIndex: 50,
-        opacity: 0.05,
+        opacity: 0.035,
         backgroundImage: `
           radial-gradient(#332a2b 0.65px, transparent 0.65px),
           radial-gradient(#807176 0.45px, transparent 0.45px)
         `,
         backgroundSize: '20px 20px, 34px 34px',
         backgroundPosition: '0 0, 10px 10px',
-        mixBlendMode: 'multiply',
       }}
     />
   );
