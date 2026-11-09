@@ -701,7 +701,7 @@ export function StoryPanel({
                   id="four-in-one"
                   defaultSrc="/photos/four-in-one.jpg"
                   caption="bamboo bear 🐼💗"
-                  width={160}
+                  width={130}
                   aspectRatio="1 / 1"
                   rotate={-1.5}
                 />

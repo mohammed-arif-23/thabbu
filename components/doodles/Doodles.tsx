@@ -1818,32 +1818,17 @@ export function TruthOrDareBulbArt() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
+        gap: '6px',
         width: '100%',
-        maxWidth: '560px',
-        margin: '6px auto',
-        position: 'relative',
+        maxWidth: '360px',
+        margin: '2px auto',
+        userSelect: 'none',
       }}
     >
-      {/* Blackboard & Classroom Memory Frame */}
-      <div
-        style={{
-          width: '100%',
-          background: 'linear-gradient(145deg, #F8FAFD 0%, #EEF4FA 100%)',
-          border: '1.5px solid #BDD5EA',
-          borderRadius: '20px',
-          padding: '18px 20px',
-          boxShadow: isBulbLit
-            ? '0 12px 36px rgba(74, 144, 226, 0.16), 0 0 28px rgba(255, 214, 112, 0.25)'
-            : '0 6px 20px rgba(51, 42, 43, 0.05)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '12px',
-          position: 'relative',
-          transition: 'box-shadow 0.35s ease',
-        }}
-      >
-        {/* Hanging Vintage Edison Bulb with Ambient Light Beam */}
+      {/* Horizontal Cluster: Hanging Bulb + Blue Shirt */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
+        {/* Hanging Edison Bulb */}
         <div
           onClick={handleBulbToggle}
           style={{
@@ -1852,132 +1837,92 @@ export function TruthOrDareBulbArt() {
             flexDirection: 'column',
             alignItems: 'center',
             transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
-            userSelect: 'none',
           }}
-          title="Tap bulb to toggle classroom spotlight"
+          title="Tap bulb to toggle light"
         >
-          {/* Hanging Cord */}
-          <div style={{ width: 2, height: 18, backgroundColor: '#807176' }} />
-          {/* Brass Socket */}
-          <div style={{ width: 20, height: 10, backgroundColor: '#C8A97E', borderRadius: '3px 3px 0 0', border: '1px solid #9D7C4D' }} />
-          {/* Bulb Glass */}
+          <div style={{ width: 2, height: 12, backgroundColor: '#807176' }} />
+          <div style={{ width: 14, height: 6, backgroundColor: '#C8A97E', borderRadius: '2px 2px 0 0' }} />
           <div
             style={{
-              width: 58,
-              height: 68,
-              borderRadius: '50% 50% 42% 42%',
+              width: 44,
+              height: 52,
+              borderRadius: '50% 50% 40% 40%',
               backgroundColor: isBulbLit ? '#FFF8D6' : 'rgba(235, 238, 242, 0.7)',
-              border: '2px solid rgba(200, 169, 126, 0.7)',
+              border: '1.5px solid rgba(200, 169, 126, 0.7)',
               boxShadow: isBulbLit
-                ? '0 0 30px rgba(255, 214, 112, 0.95), 0 0 60px rgba(247, 231, 169, 0.7), inset 0 0 16px #FFE17D'
+                ? '0 0 24px rgba(255, 214, 112, 0.95), 0 0 40px rgba(247, 231, 169, 0.6), inset 0 0 12px #FFE17D'
                 : 'none',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              position: 'relative',
               transition: 'all 0.35s ease',
             }}
           >
-            {/* Realistic Edison Filament */}
-            <svg width="28" height="36" viewBox="0 0 28 36" fill="none">
+            <svg width="22" height="28" viewBox="0 0 24 32" fill="none">
               <path
-                d="M 7 32 L 10 16 C 10 9 18 9 18 16 L 21 32 M 10 16 L 18 16"
+                d="M 6 28 L 9 14 C 9 8 15 8 15 14 L 18 28 M 9 14 L 15 14"
                 stroke={isBulbLit ? '#FF6B00' : '#8A959E'}
-                strokeWidth="2.2"
+                strokeWidth="2"
                 strokeLinecap="round"
               />
             </svg>
           </div>
-          <span style={{ fontSize: '11.5px', color: 'var(--color-cherry)', fontFamily: 'var(--font-hand)', marginTop: '4px', fontWeight: 700 }}>
-            {isBulbLit ? '💡 “andha shirt la bulb mari irundhinga”' : 'tap bulb to switch on 💡'}
-          </span>
         </div>
 
-        {/* Oxford Blue Shirt Art + Classroom Reaction Cluster */}
+        {/* Oxford Blue Shirt Illustration */}
         <div
+          onClick={handleBulbToggle}
           style={{
+            width: 72,
+            height: 72,
+            backgroundColor: '#35669E',
+            backgroundImage: 'linear-gradient(145deg, #417BB8 0%, #295180 100%)',
+            borderRadius: '12px 12px 6px 6px',
+            border: '1.5px solid #1B365D',
+            boxShadow: '0 4px 14px rgba(27, 54, 93, 0.22)',
+            position: 'relative',
             display: 'flex',
-            flexWrap: 'wrap',
+            flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            gap: '16px',
-            width: '100%',
+            paddingTop: '4px',
+            cursor: 'pointer',
           }}
+          title="Arif's Blue Oxford Shirt"
         >
-          {/* Blue Shirt Vector Illustration */}
-          <div
-            onClick={(e) => spawnParticles(e, ['👔', '✨', '💙', '🍅'])}
-            style={{
-              width: 100,
-              height: 104,
-              backgroundColor: '#35669E',
-              backgroundImage: 'linear-gradient(145deg, #417BB8 0%, #295180 100%)',
-              borderRadius: '16px 16px 8px 8px',
-              border: '1.5px solid #1B365D',
-              boxShadow: '0 6px 18px rgba(27, 54, 93, 0.22)',
-              position: 'relative',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              paddingTop: '6px',
-              cursor: 'pointer',
-              flexShrink: 0,
-            }}
-            title="Arif's Blue Oxford Shirt"
-          >
-            {/* White Collar Wings */}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                width: '100%',
-                position: 'relative',
-                top: -8,
-              }}
-            >
-              <div style={{ width: 26, height: 16, backgroundColor: '#EBF4FC', border: '1px solid #BDD5EA', transform: 'rotate(-25deg)', borderRadius: '3px' }} />
-              <div style={{ width: 26, height: 16, backgroundColor: '#EBF4FC', border: '1px solid #BDD5EA', transform: 'rotate(25deg)', borderRadius: '3px' }} />
-            </div>
-            {/* Button Placket */}
-            <div style={{ width: 14, height: 60, backgroundColor: '#2E5B8E', borderLeft: '1px solid rgba(255,255,255,0.2)', borderRight: '1px solid rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around', padding: '4px 0' }}>
-              <div style={{ width: 5, height: 5, borderRadius: '50%', backgroundColor: '#EBF4FC' }} />
-              <div style={{ width: 5, height: 5, borderRadius: '50%', backgroundColor: '#EBF4FC' }} />
-              <div style={{ width: 5, height: 5, borderRadius: '50%', backgroundColor: '#EBF4FC' }} />
-            </div>
-            {/* Breast Pocket with Pen */}
-            <div style={{ position: 'absolute', top: 32, right: 12, width: 24, height: 26, border: '1.2px dashed rgba(255,255,255,0.4)', borderRadius: '2px 2px 6px 6px' }}>
-              <div style={{ position: 'absolute', top: -6, left: 6, width: 3, height: 10, backgroundColor: '#C8A97E', borderRadius: '1px' }} />
-            </div>
+          {/* White Collar Wings */}
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%', position: 'relative', top: -6 }}>
+            <div style={{ width: 18, height: 12, backgroundColor: '#EBF4FC', border: '1px solid #BDD5EA', transform: 'rotate(-25deg)', borderRadius: '2px' }} />
+            <div style={{ width: 18, height: 12, backgroundColor: '#EBF4FC', border: '1px solid #BDD5EA', transform: 'rotate(25deg)', borderRadius: '2px' }} />
           </div>
-
-          {/* Teacher Calling & Girls Laughing Dialog Callout */}
-          <div
-            style={{
-              flex: '1 1 240px',
-              backgroundColor: '#FFFFFF',
-              border: '1.2px solid #BDD5EA',
-              borderRadius: '14px',
-              padding: '10px 14px',
-              boxShadow: '0 2px 8px rgba(74, 144, 226, 0.08)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '4px',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '10.5px', fontWeight: 800, color: '#C94E68', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                CLASSROOM TRUTH OR DARE
-              </span>
-              <span style={{ fontSize: '14px' }}>🤭</span>
-            </div>
-            <div style={{ fontFamily: 'var(--font-serif)', fontSize: '13.5px', color: '#1B365D', fontStyle: 'italic', lineHeight: 1.35 }}>
-              “Indhu Mam asked why I wore that shirt... I kept explaining while all the girls laughed...”
-            </div>
-            <div style={{ fontFamily: 'var(--font-cursive)', fontSize: '15px', color: '#C94E68', fontWeight: 700, marginTop: '2px' }}>
-              “Ana neenga class la irukumodhu ungala dha pathutey irundha... cute ah irundhinga apo.” 🙈
-            </div>
+          {/* Buttons */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '4px' }}>
+            <div style={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#EBF4FC' }} />
+            <div style={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#EBF4FC' }} />
+            <div style={{ width: 4, height: 4, borderRadius: '50%', backgroundColor: '#EBF4FC' }} />
           </div>
+          {/* Pocket */}
+          <div style={{ position: 'absolute', top: 22, right: 8, width: 16, height: 18, border: '1px dashed rgba(255,255,255,0.4)', borderRadius: '1px 1px 4px 4px' }} />
         </div>
+      </div>
+
+      {/* Ribbon Tag */}
+      <div
+        onClick={handleBulbToggle}
+        style={{
+          backgroundColor: '#EAF2F8',
+          border: '1px solid #BDD5EA',
+          borderRadius: '14px',
+          padding: '3px 12px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          cursor: 'pointer',
+        }}
+      >
+        <span style={{ fontSize: '12px' }}>💡</span>
+        <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13px', color: '#1B365D', fontWeight: 600 }}>
+          {isBulbLit ? '“andha shirt la bulb mari irundhinga”' : 'tap bulb to switch on 💡'}
+        </span>
       </div>
     </div>
   );
@@ -1997,129 +1942,81 @@ export function PattiJewelryBoxArt() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
+        gap: '6px',
         width: '100%',
-        maxWidth: '560px',
-        margin: '6px auto',
+        maxWidth: '340px',
+        margin: '2px auto',
+        userSelect: 'none',
       }}
     >
-      {/* Royal Burgundy Velvet Presentation Case */}
+      {/* Compact Burgundy Velvet Jewelry Cushion */}
       <div
         onClick={handleSparkle}
         style={{
-          width: '100%',
+          width: '180px',
           backgroundColor: '#350E17',
           backgroundImage: 'radial-gradient(circle at 50% 35%, #581C28 0%, #22080E 100%)',
-          borderRadius: '22px',
-          padding: '20px 22px',
-          border: '2px solid #E5C378',
-          boxShadow: '0 14px 40px rgba(34, 8, 14, 0.35), inset 0 0 24px rgba(0,0,0,0.5)',
+          borderRadius: '16px',
+          padding: '10px 14px',
+          border: '1.5px solid #E5C378',
+          boxShadow: '0 8px 24px rgba(34, 8, 14, 0.3), inset 0 0 16px rgba(0,0,0,0.5)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '12px',
+          gap: '4px',
           position: 'relative',
           cursor: 'pointer',
-          overflow: 'hidden',
         }}
         title="Tap velvet case to polish the silver stud"
       >
         {/* Antique Gold Filigree Ornaments */}
-        <div style={{ position: 'absolute', top: 8, left: 10, color: '#E5C378', fontSize: '18px', opacity: 0.85 }}>⚜️</div>
-        <div style={{ position: 'absolute', top: 8, right: 10, color: '#E5C378', fontSize: '18px', opacity: 0.85 }}>⚜️</div>
-        <div style={{ position: 'absolute', bottom: 8, left: 10, color: '#E5C378', fontSize: '18px', opacity: 0.85 }}>⚜️</div>
-        <div style={{ position: 'absolute', bottom: 8, right: 10, color: '#E5C378', fontSize: '18px', opacity: 0.85 }}>⚜️</div>
+        <div style={{ position: 'absolute', top: 4, left: 6, color: '#E5C378', fontSize: '12px', opacity: 0.85 }}>⚜️</div>
+        <div style={{ position: 'absolute', top: 4, right: 6, color: '#E5C378', fontSize: '12px', opacity: 0.85 }}>⚜️</div>
+        <div style={{ position: 'absolute', bottom: 4, left: 6, color: '#E5C378', fontSize: '12px', opacity: 0.85 }}>⚜️</div>
+        <div style={{ position: 'absolute', bottom: 4, right: 6, color: '#E5C378', fontSize: '12px', opacity: 0.85 }}>⚜️</div>
 
-        {/* Dedication Header Plaque */}
-        <div style={{ textAlign: 'center' }}>
-          <span style={{ fontSize: '10.5px', fontWeight: 800, color: '#E5C378', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-            ★ OCTOBER 2 · FIRST COMPLIMENT EVER RECORDED ★
-          </span>
-        </div>
+        {/* Silver Diamond Nose Pin Stud SVG */}
+        <svg width="48" height="48" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="44" r="26" fill="rgba(0,0,0,0.4)" filter="blur(3px)" />
+          <circle cx="40" cy="40" r="24" stroke="url(#silverGradSm)" strokeWidth="3.5" fill="#1C090D" />
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((ang, i) => (
+            <circle
+              key={i}
+              cx={40 + Math.cos((ang * Math.PI) / 180) * 22}
+              cy={40 + Math.sin((ang * Math.PI) / 180) * 22}
+              r="2.8"
+              fill="#F0F4F8"
+            />
+          ))}
+          <circle cx="40" cy="40" r="15" fill="url(#gemGradSm)" />
+          <polygon points="40,27 49,35 44,49 36,49 31,35" fill="rgba(255,255,255,0.5)" />
+          <path d="M 40 30 L 42 38 L 50 40 L 42 42 L 40 50 L 38 42 L 30 40 L 38 38 Z" fill="#FFFFFF" />
+          <defs>
+            <linearGradient id="silverGradSm" x1="0" y1="0" x2="80" y2="80">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="50%" stopColor="#D2D9DF" />
+              <stop offset="100%" stopColor="#7F8C97" />
+            </linearGradient>
+            <radialGradient id="gemGradSm" cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="40%" stopColor="#E2F1F8" />
+              <stop offset="100%" stopColor="#8FC2DE" />
+            </radialGradient>
+          </defs>
+        </svg>
 
-        {/* Centerpiece: Silver Nose Pin Stud on Velvet Cushion */}
-        <div
-          style={{
-            position: 'relative',
-            width: 100,
-            height: 100,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          {/* Velvet Cushion Indentation */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              borderRadius: '50%',
-              backgroundColor: 'rgba(0, 0, 0, 0.35)',
-              border: '1.5px dashed rgba(229, 195, 120, 0.45)',
-              boxShadow: 'inset 0 4px 12px rgba(0,0,0,0.6)',
-            }}
-          />
-
-          {/* Faceted Silver Diamond Nose Pin SVG */}
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-            {/* Drop Shadow */}
-            <circle cx="40" cy="44" r="26" fill="rgba(0,0,0,0.4)" filter="blur(4px)" />
-            {/* Silver Outer Ring */}
-            <circle cx="40" cy="40" r="26" stroke="url(#silverGradLg)" strokeWidth="4" fill="#1C090D" />
-            {/* 8 Prongs */}
-            {[0, 45, 90, 135, 180, 225, 270, 315].map((ang, i) => (
-              <circle
-                key={i}
-                cx={40 + Math.cos((ang * Math.PI) / 180) * 24}
-                cy={40 + Math.sin((ang * Math.PI) / 180) * 24}
-                r="3"
-                fill="#F0F4F8"
-                stroke="#8A959E"
-                strokeWidth="0.8"
-              />
-            ))}
-            {/* Center Solitaire Brilliant Gem */}
-            <circle cx="40" cy="40" r="17" fill="url(#gemGradLg)" />
-            <polygon points="40,26 51,35 45,51 35,51 29,35" fill="rgba(255,255,255,0.5)" />
-            {/* Diamond Glint Star */}
-            <path d="M 40 28 L 43 37 L 52 40 L 43 43 L 40 52 L 37 43 L 28 40 L 37 37 Z" fill="#FFFFFF" />
-            <defs>
-              <linearGradient id="silverGradLg" x1="0" y1="0" x2="80" y2="80">
-                <stop offset="0%" stopColor="#FFFFFF" />
-                <stop offset="50%" stopColor="#D2D9DF" />
-                <stop offset="100%" stopColor="#7F8C97" />
-              </linearGradient>
-              <radialGradient id="gemGradLg" cx="35%" cy="35%" r="65%">
-                <stop offset="0%" stopColor="#FFFFFF" />
-                <stop offset="40%" stopColor="#E2F1F8" />
-                <stop offset="100%" stopColor="#8FC2DE" />
-              </radialGradient>
-            </defs>
-          </svg>
-        </div>
-
-        {/* Patti & Thabbu Keepsake Plaque */}
-        <div
-          style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.08)',
-            border: '1px solid rgba(229, 195, 120, 0.35)',
-            borderRadius: '12px',
-            padding: '10px 16px',
-            textAlign: 'center',
-            width: '100%',
-          }}
-        >
-          <div style={{ color: '#F7E7A9', fontFamily: 'var(--font-cursive)', fontSize: '18px', fontWeight: 700 }}>
-            “Patti dhaan pierce pannanga... romba valichudhu!”
-          </div>
-          <div style={{ color: '#FFFFFF', fontFamily: 'var(--font-serif)', fontSize: '13.5px', fontStyle: 'italic', marginTop: '4px' }}>
-            “Ahhh apahh first tym unga kitta irundhu oru compliment 😌”
-          </div>
-        </div>
-
-        <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13px', color: '#F7E7A9', fontWeight: 600 }}>
-          tap velvet case to polish the silver diamond stud ✨
+        <span style={{ fontSize: '9.5px', fontWeight: 800, color: '#E5C378', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          OCTOBER 2 · FIRST COMPLIMENT
         </span>
       </div>
+
+      <span
+        onClick={handleSparkle}
+        style={{ fontFamily: 'var(--font-hand)', fontSize: '12px', color: 'var(--color-cherry)', cursor: 'pointer', fontWeight: 600 }}
+      >
+        tap velvet box to polish silver diamond ✨
+      </span>
     </div>
   );
 }
@@ -2136,7 +2033,7 @@ export function ScooterGoldenHourRideArt() {
     setSpeed((s) => (s === 25 ? 20 : 25));
     spawnParticles(e, ['🌸', '✨', '💨', '🌹', '🪻', '🛵']);
     if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
-      try { navigator.vibrate([50, 30, 50]); } catch {}
+      try { navigator.vibrate([40, 25, 40]); } catch {}
     }
     setTimeout(() => setIsBreezeActive(false), 900);
   };
@@ -2147,117 +2044,84 @@ export function ScooterGoldenHourRideArt() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
+        gap: '6px',
         width: '100%',
-        maxWidth: '560px',
-        margin: '6px auto',
+        maxWidth: '360px',
+        margin: '2px auto',
+        userSelect: 'none',
       }}
     >
-      {/* Sunset Twilight Road Trip Dashboard Box */}
-      <div
-        style={{
-          width: '100%',
-          background: 'linear-gradient(135deg, #FFF6EE 0%, #FBE9E2 50%, #F5DEE7 100%)',
-          border: '1.5px solid rgba(201, 78, 104, 0.28)',
-          borderRadius: '22px',
-          padding: '18px 20px',
-          boxShadow: '0 10px 30px rgba(201, 78, 104, 0.12)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '12px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Windstreaks in background */}
-        <div style={{ position: 'absolute', top: 16, left: 12, width: 70, height: 2, backgroundColor: 'rgba(201, 78, 104, 0.25)', borderRadius: 2 }} />
-        <div style={{ position: 'absolute', top: 38, right: 16, width: 95, height: 2, backgroundColor: 'rgba(233, 170, 185, 0.4)', borderRadius: 2 }} />
-        <div style={{ position: 'absolute', bottom: 22, left: 30, width: 80, height: 2, backgroundColor: 'rgba(201, 78, 104, 0.2)', borderRadius: 2 }} />
-
-        {/* Road Milestone Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '13px' }}>🛵</span>
-          <span style={{ fontSize: '11px', fontWeight: 800, color: 'var(--color-cherry)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-            7 ARTS JUNCTION ➔ HOSPITAL ➔ HOME
-          </span>
-          <span style={{ fontSize: '13px' }}>🌅</span>
+      {/* Cluster: Side Mirror + Speedometer */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
+        {/* Side Mirror */}
+        <div
+          onClick={handleCruise}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px', cursor: 'pointer' }}
+          title="Her reflection in side mirror"
+        >
+          <SideMirror />
         </div>
 
-        {/* Center Mirror & Speedometer Cluster */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', width: '100%' }}>
-          {/* Side Mirror */}
-          <div
-            onClick={handleCruise}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}
-            title="Her reflection in side mirror"
-          >
-            <SideMirror />
-            <span style={{ fontSize: '10.5px', fontFamily: 'monospace', color: 'var(--color-muted-ink)', fontWeight: 600 }}>
-              REAR VIEW MIRROR 🪞
-            </span>
-          </div>
-
-          {/* Retro Speedometer */}
-          <div
-            onClick={handleCruise}
-            style={{
-              width: 90,
-              height: 90,
-              borderRadius: '50%',
-              backgroundColor: '#1E1518',
-              border: '3.5px solid #C8A97E',
-              boxShadow: '0 6px 18px rgba(0,0,0,0.22)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              position: 'relative',
-              userSelect: 'none',
-            }}
-            title="Tap to throttle speed"
-          >
-            <span style={{ fontSize: '9px', fontWeight: 800, color: '#C8A97E', letterSpacing: '0.08em' }}>CRUISE</span>
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 800, color: '#FFF', lineHeight: 1 }}>
-              {speed}
-            </span>
-            <span style={{ fontSize: '9px', color: '#FFA5BA', fontWeight: 600 }}>km/h</span>
-            {/* Speed Dial Needle */}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '45px',
-                left: '44px',
-                width: '2px',
-                height: '24px',
-                backgroundColor: '#FF4D6D',
-                transformOrigin: 'bottom center',
-                transform: `rotate(${speed === 25 ? 25 : -15}deg)`,
-                transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Scent & Wind Atmosphere Ribbon */}
+        {/* Retro Speedometer */}
         <div
           onClick={handleCruise}
           style={{
-            backgroundColor: 'rgba(201, 78, 104, 0.1)',
-            border: '1px solid rgba(201, 78, 104, 0.2)',
-            borderRadius: '24px',
-            padding: '8px 18px',
+            width: 66,
+            height: 66,
+            borderRadius: '50%',
+            backgroundColor: '#1E1518',
+            border: '2.5px solid #C8A97E',
+            boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            gap: '8px',
+            justifyContent: 'center',
             cursor: 'pointer',
+            position: 'relative',
           }}
+          title="Tap to throttle speed"
         >
-          <span style={{ fontSize: '16px' }}>🌸</span>
-          <span style={{ fontFamily: 'var(--font-cursive)', fontSize: '16px', color: 'var(--color-cherry)', fontWeight: 700 }}>
-            {isBreezeActive ? '“Drove slower so this ride wouldn’t end...” 🌸' : 'Tap to slow down to 20 km/h · Feel her jasmine hair scent 💨✨'}
+          <span style={{ fontSize: '7.5px', fontWeight: 800, color: '#C8A97E', letterSpacing: '0.08em' }}>CRUISE</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 800, color: '#FFF', lineHeight: 1 }}>
+            {speed}
           </span>
+          <span style={{ fontSize: '7.5px', color: '#FFA5BA', fontWeight: 600 }}>km/h</span>
+          {/* Needle */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '33px',
+              left: '32px',
+              width: '1.8px',
+              height: '18px',
+              backgroundColor: '#FF4D6D',
+              transformOrigin: 'bottom center',
+              transform: `rotate(${speed === 25 ? 25 : -15}deg)`,
+              transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+            }}
+          />
         </div>
+      </div>
+
+      {/* Scent & Wind Atmosphere Ribbon */}
+      <div
+        onClick={handleCruise}
+        style={{
+          backgroundColor: 'rgba(201, 78, 104, 0.08)',
+          border: '1px solid rgba(201, 78, 104, 0.2)',
+          borderRadius: '20px',
+          padding: '4px 14px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          cursor: 'pointer',
+        }}
+      >
+        <span style={{ fontSize: '13px' }}>🌸</span>
+        <span style={{ fontFamily: 'var(--font-cursive)', fontSize: '14px', color: 'var(--color-cherry)', fontWeight: 700 }}>
+          {isBreezeActive ? '“Drove slower so ride wouldn’t end...” 🌸' : '25 km/h cruise · Tap to smell jasmine hair scent 💨'}
+        </span>
       </div>
     </div>
   );
