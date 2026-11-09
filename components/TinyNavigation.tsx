@@ -17,6 +17,37 @@ export function TinyNavigation({
   onNext,
   onJump,
 }: TinyNavigationProps) {
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleFsChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFsChange);
+    document.addEventListener('webkitfullscreenchange', handleFsChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFsChange);
+      document.removeEventListener('webkitfullscreenchange', handleFsChange);
+    };
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement && !(document as any).webkitFullscreenElement) {
+      const elem = document.documentElement as any;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(() => {});
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      } else if ((document as any).webkitExitFullscreen) {
+        (document as any).webkitExitFullscreen();
+      }
+    }
+  };
+
   return (
     <nav className="nav-overlay" aria-label="Card scenes navigation">
       <div className="nav-pill">
@@ -86,6 +117,38 @@ export function TinyNavigation({
               strokeLinejoin="round"
             />
           </svg>
+        </button>
+
+        {/* Fullscreen Toggle */}
+        <button
+          type="button"
+          onClick={toggleFullscreen}
+          aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+          title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+          className="nav-arrow-btn"
+          style={{ marginLeft: '2px' }}
+        >
+          {isFullscreen ? (
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M 6 2 L 6 6 L 2 6 M 10 2 L 10 6 L 14 6 M 6 14 L 6 10 L 2 10 M 10 14 L 10 10 L 14 10"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          ) : (
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M 2 6 L 2 2 L 6 2 M 14 6 L 14 2 L 10 2 M 2 10 L 2 14 L 6 14 M 14 10 L 14 14 L 10 14"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
         </button>
       </div>
     </nav>

@@ -393,8 +393,25 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 width: '100%',
                 gap: '8px',
                 padding: '2px 0',
+                position: 'relative',
               }}
             >
+              {/* Floating ambient green flags & hearts */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  pointerEvents: 'none',
+                  overflow: 'hidden',
+                  zIndex: 0,
+                }}
+              >
+                <span className="stardust-particle" style={{ top: '8%', left: '4%', fontSize: '14px', animationDelay: '0s' }}>🌱</span>
+                <span className="stardust-particle" style={{ top: '15%', right: '5%', fontSize: '13px', animationDelay: '1.5s' }}>💗</span>
+                <span className="stardust-particle" style={{ top: '78%', left: '4%', fontSize: '15px', animationDelay: '0.8s' }}>✨</span>
+                <span className="stardust-particle" style={{ top: '82%', right: '5%', fontSize: '13px', animationDelay: '2.1s' }}>🌱</span>
+              </div>
               {/* Top 2 Vertical 9:16 Polaroids */}
               <div
                 style={{
@@ -418,16 +435,18 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 />
               </div>
 
-              {/* Centered Romantic Quote Box */}
+              {/* Centered Romantic Quote Box with Living Glow */}
               <div
+                className="quote-glow"
                 style={{
                   textAlign: 'center',
                   padding: '7px 16px',
                   backgroundColor: 'rgba(255, 254, 252, 0.94)',
                   borderRadius: '12px',
                   border: '1.2px solid var(--color-petal)',
-                  boxShadow: '0 4px 12px rgba(201, 78, 104, 0.1)',
                   margin: '2px 0',
+                  position: 'relative',
+                  zIndex: 2,
                 }}
               >
                 <span
@@ -1063,8 +1082,11 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                       color: 'var(--color-ink)',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      boxShadow: '0 1px 3px rgba(51, 42, 43, 0.03)',
-                      transition: 'all 0.2s ease',
+                      boxShadow: isChecked
+                        ? '0 3px 8px rgba(201, 78, 104, 0.15)'
+                        : '0 1px 3px rgba(51, 42, 43, 0.03)',
+                      transform: isChecked ? 'scale(1.02)' : 'scale(1)',
+                      transition: 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
                   >
                     <span>• {item}</span>

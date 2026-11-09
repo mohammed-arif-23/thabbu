@@ -260,10 +260,12 @@ export function HandDrawnHeart({
   size = 24,
   color = '#C94E68',
   style,
+  animated = true,
 }: {
   size?: number;
   color?: string;
   style?: React.CSSProperties;
+  animated?: boolean;
 }) {
   return (
     <svg
@@ -272,6 +274,7 @@ export function HandDrawnHeart({
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={animated ? 'heart-beat' : ''}
       style={{ display: 'inline-block', verticalAlign: 'middle', ...style }}
     >
       <path
@@ -303,6 +306,7 @@ export function Starburst({
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="glint-sparkle"
       style={{ display: 'inline-block', ...style }}
     >
       <path
@@ -327,6 +331,7 @@ export function HandDrawnArrow({
       viewBox="0 0 50 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="arrow-wiggle"
       style={{ display: 'inline-block', ...style }}
     >
       <path
@@ -367,51 +372,55 @@ export function GiftBoxDoodle({ size = 56 }: { size?: number }) {
 
 export function TubelightDoodle({ size = 60 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size * 0.55}
-      viewBox="0 0 100 50"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'inline-block' }}
-    >
-      <rect x="16" y="18" width="68" height="14" rx="7" fill="#FFFEFC" stroke="#332A2B" strokeWidth="2.2" />
-      <rect x="10" y="20" width="8" height="10" rx="2" fill="#E9AAB9" stroke="#332A2B" strokeWidth="1.5" />
-      <rect x="82" y="20" width="8" height="10" rx="2" fill="#E9AAB9" stroke="#332A2B" strokeWidth="1.5" />
-      <path d="M 30 8 L 32 14 M 50 6 L 50 13 M 70 8 L 68 14 M 30 42 L 32 36 M 50 44 L 50 37 M 70 42 L 68 36" stroke="#E5B53A" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
+    <div className="tubelight-glow" style={{ display: 'inline-flex', alignItems: 'center' }}>
+      <svg
+        width={size}
+        height={size * 0.55}
+        viewBox="0 0 100 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ display: 'inline-block' }}
+      >
+        <rect x="16" y="18" width="68" height="14" rx="7" fill="#FFFEFC" stroke="#332A2B" strokeWidth="2.2" />
+        <rect x="10" y="20" width="8" height="10" rx="2" fill="#E9AAB9" stroke="#332A2B" strokeWidth="1.5" />
+        <rect x="82" y="20" width="8" height="10" rx="2" fill="#E9AAB9" stroke="#332A2B" strokeWidth="1.5" />
+        <path d="M 30 8 L 32 14 M 50 6 L 50 13 M 70 8 L 68 14 M 30 42 L 32 36 M 50 44 L 50 37 M 70 42 L 68 36" stroke="#E5B53A" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    </div>
   );
 }
 
 export function BlueShirtDoodle({ size = 52 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'inline-block' }}
-    >
-      <path
-        d="M 14 20 L 24 14 L 32 20 L 40 14 L 50 20 L 46 54 L 18 54 Z"
-        fill="#BFDBFE"
-        stroke="#1E40AF"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M 24 14 L 32 26 L 40 14"
-        fill="#93C5FD"
-        stroke="#1E40AF"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <circle cx="32" cy="32" r="1.5" fill="#1E40AF" />
-      <circle cx="32" cy="40" r="1.5" fill="#1E40AF" />
-      <circle cx="32" cy="48" r="1.5" fill="#1E40AF" />
-      <rect x="36" y="30" width="8" height="9" rx="1.5" fill="none" stroke="#1E40AF" strokeWidth="1.2" />
-    </svg>
+    <div className="doodle-bob" style={{ display: 'inline-flex' }}>
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 64 64"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ display: 'inline-block' }}
+      >
+        <path
+          d="M 14 20 L 24 14 L 32 20 L 40 14 L 50 20 L 46 54 L 18 54 Z"
+          fill="#BFDBFE"
+          stroke="#1E40AF"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M 24 14 L 32 26 L 40 14"
+          fill="#93C5FD"
+          stroke="#1E40AF"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+        <circle cx="32" cy="32" r="1.5" fill="#1E40AF" />
+        <circle cx="32" cy="40" r="1.5" fill="#1E40AF" />
+        <circle cx="32" cy="48" r="1.5" fill="#1E40AF" />
+        <rect x="36" y="30" width="8" height="9" rx="1.5" fill="none" stroke="#1E40AF" strokeWidth="1.2" />
+      </svg>
+    </div>
   );
 }
 
@@ -446,20 +455,22 @@ export function NosePinDoodle({ size = 46 }: { size?: number }) {
 
 export function IceCreamDoodle({ size = 48 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'inline-block' }}
-    >
-      <circle cx="24" cy="18" r="10" fill="#F5DCE2" stroke="#332A2B" strokeWidth="1.8" />
-      <circle cx="24" cy="7" r="3" fill="#C94E68" />
-      <path d="M 24 7 C 26 3 28 3 29 4" stroke="#4F6D48" strokeWidth="1.2" strokeLinecap="round" />
-      <path d="M 16 23 L 24 42 L 32 23 Z" fill="#F7E7A9" stroke="#332A2B" strokeWidth="1.8" strokeLinejoin="round" />
-      <path d="M 19 28 L 27 34 M 29 28 L 21 34" stroke="#D97706" strokeWidth="1.2" strokeLinecap="round" />
-    </svg>
+    <div className="doodle-float" style={{ display: 'inline-flex' }}>
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 48 48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ display: 'inline-block' }}
+      >
+        <circle cx="24" cy="18" r="10" fill="#F5DCE2" stroke="#332A2B" strokeWidth="1.8" />
+        <circle cx="24" cy="7" r="3" fill="#C94E68" />
+        <path d="M 24 7 C 26 3 28 3 29 4" stroke="#4F6D48" strokeWidth="1.2" strokeLinecap="round" />
+        <path d="M 16 23 L 24 42 L 32 23 Z" fill="#F7E7A9" stroke="#332A2B" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M 19 28 L 27 34 M 29 28 L 21 34" stroke="#D97706" strokeWidth="1.2" strokeLinecap="round" />
+      </svg>
+    </div>
   );
 }
 
@@ -504,6 +515,14 @@ export function CoffeeCup() {
           strokeLinecap="round"
           fill="none"
           className="coffee-steam-2"
+        />
+        <path
+          d="M 46 28 C 43 20 48 12 45 4"
+          stroke="#C94E68"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          fill="none"
+          className="coffee-steam-3"
         />
       </svg>
 
@@ -569,22 +588,39 @@ export function CoffeeCup() {
 export function SideMirror() {
   return (
     <div
+      className="mirror-vibe"
       style={{
         position: 'relative',
-        width: 130,
-        height: 88,
+        width: 140,
+        height: 92,
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
       <svg
-        viewBox="0 0 140 100"
-        width="130"
-        height="88"
+        viewBox="0 0 150 100"
+        width="140"
+        height="92"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+        {/* Animated wind speed streaks */}
+        <path
+          d="M 140 18 L 105 18"
+          stroke="#C94E68"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          className="wind-streak-1"
+        />
+        <path
+          d="M 145 78 L 115 78"
+          stroke="#C94E68"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          className="wind-streak-2"
+        />
+
         <path
           d="M 12 75 L 34 55"
           stroke="#332A2B"
@@ -621,12 +657,13 @@ export function SideMirror() {
           strokeWidth="1.6"
           strokeLinecap="round"
         />
+        {/* Animated fragrance scent trail */}
         <path
-          d="M 8 32 C 16 26 18 36 28 30"
+          d="M 8 32 C 16 24 20 38 30 28"
           stroke="#E9AAB9"
-          strokeWidth="1.8"
-          strokeDasharray="3 3"
+          strokeWidth="2"
           strokeLinecap="round"
+          className="scent-trail"
         />
       </svg>
     </div>
@@ -687,13 +724,13 @@ export function WaveformDoodle({ interactive = true }: { interactive?: boolean }
         {baseHeights.map((h, i) => (
           <div
             key={i}
+            className={isPlaying ? 'wave-bar-anim' : ''}
             style={{
               width: '2.5px',
-              height: isPlaying
-                ? `${Math.max(6, ((h * (1 + Math.sin(i * 1.5))) / 52) * 24)}px`
-                : `${(h / 52) * 24}px`,
+              height: `${(h / 52) * 24}px`,
               backgroundColor: i % 2 === 0 ? '#C94E68' : '#E9AAB9',
               borderRadius: '2px',
+              animationDelay: `${(i % 5) * 0.1}s`,
               transition: 'height 0.2s ease',
             }}
           />

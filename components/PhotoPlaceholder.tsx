@@ -65,7 +65,7 @@ export function PhotoPlaceholder({
 
   return (
     <div
-      className={`polaroid-frame ${isWiggling ? 'is-wiggling' : ''} ${className}`}
+      className={`polaroid-frame polaroid-idle ${isWiggling ? 'is-wiggling' : ''} ${className}`}
       onClick={handleClick}
       role="button"
       tabIndex={0}
@@ -96,6 +96,23 @@ export function PhotoPlaceholder({
         ['--base-rotate' as string]: `${rotate}deg`,
       }}
     >
+      {/* Decorative Washi Tape Tab */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: -6,
+          width: 30,
+          height: 10,
+          backgroundColor: '#F7E7A9',
+          opacity: 0.85,
+          borderRadius: '1px',
+          boxShadow: '0 1px 3px rgba(51, 42, 43, 0.08)',
+          transform: `rotate(${rotate > 0 ? -2 : 3}deg)`,
+          zIndex: 4,
+          pointerEvents: 'none',
+        }}
+      />
       <input
         ref={fileInputRef}
         type="file"

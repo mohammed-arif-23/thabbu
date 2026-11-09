@@ -7,11 +7,31 @@ interface EnvelopeEntranceProps {
   onOpen: () => void;
 }
 
+function enterFullscreen() {
+  if (typeof document === 'undefined') return;
+  const elem = document.documentElement as any;
+  try {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen().catch(() => {});
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    }
+  } catch {
+    // ignore iframe permissions restrictions
+  }
+}
+
 export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
   const [stage, setStage] = useState<'sealed' | 'opening' | 'opened'>('sealed');
 
   const handleOpen = (e?: React.MouseEvent) => {
     if (stage !== 'sealed') return;
+
+    enterFullscreen();
 
     if (e) {
       spawnParticles(e, ['💌', '✨', '🍅', '❤️', '🌸', '💖']);
@@ -31,6 +51,7 @@ export function EnvelopeEntrance({ onOpen }: EnvelopeEntranceProps) {
 
   const handleSkip = (e: React.MouseEvent) => {
     e.stopPropagation();
+    enterFullscreen();
     onOpen();
   };
 

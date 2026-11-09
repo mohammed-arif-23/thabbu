@@ -333,6 +333,199 @@ button:focus-visible {
   animation: steamDrift 2.8s ease-out 1.2s infinite;
 }
 
+.coffee-steam-3 {
+  animation: steamDrift 3.2s ease-out 0.6s infinite;
+}
+
+/* Living Whimsical Doodle Animations */
+@keyframes doodleBob {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(1.5deg);
+  }
+}
+
+.doodle-bob {
+  animation: doodleBob 3.6s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes doodleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.doodle-float {
+  animation: doodleFloat 3.2s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Tubelight Shimmer Glow */
+@keyframes tubelightGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(247, 231, 169, 0.7));
+    opacity: 0.95;
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(247, 231, 169, 1)) drop-shadow(0 0 28px rgba(201, 78, 104, 0.3));
+    opacity: 1;
+  }
+}
+
+.tubelight-glow {
+  animation: tubelightGlow 2.4s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Audio Waveform Equalizer Dancing Bars */
+@keyframes soundWaveBar {
+  0%, 100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1.05);
+  }
+}
+
+.wave-bar-anim {
+  animation: soundWaveBar 0.65s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* Heartbeat Pulse */
+@keyframes heartBeatPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.15);
+  }
+  28% {
+    transform: scale(1.04);
+  }
+  42% {
+    transform: scale(1.18);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.heart-beat {
+  animation: heartBeatPulse 2.4s ease-in-out infinite;
+  transform-origin: center center;
+  display: inline-block;
+}
+
+/* Arrow Playful Nudge */
+@keyframes arrowWiggle {
+  0%, 100% {
+    transform: rotate(var(--arrow-rot, -10deg)) translateX(0);
+  }
+  50% {
+    transform: rotate(calc(var(--arrow-rot, -10deg) + 3deg)) translateX(4px);
+  }
+}
+
+.arrow-wiggle {
+  animation: arrowWiggle 1.8s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Side Mirror Bike Ride Vibration & Wind */
+@keyframes mirrorVibe {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(0.6deg) translateY(-0.8px);
+  }
+  75% {
+    transform: rotate(-0.6deg) translateY(0.8px);
+  }
+}
+
+.mirror-vibe {
+  animation: mirrorVibe 0.35s ease-in-out infinite;
+}
+
+@keyframes windStreak {
+  0% {
+    transform: translateX(18px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateX(-32px);
+    opacity: 0;
+  }
+}
+
+.wind-streak-1 {
+  animation: windStreak 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.wind-streak-2 {
+  animation: windStreak 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.7s infinite;
+}
+
+/* Polaroid Gentle Hanging Sway */
+@keyframes polaroidIdleFloat {
+  0%, 100% {
+    transform: rotate(var(--base-rotate, 0deg)) translateY(0);
+  }
+  50% {
+    transform: rotate(calc(var(--base-rotate, 0deg) + 1.2deg)) translateY(-3.5px);
+  }
+}
+
+.polaroid-idle {
+  animation: polaroidIdleFloat 4.8s ease-in-out infinite;
+}
+
+/* Centered Quote Glow Pulse */
+@keyframes quoteGlow {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(201, 78, 104, 0.1), 0 0 0 1px rgba(233, 170, 185, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 22px rgba(201, 78, 104, 0.25), 0 0 0 1.5px rgba(201, 78, 104, 0.45);
+  }
+}
+
+.quote-glow {
+  animation: quoteGlow 3s ease-in-out infinite;
+}
+
+/* Scent Trail Floating Curve */
+@keyframes scentDrift {
+  0% {
+    stroke-dashoffset: 20;
+    opacity: 0.3;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 0.85;
+  }
+  100% {
+    stroke-dashoffset: -20;
+    opacity: 0.3;
+  }
+}
+
+.scent-trail {
+  stroke-dasharray: 6 3;
+  animation: scentDrift 2.2s linear infinite;
+}
+
 /* Glint Sparkle Animation */
 @keyframes glintSparkle {
   0%, 100% {
@@ -648,8 +841,19 @@ button:focus-visible {
   .stagger-body,
   .stagger-actions,
   .polaroid-frame.is-wiggling,
-  .stage-frame.card-revealed,
-  .official-rubber-stamp {
+  .polaroid-idle,
+  .official-rubber-stamp,
+  .doodle-bob,
+  .doodle-float,
+  .tubelight-glow,
+  .wave-bar-anim,
+  .heart-beat,
+  .arrow-wiggle,
+  .mirror-vibe,
+  .wind-streak-1,
+  .wind-streak-2,
+  .quote-glow,
+  .scent-trail {
     animation: none !important;
   }
   *, *::before, *::after {
