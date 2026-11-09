@@ -91,9 +91,6 @@ export function StoryPanel({
   // Sensory Interaction: Page 23 Cheek Pinch Squish
   const [isCheekPinched, setIsCheekPinched] = useState(false);
 
-  // Page 19: 4-in-1 Photobooth vs 4 Polaroids View Toggle
-  const [nickPhotoView, setNickPhotoView] = useState<'photobooth' | 'polaroids'>('photobooth');
-
   const isPage15 = screen.artVariant === 'plotTwistSwitch';
   const isPage15Locked = isPage15 && !isConfirmedPlotTwistNo;
   const isDarkBreakup = screen.index <= 14 || isPage15Locked;
@@ -674,83 +671,26 @@ export function StoryPanel({
             </div>
           )}
 
-          {/* PAGE 19: Tubelight x Tamatar x Bamboobear & 4 PICS IN ONE FRAME (BOTH VIEWS) */}
+          {/* PAGE 19: Tubelight x Tamatar x Bamboobear & Single Photo */}
           {screen.artVariant === 'nicknamesTubelight' && (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', width: '100%' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <TubelightDoodle size={48} />
+                <TubelightDoodle size={44} />
                 <span style={{ fontSize: '18px' }}>⚡</span>
-                <TomatoStamp size={42} rotate={6} />
+                <TomatoStamp size={40} rotate={6} />
                 <span style={{ fontSize: '18px' }}>🐼</span>
               </div>
 
-              {/* View Switcher: Both views supported */}
-              <div style={{ display: 'inline-flex', padding: '3px', backgroundColor: 'rgba(201, 78, 104, 0.08)', borderRadius: '20px', gap: '4px' }}>
-                <button
-                  type="button"
-                  onClick={() => setNickPhotoView('photobooth')}
-                  style={{
-                    border: 'none',
-                    backgroundColor: nickPhotoView === 'photobooth' ? 'var(--color-cherry)' : 'transparent',
-                    color: nickPhotoView === 'photobooth' ? '#FFF' : 'var(--color-ink)',
-                    borderRadius: '16px',
-                    padding: '4px 12px',
-                    fontSize: '11.5px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  📸 4 in 1 Frame
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setNickPhotoView('polaroids')}
-                  style={{
-                    border: 'none',
-                    backgroundColor: nickPhotoView === 'polaroids' ? 'var(--color-cherry)' : 'transparent',
-                    color: nickPhotoView === 'polaroids' ? '#FFF' : 'var(--color-ink)',
-                    borderRadius: '16px',
-                    padding: '4px 12px',
-                    fontSize: '11.5px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  🖼️ 4 Polaroids
-                </button>
+              {/* Single Photo */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2px 0' }}>
+                <PhotoPlaceholder
+                  id="four-in-one"
+                  defaultSrc="/photos/four-in-one.jpg"
+                  caption="bamboo bear 🐼💗"
+                  width={132}
+                  rotate={-1.5}
+                />
               </div>
-
-              {/* 1. 4-in-1 Photobooth Frame */}
-              {nickPhotoView === 'photobooth' && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', animation: 'fadeIn 0.25s ease' }}>
-                  <PhotoPlaceholder
-                    id="four-in-one"
-                    defaultSrc="/photos/four-in-one.jpg"
-                    caption="4 pics in one frame 📸💗"
-                    width={132}
-                    rotate={-1.5}
-                  />
-                  <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13px', color: 'var(--color-cherry)', fontWeight: 600 }}>
-                    cutuu photobooth frame 🥹
-                  </span>
-                </div>
-              )}
-
-              {/* 2. 4 Individual Polaroids (2x2 Grid) */}
-              {nickPhotoView === 'polaroids' && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100%', animation: 'fadeIn 0.25s ease' }}>
-                  <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', width: '100%' }}>
-                    <PhotoPlaceholder id="turning-point-1" caption="panda 🐼" width={82} rotate={-2} />
-                    <PhotoPlaceholder id="turning-point-2" caption="bamboo bear 🐻" width={82} rotate={2} />
-                  </div>
-                  <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', width: '100%' }}>
-                    <PhotoPlaceholder id="turning-point-3" caption="meri teddy 🧸" width={82} rotate={-2} />
-                    <PhotoPlaceholder id="turning-point-4" caption="green flag 🌱" width={82} rotate={2} />
-                  </div>
-                </div>
-              )}
 
               {/* Nickname Pills */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', maxWidth: '320px', marginTop: '2px' }}>
