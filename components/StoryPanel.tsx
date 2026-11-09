@@ -213,11 +213,11 @@ export function StoryPanel({
   ];
 
   const chatSpams = [
-    'thabu 🤍: Nole ↔ Nole ↔ Nole',
-    'thabu 🤍: Matten',
-    'thabu 🤍: Ok Ok Ok Ok Ok Ok',
-    'thabu 🤍: “Aiyoooo type pannumodhu theriyama touch aagiduchi 😂”',
-    'Tubelight 💡: “Idhuku ethana ok jii? 🤭”',
+    'Arif 💡: Nole ↔ Nole ↔ Nole (Anxious spam 😭)',
+    'Arif 💡: Matten',
+    'Arif 💡: Ok Ok Ok Ok Ok Ok Ok',
+    'Arif 💡: “Aiyoooo anxious aagi type pannumodhu theriyama touch aagiduchi 😂”',
+    'thabu 🤍: “Idhuku ethana ok jii? 🤭”',
   ];
 
   return (
