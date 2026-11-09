@@ -8,6 +8,24 @@ import { TinyNavigation } from './TinyNavigation';
 export function StoryTrack() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasConfirmedPlotTwistNo, setHasConfirmedPlotTwistNo] = useState(false);
+
+  // Synchronize global full-body dark mode for screens 1-14 and unconfirmed page 15
+  const isDark = currentIndex < 14 || (currentIndex === 14 && !hasConfirmedPlotTwistNo);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('global-dark-mode');
+      document.body.classList.add('global-dark-mode');
+    } else {
+      document.documentElement.classList.remove('global-dark-mode');
+      document.body.classList.remove('global-dark-mode');
+    }
+    return () => {
+      document.documentElement.classList.remove('global-dark-mode');
+      document.body.classList.remove('global-dark-mode');
+    };
+  }, [isDark]);
 
   const scrollToScreen = useCallback((index: number) => {
     if (!trackRef.current) return;
@@ -106,6 +124,8 @@ export function StoryTrack() {
             screen={screen}
             isFirst={index === 0}
             isLast={index === storyScreens.length - 1}
+            isConfirmedPlotTwistNo={hasConfirmedPlotTwistNo}
+            onConfirmPlotTwistNo={() => setHasConfirmedPlotTwistNo(true)}
             onAdvance={() => scrollToScreen(index + 1)}
           />
         ))}
