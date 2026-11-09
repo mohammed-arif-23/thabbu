@@ -160,7 +160,7 @@ export function StoryPanel({
     if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
       try {
         navigator.vibrate([100, 150, 100, 150]);
-      } catch {}
+      } catch { }
     }
 
     holdIntervalRef.current = setInterval(() => {
@@ -169,7 +169,7 @@ export function StoryPanel({
         if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
           try {
             navigator.vibrate(60);
-          } catch {}
+          } catch { }
         }
         if (next >= 5.0) {
           if (holdIntervalRef.current) clearInterval(holdIntervalRef.current);
@@ -852,8 +852,8 @@ export function StoryPanel({
                 {heartbeatCompleted
                   ? '💗 5 Seconds Completed: Heart Stopped!'
                   : isHoldingHeartbeat
-                  ? `Holding: ${heartbeatHeldSeconds.toFixed(1)}s / 5.0s 💓`
-                  : 'Press & Hold for 5 seconds 🫠'}
+                    ? `Holding: ${heartbeatHeldSeconds.toFixed(1)}s / 5.0s 💓`
+                    : 'Press & Hold for 5 seconds 🫠'}
               </button>
             </div>
           )}
@@ -996,8 +996,8 @@ export function StoryPanel({
                               ? '#FFA5BA'
                               : 'var(--color-cherry)'
                             : isDarkBreakup
-                            ? '#E2D3D8'
-                            : 'var(--color-ink)',
+                              ? '#E2D3D8'
+                              : 'var(--color-ink)',
                           lineHeight: 1.6,
                         }}
                       >
@@ -1077,7 +1077,7 @@ export function StoryPanel({
                       boxShadow: '0 4px 14px rgba(201, 78, 104, 0.35)',
                     }}
                   >
-                    Start Our Romantic Story →
+                    See my happiest chapter of life → IT'S U
                   </button>
                 </div>
               )}

@@ -11,37 +11,37 @@ export interface StoryScreen {
   microNote?: string;
   isUncounted?: boolean;
   artVariant:
-    | 'notice'
-    | 'waiting'
-    | 'missedCalls'
-    | 'dryReplies'
-    | 'selectiveMemory'
-    | 'shoulderDenial'
-    | 'pendingDeliveries'
-    | 'secretThoughts'
-    | 'whiteHeartMystery'
-    | 'noComplimentsTrap'
-    | 'jealousyTrials'
-    | 'stubbornPills'
-    | 'twentyDaysAway'
-    | 'unromanticRedFlag'
-    | 'plotTwistSwitch'
-    | 'moonPolaroids'
-    | 'collegeStart'
-    | 'giftThreeWeeks'
-    | 'possessiveRules'
-    | 'nicknamesTubelight'
-    | 'blueShirt'
-    | 'nosePin'
-    | 'mirrorFragrance'
-    | 'detailsNotice'
-    | 'twoSmiles'
-    | 'coffeePlan'
-    | 'principalFiveSeconds'
-    | 'voiceRecording'
-    | 'careIceCream'
-    | 'savedLetter'
-    | 'finale1111';
+  | 'notice'
+  | 'waiting'
+  | 'missedCalls'
+  | 'dryReplies'
+  | 'selectiveMemory'
+  | 'shoulderDenial'
+  | 'pendingDeliveries'
+  | 'secretThoughts'
+  | 'whiteHeartMystery'
+  | 'noComplimentsTrap'
+  | 'jealousyTrials'
+  | 'stubbornPills'
+  | 'twentyDaysAway'
+  | 'unromanticRedFlag'
+  | 'plotTwistSwitch'
+  | 'moonPolaroids'
+  | 'collegeStart'
+  | 'giftThreeWeeks'
+  | 'possessiveRules'
+  | 'nicknamesTubelight'
+  | 'blueShirt'
+  | 'nosePin'
+  | 'mirrorFragrance'
+  | 'detailsNotice'
+  | 'twoSmiles'
+  | 'coffeePlan'
+  | 'principalFiveSeconds'
+  | 'voiceRecording'
+  | 'careIceCream'
+  | 'savedLetter'
+  | 'finale1111';
   bgVariant?: 'paper' | 'warmWhite' | 'blushTint';
   interaction?: {
     type: 'seal' | 'sticker' | 'waveform' | 'finalStamp';
@@ -66,13 +66,13 @@ export const storyScreens: StoryScreen[] = [
       'Your reply?',
       '“Mm okayy”',
       'Naa kadupagi “Hate u” nu solliten.',
-      'Apram dhaan casual ah solra:',
-      '“Inga dha iruken unga v2 tu pakkathula.”',
-      '“Engaa? Inga ena panraa!” 😭😭😭',
-      'En veetu pakkathulaye irundhutu verum “Mm okayy” ah?',
+      'Kandukave mata, Naa ketuta',
+      '“Na ketutaa nee odane casually summa nu react panra”',
+      'Nejama you are giving too dry replies. 😭😭😭',
+      'Oru msg potutu 5-10mins or hours kanakula disappeared.',
       'Enna justice idhu, Thabbu?',
     ],
-    punchline: "I have officially decided that I can't deal with you anymore. Podhummmm.",
+    punchline: "Munna nee ipdi ila, So I have officially decided that I can't deal with you anymore. Podhummmm.",
     artVariant: 'notice',
     bgVariant: 'paper',
     interaction: {
@@ -85,11 +85,11 @@ export const storyScreens: StoryScreen[] = [
     id: '02',
     index: 2,
     eyebrow: 'COMPLAINT #01 · THE WAITING PERIOD',
-    headline: 'THREE MORE DAYS & 3 AM CHATS. SERIOUSLY?',
+    headline: 'Nee pesave matengira seriya',
     paragraphs: [
-      '“Inu oru 3 days wait pannunga aprm namba nalla cl lahh pesalam ok vahh.”',
-      'Seri. Wait panren.',
-      'Night proper ah gud night kuda sollala, naa semma mood off la thoongiten jii.',
+      'Promise ah nee romba change aita. Honestly thabbu. I felt it alot.',
+      'But epavume Seri. Na Wait panren.',
+      'Night proper ah gud night kuda sollala, keta naa semma mood off la thoongiten jii nu solra.',
       'Morning vandhu ketta your explanation:',
       '“Na thunga 3 mani aagiduchi.”',
       '“Ellarum pesitu irundhanga so apdiye tym ponadhey theriyala.”',
@@ -113,7 +113,7 @@ export const storyScreens: StoryScreen[] = [
     headline: 'WAITING ALL DAY FOR ONE SINGLE TEXT.',
     paragraphs: [
       '“Nethu night la irundhu nee pesama irundhathu en mind ku oru mari irundhuchu, athaan tdy call pannite irundhen.”',
-      'Naa call பண்ணா cut பண்ணிடுவ: “Nani vantanga jii, adha cut panniten.”',
+      'Naa pesite irupen and nee call cut pannitu: “Nani vantanga jii, adha cut panniten..., etachu reasons solite iruka”',
       'Aana nee matum “Cl panna eduka mattingala jii” nu keppa!',
       'Aniku full ah unga kita irundhu oru msg kuda vandhuratha nu wait panitu irundhen jii.',
       'And your casual excuse after disappearing?',
@@ -129,12 +129,12 @@ export const storyScreens: StoryScreen[] = [
     eyebrow: 'COMPLAINT #03 · DRY REPLIES & STONE HEART',
     headline: 'IS THIS EVEN THABBU TALKING TO ME?',
     paragraphs: [
-      'Sometimes திடீர்னு மாறிடுவ.',
+      'Sometimes instantly maaridura.',
       '“Mmm.” · “Hmm.” · “Nope.” · “Illaye.” · “Mm sari.”',
       '“Nee epayum pola pesala... Enaku ennamo enta pesurathu thabbu ahh nu doubt ah iruku.”',
       '“Mood off! I’m right? Unaku ipo ethachu aiduchu thane?”',
       'Keta mattum: “Illa jii na epovum pola dha iruken.”',
-      '“Nee kuda strong hearted mari iruppa 🤭 ennala mudila.. athaan tdy neraya disturb paniten mari feel.”',
+      '“Nee kuda strong hearted mari iruppa 🤭 ennala mudila.. enakku neraya naa una disturb paniten mari feel.”',
     ],
     punchline: 'Enaku oru mari iruku neenga ipdi dry ah pesurathe jii. 😒',
     artVariant: 'dryReplies',
@@ -155,7 +155,7 @@ export const storyScreens: StoryScreen[] = [
       'Your legendary defence:',
       '“Enna pandradhu vayasu aagudhu lahh 😁😅”',
     ],
-    microNote: 'Aana un விஷயத்துல naa ellam nyabagam vechiruken: “If the thing is about u, naa marakka maten doli.”',
+    microNote: 'Epdi mari enakku puriyave ila',
     punchline: 'Kelavi mari pesitu shirt colour ah marandhuta la! 🤦🏻‍♂️',
     artVariant: 'selectiveMemory',
     bgVariant: 'paper',
@@ -175,7 +175,7 @@ export const storyScreens: StoryScreen[] = [
       '“Ambulance ku cl pannata?”',
       '“Illa illa na mohan senior ku cl pandra 🤭”',
     ],
-    punchline: 'En உயிரே போயிட்டு வந்தது, madam ku nyabagam kuda illayam! 😭',
+    punchline: 'En usura poga vechitu, madam ku nyabagam kuda illayam! 😭',
     artVariant: 'shoulderDenial',
     bgVariant: 'warmWhite',
   },
@@ -194,9 +194,10 @@ export const storyScreens: StoryScreen[] = [
     bulletPoints: [
       'Rathima video — Pending.',
       'Proper Selfie — Pending.',
+      'Fit checks - Pending',
       'Bicep Heart — Pending.',
     ],
-    punchline: 'Apo enmela unaku pasam illaya, Tamatarr? 🤨',
+    punchline: 'Aasaya nee nalla iruka nu thane kekuren...🤨',
     artVariant: 'pendingDeliveries',
     bgVariant: 'paper',
   },
@@ -213,7 +214,7 @@ export const storyScreens: StoryScreen[] = [
       'Practicals apo kuda mandaila edho oditu irundhuchi nu solluva, aana enna nu matum solla matta.',
       '“Naa en problem solren la, namma sendhu thane discuss panrom. Pathiya nee matum maraikuraa!”',
     ],
-    punchline: 'Ipdi suspense vechi enna கொல்லுறதுல உனக்கு அப்படி என்ன தான் ஆனந்தமோ! 😤',
+    punchline: 'Ipdi suspense vechi enna saavadika enna tha sandhoshamohh! 😤',
     artVariant: 'secretThoughts',
     bgVariant: 'warmWhite',
   },
@@ -230,6 +231,7 @@ export const storyScreens: StoryScreen[] = [
       '“Keta ethuvum illa nu solluva. But white heart always 👀 Something phishy.”',
       'And your reply every single time?',
       '“Maraika ellam onu illa jii neenga vera 🫂”',
+      'But yaro irukanga, always too picked lines of notes.'
     ],
     punchline: 'Onnum illa na aprm edhuku antha white heart anga ukandhuruku?! 👀',
     artVariant: 'whiteHeartMystery',
@@ -265,9 +267,9 @@ export const storyScreens: StoryScreen[] = [
       '“Athuku neenga epdi mam avan kuda povinga? Unga frd thane ponum 🫣”',
       'Adhu mattum illama, Rahima enna “bhaiya” nu sollita nu sonna, mock panra:',
       '“Anna vahh anna nu dhana solluvanga! Haahaaa”',
-      'Aana naa summa “Naanum committed aagalam nu nenache” nu sonna matum உடனே: “Yaru kuda? Ava kudaya? 🧐”',
+      'Aana naa summa “Naanum committed aagalam nu nenache” nu sonna matum odane: “Yaru kuda? Ava kudaya? 🧐”',
     ],
-    punchline: 'Unaku vandha thakkali chutney, enakku vandha ரத்தம் ah madam? 😂',
+    punchline: 'Unaku vandha thakkali chutney, enakku vandha rathammahh ah madam? 😂',
     artVariant: 'jealousyTrials',
     bgVariant: 'paper',
   },
@@ -285,7 +287,7 @@ export const storyScreens: StoryScreen[] = [
       '“Inga amma ph pesitu irukanga adha fast ahh reply panna mudiyala jii sry.”',
       '“Heyy konruven una again sry use pannina!”',
     ],
-    punchline: 'Oru பேச்சு kuda ஒழுங்கா kekkuradhu illa! 😤',
+    punchline: 'Oru pechu kuda kekkuradhu illa! 😤',
     artVariant: 'stubbornPills',
     bgVariant: 'warmWhite',
   },
@@ -293,14 +295,14 @@ export const storyScreens: StoryScreen[] = [
     id: '13',
     index: 13,
     eyebrow: 'COMPLAINT #12 · SUDDEN DISAPPEARANCES',
-    headline: '20 DAYS OORU TRIP & RANDOM HOLIDAY SHOCKS.',
+    headline: 'Again solren, Nee maaritaa',
     paragraphs: [
-      '“Ji tmrw kelambuninga naa 20 days kalichi tha varuvinga laa?”',
-      'Epo kelambura, epo time kedaikum nu keta:',
-      '“Crt ahh theriyala jii.”',
-      '“Jii sollunga, and pesa mudiyuma ilaya, epo time kedaikum nu munadiye sollidunga!”',
-      'Adhey mari Sunday morning plan enna nu keta: “Madhiyam Yercaud ponum jii.”',
-      'Monday college varuviya nu ஆசையா keta: “Monday en jii clg ku varanum? Monday govt holiday jii!”',
+      'Munna laam, daily nalla pesuva, calls panuva and enakkum time kuduppa',
+      'Epdi neeye un frds kuda irundhalum text or call panuva',
+      '"Un wife ta kuda pesama enta pesuva"',
+      'Enamo thabbu lost interest mari irukku',
+      'Namma chat paathale sad ah iruku theriyuma.',
+      'Main ahh "Oru reel aasaya anupuna, react panitu vitudura, convo kaga thane anupuren.."'
     ],
     punchline: 'Ellathulayum enna bulb vaanga vekkuradhe unaku velaya pochu! 💡😭',
     artVariant: 'twentyDaysAway',
@@ -310,17 +312,16 @@ export const storyScreens: StoryScreen[] = [
     id: '14',
     index: 14,
     eyebrow: 'COMPLAINT #13 · THE FINAL STRAW',
-    headline: 'HELLO UNROMANTIC GIRL. HELLO RED FLAG.',
+    headline: 'Last ah solren',
     paragraphs: [
       'Naa evlo neram heart ah open panni pesinalum, sometimes you hold back:',
       '“Onu sollanum... Ipo vena. Theriyala.”',
       '“Yenaku onum sollurathuku illaye 🤷🏻‍♀️🤐”',
-      '“Avlothaanaa?? Seri serii tataa sweetie, neeye onu vechikita return tharama.”',
-      'Athaan naa unaku புதுசா மூணு பேர் வெச்சேன்:',
-      '“Helloo unromantic girl. Hello red flag. Hello boy. I need to modify ur gender!”',
-      'Unmaiya sollanum na, enakku bayam vandhuruchu: “Incase any issue, or anything else la namma pesama poitom na epdi irukum nu...”',
+      '“Avlothaanaa??” nu naa enna ketalum nee solla matengira',
+      'Unmaiya sollanum na, enakku bayam munna vandhuruchu: “Incase any issue, or anything else la namma pesama poitom na epdi irukum nu...”',
+      'But ipo its like happening.'
     ],
-    punchline: 'So yes. 14 pages of proof. I am officially done with you, Tamatarr.',
+    punchline: 'So yes. 15 pages of proof. I am officially done with you, Tamatarr.',
     artVariant: 'unromanticRedFlag',
     bgVariant: 'warmWhite',
     interaction: {
@@ -337,21 +338,21 @@ export const storyScreens: StoryScreen[] = [
   {
     id: '15',
     index: 15,
-    eyebrow: 'WAIT A SECOND... PLOT TWIST!',
-    headline: 'HAHA, U THINK I CAN LEAVE YOU? VAAIPE ILA PO!',
+    eyebrow: 'WAIT A SECOND...!',
+    headline: 'HAHA, U THINK I CAN LEAVE YOU?!',
     paragraphs: [
-      'Ada looseyyyy! 🤦🏻‍♀️😂 Unna vittu poga mudiyuma ennala?',
-      '14 pages ah complaint eludhinaalum, chinna chinna விஷயத்தை kuda விடாம evlo nyabagam vechiruken paaru!',
-      '“If the thing is about u, naa marakka maten doli.”',
-      '“You’re melting me, folding me into a box and making me like a ball which is spinning around u 24/7.”',
+      'Unna vittu poga mudiyuma ennala?',
+      '15 pages ah complaint eludhinaalum, Enala una vida mudila.',
+      '“If the thing is about u, naa ethuvume marakka maten doli.”',
+      '"Im writing this with tears, happy and sad both. Konjoo inum irukku ketutu po.”',
     ],
-    punchline: 'Enna aanaalum unna vittu porathilla, madam. Ipo real story starts! 💖✨',
+    punchline: 'Enna aanaalum unna vittu kuduka maten, madam.💖✨',
     artVariant: 'plotTwistSwitch',
     bgVariant: 'blushTint',
     interaction: {
       type: 'sticker',
       prompt: 'tap to unlock the real book 💗',
-      revealedText: '💗 Theme switched: Unlimited Love Mode Activated!',
+      revealedText: '💗 Heyy Channduuu!',
     },
   },
 
@@ -365,8 +366,8 @@ export const storyScreens: StoryScreen[] = [
     eyebrow: 'A SPECIAL SECRET FOR YOU',
     headline: 'See, This is the moon!',
     paragraphs: [
-      'Nee eppovum solluva la... moon romba romba pidikkum nu.',
-      'Aana enaku therinja real moon idho enkooda dhaan irukku. 🥹💗',
+      'You know, and I Know I did right!',
+      'Moon oda pics la therira dark craters mari than un face moles nu compare pannathu🥹💗',
     ],
     punchline: 'Always my favourite moon, Thabbu. 🌙✨',
     artVariant: 'moonPolaroids',
@@ -426,9 +427,9 @@ export const storyScreens: StoryScreen[] = [
       'Aana naa summa “Naanum committed aagalam nu nenache” nu sonna next second eh:',
       '“Yaru kuda Ava kudaya” nu udane investigation start aagidum!',
       'Naa “Ila ilaa summa sonen 😂” nu sonna aprm dhaan madam calm aava.',
-      'Adhey mari naa “Looks like someone fixing my mood” nu sonna odane:',
-      '“Apdiya yaru adhu 🤔” nu சந்தேகமா keppa—until I tell you it’s “A tasty, gorgeous tomato.”',
-      'Even “namma family” nu type pannadhu autocorrect aagi “unga family” nu vandhadhuke, “Apo neengalum dha pirichi pesuringa” nu sandaiku varuva!',
+      'Un wife kuda possessive.',
+      '“Mainly U got possessive, but nee katika matengira.. konjoma kaatura.”',
+      'I didnt remember all things you got, but i remember ur reactions ji, when u confess.'
     ],
     punchline: 'Velila kaatikama irundhalum, antha cute possessiveness ellame enaku theriyum madam! 🤭💗',
     artVariant: 'possessiveRules',
@@ -460,7 +461,7 @@ export const storyScreens: StoryScreen[] = [
       'You remembered the blue colour gen shirt I wore to college.',
       'You even remembered Indhu mam asking me why I wore that shirt, how I kept explaining while she wasn’t listening, and how all the girls laughed.',
       'And then you dropped the line that made my heart skip:',
-      '“Ana andha shirt ungaluku romba nalla irundhuchi aniku neenga class lahh irukumodhu ungala dha pathutey irundha cute ahh irundhinga apo.”',
+      '“Ana andha shirt ungaluku romba nalla irundhuchi aniku neenga class lahh irukumodhu ungala dha pathutey irundha cute ahh irundhinga apo.” nee sonna, but really how much happy i got nu enakku tha theriyum jii.',
     ],
     punchline: 'Class la irukumbodhu enna dhaan paathute irundhiya, Thabbu? 🤭💗',
     artVariant: 'blueShirt',
@@ -474,7 +475,7 @@ export const storyScreens: StoryScreen[] = [
     paragraphs: [
       'I asked you casually:',
       '“Nosepin podura laa. Antha idea unaku epdi vandhuchu?”',
-      'You explained how your Patti took you and got it pierced.',
+      'You explained how "yen Patti yena yemathi kuttitu poi kuthi vittanga yaar 🥲"',
       'I said: “Take it as a compliment 👀”',
       'And your reply:',
       '“Ahhh apahh first tym unga kitta irundhu oru compliment 😌”',
@@ -508,11 +509,10 @@ export const storyScreens: StoryScreen[] = [
     headline: 'THE LITTLE THINGS THAT MADE ME FALL FOR YOU.',
     paragraphs: [
       '“Primarily, ur cheeks. Pinching it makes me fall for u 🤭 never pinched a cheeks of girl, and I’m proud that i first pinched urs. Too soft badly u started cravings for me to do it again.”',
-      'And when you pinched mine back: “Haa neenga panningala adha nanum panna.”',
+      'And when you pinched mine back: “Haa neenga panningala adha nanum panna.”, my breathe stopped in happieness.',
       '“Ur skin texture is so Prettiest and beautiful, and antha small dots and mole below ur eye, aiyee I stare at it for hours.”',
       '“Your eye lashes are most attaching me yaar.”',
       '“Un nose ah nee oru mari epavume veppiye, literally I can’t explain it 🤣 but adorable and never able to stop looking that cuteness. 🫢”',
-      'Your reaction: “Aiyooooo evlo compliments 🤭🫠 yaar neenga evlo note pannuvinga nuhh neynaichi kuda pakkala 🫢 mothama kottitinga jii 🫣”',
     ],
     punchline: 'Every single detail on your face is worth staring at for hours. ✨',
     artVariant: 'detailsNotice',
@@ -540,12 +540,12 @@ export const storyScreens: StoryScreen[] = [
     eyebrow: 'SERA CAFE · THE MAIN PLOT',
     headline: 'THE MOST PRECIOUS COFFEE I EVER DRANK.',
     paragraphs: [
-      '“EEEE Plan pannama entered into Sera Cafe.”',
+      '“Eeeee Plan pannama entered into Sera Cafe.”',
       '“The main plot: I have drinking same coffee after u drink 😋😭😭😭 I can’t describe this in words viduuu.”',
       '“Yosichi paru, ellame detailed ah explain panravan, words illa nu solran...”',
       '“But seriously my reason for drinking slow is bcoz of u 🤗🤭 and ur taste makes it a PRECIOUS coffee ever i drink.”',
       'Even at night before sleeping, I had to remind you one last time:',
-      '“Coffee is tasty btw 🤭🤭”',
+      '“Coffee is tasty btw, magic of ur lips jii 🤭🤭”',
     ],
     punchline: 'One cup of coffee. Unforgettable for a lifetime. ☕💗',
     artVariant: 'coffeePlan',
@@ -557,7 +557,7 @@ export const storyScreens: StoryScreen[] = [
     eyebrow: 'THE PRINCIPAL’S CALL & THOSE 5 SECONDS',
     headline: 'MY LIFE’S CHEAT CODE TO FORGET EVERY PROBLEM.',
     paragraphs: [
-      '“And the way, we sitting while that principal is on the call, Nee enna principal ta nalla olara vechitta, u made me madly anxious, never a girl I have been this much close with her 😭”',
+      '“And the way, we sitting while that principal is on the call, Nee enna principal ta nalla olara vechitta, u made me madly anxious, never a girl I have been this much close with me 😭”',
       '“The way we hold our hands, Haann ennala un kaiya vida ve mudiyalaa, they literally made me forget all my problems.. seriously I found a cheat code to make me feel that I blessed with most precious girl.”',
       'And then, the moment my heart stopped:',
       '“Promise ah holding hands is meant alot for me, but holding around shoulders and laying on my shoulder, en kanla thanniye vandhurum happiness la.”',
@@ -576,11 +576,11 @@ export const storyScreens: StoryScreen[] = [
       'October 12 — You sent an audio: “It’s been a year... and this is my very first voice recording 😁”',
       'And then I broke my own lifelong rule by sending 5 voice notes in a row explaining song meanings:',
       '“The thing I never did in my life is voice msg 🤣”',
-      'From multiple nights of Truth or Dare (“Periyavanga neenga apo neenga dha first start pannanum” — CHEATING 😂) to accidental keyboard spams:',
-      '“Nole ↔ Nole ↔ Nole” and “Matten ↔ Ok ↔ Ok ↔ Ok ↔ Ok” (“Aiyoooo type pannumodhu theriyama touch aagiduchi”).',
-      'And me dutifully asking every night: “Thabbuuuu may I go to sleep? Unga kita kekanum jii en kadama adhu ❤️”',
+      'From multiple nights of Truth or Dare (“Periyavanga neenga apo neenga dha first start pannanum” — CHEATING 😂) to accidental keyboard spams, nee once panuva, naa spamming:',
+      'Lusu mari irundhuchuu : “Nole ↔ Nole ↔ Nole” and “Matten ↔ Ok ↔ Ok ↔ Ok ↔ Ok” (“Aiyoooo type pannumodhu theriyama touch aagiduchi nu nee soluva”).',
+      'And me dutifully asking at nights as: “Thabbuuuu may I go to sleep? Unga kita kekanum jii en kadama adhu ❤️”',
     ],
-    punchline: 'Rendu perum சேர்ந்தாலே pure chaos and happiness dhaan! 🎙️💗',
+    punchline: 'Rendu perum pesunale pure chaos and happiness dhaan! 🎙️💗',
     artVariant: 'voiceRecording',
     bgVariant: 'paper',
     interaction: {
@@ -599,11 +599,11 @@ export const storyScreens: StoryScreen[] = [
       '“Mood off nuhh sollirundha na pakka vandhurupen lahhh.”',
       '“Adhu thabu nuhh oru Tomato varama irukura varaikum adha na ipo iruken lahh aprm enna.”',
       '“See na iruken epovumey irupen adhu epdi yena vittu neenga thaniya feel pannalam aprm edhuku frnd nuhh na oruthi kuda iruken. Vanga Inga oru hug vangikonga 🫂 Enga konjama siringa papom 🤌🏻👀”',
-      'And when I told you Ammi was feeding me because I was sad and said “Unakku na tha ooti viduven”, you melted my heart:',
-      '“Ahhh apdiyahh illa vena ammi ooti vidatum yenakum ammi dhana apo nanum avanga kaiyala sapduven 🙂↔️”',
+      'And this was too much meant to me.',
+
     ],
     microNote: 'And my promise stands forever: “Neraya ice cream nee saptu enna Mooka thodaika vei, sad aayi kanna thodaika vekkatha 🤭 My shoulders and shirt is always available for it 😊”',
-    punchline: 'En ex ku kuda ipdi aanathu ila, aana within minutes you fixed my whole soul. ❤️🩹',
+    punchline: 'En ex-b ku kuda ipdi aanathu ila, aana within minutes you fixed my whole soul. ❤️🩹',
     artVariant: 'careIceCream',
     bgVariant: 'warmWhite',
   },
@@ -621,6 +621,7 @@ export const storyScreens: StoryScreen[] = [
       '“I love being your friend I love teasing you I love our conversations and I love the comfort I feel when I talk to you.”',
       '“I love you as my friend, as my favourite person, and as someone whose happiness genuinely matters to me.”',
       'I read all of it with the happiest tears and told you: “I’m being as me, bcoz it’s a new me when I meet this silly tomato yarr 😭🫂”',
+      'Namma ipo seriya pesama irukalam, maybe anything.. but still Im waiting for your notifications too madly.'
     ],
     punchline: 'Best message I have ever received in my life. 💌',
     artVariant: 'savedLetter',
@@ -637,7 +638,7 @@ export const storyScreens: StoryScreen[] = [
       'Your wish: “Yen deewana dola vahh nalla pathukanum avana aluga vida kudathu so yenga Kula distance vandhuda kudathu nuhh wish panna....”',
       'And then you shyly confessed: “Aprm chemistry lab lahh deewana dola nuhh eludhi vaichitu vandha 🤭 Last lahh irukum.”',
       'Look at us, Thabbu. I started this book pretending to write a 14-page breakup notice because of your “Mm okayy”, and ended up pouring out 16 more pages of how deeply, madly, and endlessly I adore every little thing about you.',
-      'No matter what happens, I’ll be there for u at everything 🤌🏻❤️🩹—forever certified best friends, my favourite human, my comfort place, and my whole happiness.',
+      'No matter what happens, I’ll be there for u at everything 🤌🏻❤️🩹—forever my favourite human, my comfort place, and my whole happiness.',
     ],
     punchline: 'HATE U SOO SOO SOOO MUCH, THABBU JII! 💗🫂 You are not just a friend—you are always MERI PYAARI YAAR & MY DEEWANI DOLII!',
     microNote: 'Now stop smiling at the screen and text me “Hate u more jii” right now.',
@@ -646,7 +647,7 @@ export const storyScreens: StoryScreen[] = [
     interaction: {
       type: 'finalStamp',
       prompt: '🤭 Tap to seal our friendship forever',
-      revealedText: '“Hate u more jii 💗🫂” · Certified Best Friends Forever 🍅💌',
+      revealedText: '“Hate u more jii 💗🫂” · Best Friends Forever 🍅💌',
     },
   },
 ];
