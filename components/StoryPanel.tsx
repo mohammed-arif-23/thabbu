@@ -20,6 +20,11 @@ import {
   SideMirror,
   WaveformDoodle,
   PaperClip,
+  CuteTomatoMascot,
+  StopwatchDoodle,
+  RetroCassetteDoodle,
+  TwoSmilesDoodle,
+  OrigamiHeartDoodle,
 } from './doodles/Doodles';
 
 interface StoryPanelProps {
@@ -222,14 +227,12 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             >
               <HandDrawnArrow
                 style={{
-                  marginBottom: '6px',
+                  marginBottom: '4px',
                   transform: 'rotate(-10deg)',
                 }}
               />
-              <TomatoStamp
-                size={74}
-                rotate={boopCount % 2 === 0 ? 8 : -8}
-                interactive={true}
+              <CuteTomatoMascot
+                size={86}
                 onClick={(e) => {
                   setBoopCount((c) => c + 1);
                   spawnParticles(e, ['🍅', '❤️', '💡', '🧸', '✨']);
@@ -238,19 +241,23 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
               <div
                 style={{
                   backgroundColor: 'var(--color-warm-white)',
-                  border: '1px solid var(--color-petal)',
+                  border: '1.2px solid var(--color-petal)',
                   borderRadius: '16px',
-                  padding: '4px 14px',
+                  padding: '5px 16px',
                   marginTop: '8px',
-                  boxShadow: '0 2px 8px rgba(51, 42, 43, 0.04)',
+                  boxShadow: '0 3px 10px rgba(201, 78, 104, 0.08)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
                 }}
               >
+                <span style={{ fontSize: '14px' }}>✨</span>
                 <span
                   className="text-hand"
                   style={{
                     color: 'var(--color-cherry)',
                     fontSize: '14.5px',
-                    fontWeight: 600,
+                    fontWeight: 700,
                   }}
                 >
                   {boopPhrases[Math.min(boopCount, boopPhrases.length - 1)]}
@@ -638,81 +645,32 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
             <div
               style={{
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
-                gap: '14px',
+                gap: '8px',
                 width: '100%',
               }}
             >
-              {/* Loupe & notes */}
               <div
                 style={{
-                  position: 'relative',
-                  width: '140px',
-                  height: '110px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  gap: '10px',
+                  width: '100%',
+                  maxWidth: '320px',
                 }}
               >
-                <div
-                  style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: '50%',
-                    border: '2px solid var(--color-cherry)',
-                    position: 'relative',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: 'rgba(255, 254, 252, 0.75)',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '4px',
-                      height: '4px',
-                      borderRadius: '50%',
-                      backgroundColor: 'var(--color-ink)',
-                    }}
-                  />
-                  <span style={{ position: 'absolute', top: -10, right: -8 }}>
-                    <Starburst size={16} color="var(--color-cherry)" />
-                  </span>
-                </div>
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    fontFamily: 'var(--font-hand)',
-                    fontSize: '12px',
-                    color: 'var(--color-muted-ink)',
-                  }}
-                >
-                  cheek pinch 🤭
-                </div>
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                    fontFamily: 'var(--font-hand)',
-                    fontSize: '12px',
-                    color: 'var(--color-muted-ink)',
-                  }}
-                >
-                  mole & lashes ✨
-                </div>
+                {/* 9:16 Vertical Photo */}
+                <PhotoPlaceholder
+                  id="her-details"
+                  caption="those smiles 🫠"
+                  width={82}
+                  rotate={-2}
+                />
+                {/* Two Smiles Bespoke SVG Doodle */}
+                <TwoSmilesDoodle />
               </div>
-
-              {/* 9:16 Vertical Photo */}
-              <PhotoPlaceholder
-                id="her-details"
-                caption="those smiles 🫠"
-                width={92}
-                rotate={2}
-              />
             </div>
           )}
 
@@ -755,19 +713,7 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 gap: '8px',
               }}
             >
-              <div
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: 'clamp(38px, 10vw, 54px)',
-                  fontWeight: 600,
-                  color: 'var(--color-ink)',
-                  letterSpacing: '0.04em',
-                  lineHeight: 1,
-                  userSelect: 'none',
-                }}
-              >
-                00:05
-              </div>
+              <StopwatchDoodle size={76} />
               <div
                 style={{
                   display: 'inline-flex',
@@ -776,7 +722,8 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   backgroundColor: 'var(--color-warm-white)',
                   padding: '4px 14px',
                   borderRadius: '16px',
-                  border: '1px solid var(--color-petal)',
+                  border: '1.2px solid var(--color-petal)',
+                  boxShadow: '0 2px 8px rgba(51, 42, 43, 0.05)',
                 }}
               >
                 <HandDrawnHeart size={16} />
@@ -784,11 +731,11 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   style={{
                     fontFamily: 'var(--font-hand)',
                     fontSize: '14px',
-                    color: 'var(--color-ink)',
+                    color: 'var(--color-cherry)',
                     fontWeight: 600,
                   }}
                 >
-                  both hands · head on shoulder
+                  5 seconds · head on shoulder 🫠
                 </span>
               </div>
             </div>
@@ -896,18 +843,20 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '8px',
               }}
             >
+              <RetroCassetteDoodle size={130} />
               <WaveformDoodle interactive={true} />
               <span
                 className="text-hand"
                 style={{
-                  color: 'var(--color-muted-ink)',
+                  color: 'var(--color-cherry)',
                   fontSize: '13.5px',
+                  fontWeight: 600,
                 }}
               >
-                Unga voice vida enna jii nalla irukka poguthuuu...
+                Unga voice vida enna jii nalla irukka poguthuuu... 🎧
               </span>
             </div>
           )}
@@ -941,36 +890,48 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
           {screen.artVariant === 'savedLetter' && (
             <div
               style={{
-                backgroundColor: 'var(--color-warm-white)',
-                border: '1px solid var(--color-petal)',
-                borderRadius: '8px',
-                padding: '10px 16px',
-                position: 'relative',
-                boxShadow: '0 4px 14px rgba(51, 42, 43, 0.05)',
-                maxWidth: '290px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '8px',
                 width: '100%',
               }}
             >
-              <PaperClip
+              <OrigamiHeartDoodle size={62} />
+              <div
                 style={{
-                  position: 'absolute',
-                  top: -14,
-                  right: 18,
-                }}
-              />
-              <p
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontStyle: 'italic',
-                  fontSize: '14px',
-                  color: 'var(--color-cherry)',
-                  lineHeight: 1.4,
-                  margin: 0,
-                  textAlign: 'center',
+                  backgroundColor: 'var(--color-warm-white)',
+                  border: '1.2px solid var(--color-petal)',
+                  borderRadius: '10px',
+                  padding: '10px 16px',
+                  position: 'relative',
+                  boxShadow: '0 6px 18px rgba(201, 78, 104, 0.08)',
+                  maxWidth: '290px',
+                  width: '100%',
                 }}
               >
-                “I will never replace you no matter what happens.” 🫂
-              </p>
+                <PaperClip
+                  style={{
+                    position: 'absolute',
+                    top: -14,
+                    right: 18,
+                  }}
+                />
+                <p
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontStyle: 'italic',
+                    fontSize: '14.5px',
+                    color: 'var(--color-cherry)',
+                    lineHeight: 1.4,
+                    margin: 0,
+                    textAlign: 'center',
+                    fontWeight: 600,
+                  }}
+                >
+                  “I will never replace you no matter what happens.” 🫂
+                </p>
+              </div>
             </div>
           )}
 
@@ -1174,7 +1135,10 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   type="button"
                   onClick={(e) => {
                     setStampRevealed(true);
-                    spawnParticles(e, ['💖', '🍅', '✨', '💌', '🌸', '⭐']);
+                    spawnParticles(e, ['💖', '🍅', '✨', '💌', '🌸', '⭐', '🎉', '🫂', '💡', '🥂']);
+                    setTimeout(() => {
+                      spawnParticles(e, ['🍅', '❤️', '✨', '🌟', '🎊']);
+                    }, 200);
                   }}
                   style={{
                     backgroundColor: 'var(--color-warm-white)',
@@ -1200,7 +1164,16 @@ export function StoryPanel({ screen, isFirst, isLast, onAdvance }: StoryPanelPro
                   {screen.interaction.prompt}
                 </button>
               ) : (
-                <div className="official-rubber-stamp">
+                <div
+                  className="official-rubber-stamp"
+                  onClick={(e) => {
+                    spawnParticles(e, ['💖', '🍅', '✨', '💌', '🌸', '⭐', '🎉', '🫂', '💡']);
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  style={{ cursor: 'pointer' }}
+                  title="Click to celebrate again! 🎉"
+                >
                   <span
                     style={{
                       fontFamily: 'var(--font-sans)',

@@ -526,6 +526,161 @@ button:focus-visible {
   animation: scentDrift 2.2s linear infinite;
 }
 
+/* Stopwatch Ticking Hand */
+@keyframes tickSecondHand {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.stopwatch-hand {
+  transform-origin: 32px 36px;
+  animation: tickSecondHand 4s linear infinite;
+}
+
+/* Cassette Tape Spools Spinning */
+@keyframes spinTape {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.tape-spool-spin {
+  transform-origin: center center;
+  animation: spinTape 2.2s linear infinite;
+}
+
+/* Floating Music Notes */
+@keyframes musicNoteFloat1 {
+  0% {
+    transform: translate(0, 0) scale(0.7) rotate(-10deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-14px, -30px) scale(1.1) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes musicNoteFloat2 {
+  0% {
+    transform: translate(0, 0) scale(0.6) rotate(10deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(16px, -32px) scale(1) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes musicNoteFloat3 {
+  0% {
+    transform: translate(0, 0) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(4px, -38px) scale(1.15) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+.music-note-1 {
+  animation: musicNoteFloat1 2.4s ease-out infinite;
+}
+
+.music-note-2 {
+  animation: musicNoteFloat2 2.4s ease-out 0.8s infinite;
+}
+
+.music-note-3 {
+  animation: musicNoteFloat3 2.4s ease-out 1.6s infinite;
+}
+
+/* Sunbeam Radiant Rotation */
+@keyframes sunbeamSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sunbeam-spin {
+  transform-origin: 40px 40px;
+  animation: sunbeamSpin 18s linear infinite;
+}
+
+/* Tomato Leaf Waggle */
+@keyframes leafWaggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-9deg);
+  }
+  75% {
+    transform: rotate(9deg);
+  }
+}
+
+.leaf-waggle {
+  transform-origin: 42px 24px;
+  animation: leafWaggle 2.8s ease-in-out infinite;
+}
+
+/* Blushing Cheek Glow */
+@keyframes cheekGlow {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.25);
+  }
+}
+
+.cheek-glow {
+  transform-origin: center center;
+  animation: cheekGlow 2.2s ease-in-out infinite;
+}
+
+/* Tomato Mascot Squish */
+@keyframes mascotIdle {
+  0%, 100% {
+    transform: scale(1, 1) translateY(0);
+  }
+  50% {
+    transform: scale(1.04, 0.96) translateY(2px);
+  }
+}
+
+.mascot-squish {
+  animation: mascotIdle 2.5s ease-in-out infinite;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mascot-squish:active {
+  transform: scale(0.9, 1.1) translateY(-6px);
+}
+
 /* Glint Sparkle Animation */
 @keyframes glintSparkle {
   0%, 100% {

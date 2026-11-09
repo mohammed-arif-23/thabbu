@@ -771,3 +771,436 @@ export function PaperClip({ style }: { style?: React.CSSProperties }) {
     </svg>
   );
 }
+
+/* 1. Animated Expressive Tamatar Character Mascot */
+export function CuteTomatoMascot({
+  size = 80,
+  onClick,
+}: {
+  size?: number;
+  onClick?: (e?: React.MouseEvent) => void;
+}) {
+  return (
+    <div
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label="Cute Tamatar Mascot - tap to boop"
+      className="mascot-squish"
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size,
+        height: size,
+      }}
+    >
+      <svg
+        viewBox="0 0 84 84"
+        width={size}
+        height={size}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Soft Drop Shadow */}
+        <ellipse cx="42" cy="74" rx="26" ry="6" fill="rgba(51, 42, 43, 0.12)" />
+
+        {/* Tomato Red Body */}
+        <path
+          d="M 42 16 C 24 16 12 28 12 45 C 12 62 26 72 42 72 C 58 72 72 62 72 45 C 72 28 60 16 42 16 Z"
+          fill="url(#tomatoMascotGrad)"
+          stroke="#C94E68"
+          strokeWidth="2"
+        />
+
+        {/* Subtle Specular Highlight */}
+        <ellipse cx="26" cy="30" rx="6" ry="3.5" transform="rotate(-30 26 30)" fill="#FFF" fillOpacity="0.55" />
+
+        {/* Green Leaf Stem that Waggles */}
+        <g className="leaf-waggle">
+          <path
+            d="M 42 16 C 42 9 40 4 36 2 C 39 3 43 6 44 14 Z"
+            fill="#4F6D48"
+            stroke="#2F4F24"
+            strokeWidth="1.2"
+          />
+          <path
+            d="M 42 16 C 36 12 30 14 26 18 C 32 17 38 18 42 16 Z"
+            fill="#658B5C"
+            stroke="#2F4F24"
+            strokeWidth="1.2"
+          />
+          <path
+            d="M 42 16 C 48 11 55 13 58 17 C 52 17 46 18 42 16 Z"
+            fill="#658B5C"
+            stroke="#2F4F24"
+            strokeWidth="1.2"
+          />
+          <circle cx="42" cy="16" r="3" fill="#4F6D48" />
+        </g>
+
+        {/* Blushing Rosy Cheeks */}
+        <circle cx="23" cy="50" r="5" fill="#FFA5BA" fillOpacity="0.8" className="cheek-glow" />
+        <circle cx="61" cy="50" r="5" fill="#FFA5BA" fillOpacity="0.8" className="cheek-glow" />
+
+        {/* Big Sparkly Anime Eyes */}
+        <ellipse cx="32" cy="42" rx="4.5" ry="6" fill="#332A2B" />
+        <circle cx="30.5" cy="40" r="2" fill="#FFF" />
+        <circle cx="34" cy="44.5" r="1" fill="#FFF" />
+
+        <ellipse cx="52" cy="42" rx="4.5" ry="6" fill="#332A2B" />
+        <circle cx="50.5" cy="40" r="2" fill="#FFF" />
+        <circle cx="54" cy="44.5" r="1" fill="#FFF" />
+
+        {/* Sweet Smile */}
+        <path
+          d="M 38 51 C 40 55 44 55 46 51"
+          stroke="#332A2B"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+        />
+
+        <defs>
+          <radialGradient id="tomatoMascotGrad" cx="34" cy="32" r="38" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#FA6878" />
+            <stop offset="70%" stopColor="#DE3B52" />
+            <stop offset="100%" stopColor="#B31B32" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
+/* 2. Vintage Pocket Stopwatch with Ticking Hand */
+export function StopwatchDoodle({ size = 68 }: { size?: number }) {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size,
+        height: size,
+      }}
+    >
+      <svg
+        viewBox="0 0 64 68"
+        width={size}
+        height={size}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Top Button and Ring */}
+        <path d="M 27 6 L 37 6 L 37 10 L 27 10 Z" fill="#D97706" stroke="#332A2B" strokeWidth="1.5" />
+        <path d="M 23 8 C 23 2 41 2 41 8" stroke="#D97706" strokeWidth="2.4" strokeLinecap="round" />
+
+        {/* Stopwatch Body */}
+        <circle cx="32" cy="38" r="26" fill="#FFFEFC" stroke="#332A2B" strokeWidth="2.4" />
+        <circle cx="32" cy="38" r="22" fill="#FFF9F3" stroke="#D97706" strokeWidth="1.2" strokeOpacity="0.4" />
+
+        {/* Dial Ticks */}
+        <line x1="32" y1="18" x2="32" y2="22" stroke="#332A2B" strokeWidth="2" strokeLinecap="round" />
+        <line x1="52" y1="38" x2="48" y2="38" stroke="#332A2B" strokeWidth="2" strokeLinecap="round" />
+        <line x1="32" y1="58" x2="32" y2="54" stroke="#332A2B" strokeWidth="2" strokeLinecap="round" />
+        <line x1="12" y1="38" x2="16" y2="38" stroke="#332A2B" strokeWidth="2" strokeLinecap="round" />
+
+        {/* Ticking Red Second Hand */}
+        <g className="stopwatch-hand">
+          <line x1="32" y1="38" x2="32" y2="20" stroke="#C94E68" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="32" cy="38" r="3" fill="#C94E68" />
+        </g>
+
+        {/* Radiating Motion Lines */}
+        <path d="M 8 20 L 4 16 M 56 20 L 60 16 M 6 48 L 2 52" stroke="#C94E68" strokeWidth="1.8" strokeLinecap="round" opacity="0.65" />
+      </svg>
+    </div>
+  );
+}
+
+/* 3. Retro Cassette Tape Player with Spinning Spools & Floating Musical Notes */
+export function RetroCassetteDoodle({
+  size = 110,
+  isPlaying = true,
+}: {
+  size?: number;
+  isPlaying?: boolean;
+}) {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {/* Floating Animated Musical Notes */}
+      <span
+        aria-hidden="true"
+        className="music-note-1"
+        style={{
+          position: 'absolute',
+          top: -8,
+          left: 20,
+          color: '#C94E68',
+          fontSize: '15px',
+          fontWeight: 'bold',
+          pointerEvents: 'none',
+        }}
+      >
+        ♪
+      </span>
+      <span
+        aria-hidden="true"
+        className="music-note-2"
+        style={{
+          position: 'absolute',
+          top: -12,
+          right: 22,
+          color: '#D97706',
+          fontSize: '17px',
+          fontWeight: 'bold',
+          pointerEvents: 'none',
+        }}
+      >
+        ♫
+      </span>
+      <span
+        aria-hidden="true"
+        className="music-note-3"
+        style={{
+          position: 'absolute',
+          top: -16,
+          left: 50,
+          color: '#C94E68',
+          fontSize: '14px',
+          fontWeight: 'bold',
+          pointerEvents: 'none',
+        }}
+      >
+        ♬
+      </span>
+
+      <svg
+        viewBox="0 0 114 74"
+        width={size}
+        height={(size * 74) / 114}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Cassette Outer Shell */}
+        <rect x="3" y="3" width="108" height="68" rx="8" fill="#FDF6F0" stroke="#332A2B" strokeWidth="2.4" />
+        <rect x="7" y="7" width="100" height="60" rx="6" fill="#F5DCE2" />
+
+        {/* Vintage Label */}
+        <rect x="14" y="11" width="86" height="34" rx="4" fill="#FFFEFC" stroke="#C94E68" strokeWidth="1.4" />
+        <text x="20" y="22" fill="#C94E68" fontSize="8" fontFamily="var(--font-sans)" fontWeight="bold">
+          42s VOICE MEMO 📼
+        </text>
+
+        {/* Center Transparent Window */}
+        <rect x="25" y="27" width="64" height="26" rx="4" fill="#E8D5CE" stroke="#332A2B" strokeWidth="1.6" />
+
+        {/* Left Spool */}
+        <g className={isPlaying ? 'tape-spool-spin' : ''} style={{ transformOrigin: '40px 40px' }}>
+          <circle cx="40" cy="40" r="9" fill="#FFFEFC" stroke="#332A2B" strokeWidth="1.6" />
+          <path d="M 40 33 L 40 47 M 33 40 L 47 40" stroke="#332A2B" strokeWidth="1.6" />
+          <circle cx="40" cy="40" r="3" fill="#332A2B" />
+        </g>
+
+        {/* Right Spool */}
+        <g className={isPlaying ? 'tape-spool-spin' : ''} style={{ transformOrigin: '74px 40px' }}>
+          <circle cx="74" cy="40" r="9" fill="#FFFEFC" stroke="#332A2B" strokeWidth="1.6" />
+          <path d="M 74 33 L 74 47 M 67 40 L 81 40" stroke="#332A2B" strokeWidth="1.6" />
+          <circle cx="74" cy="40" r="3" fill="#332A2B" />
+        </g>
+
+        {/* Bottom Trapezoid Lip */}
+        <path d="M 24 67 L 34 54 L 80 54 L 90 67 Z" fill="#EAD8CE" stroke="#332A2B" strokeWidth="1.8" />
+        <circle cx="44" cy="61" r="2.5" fill="#FFFEFC" stroke="#332A2B" strokeWidth="1" />
+        <circle cx="70" cy="61" r="2.5" fill="#FFFEFC" stroke="#332A2B" strokeWidth="1" />
+      </svg>
+    </div>
+  );
+}
+
+/* 4. Two Smiles Animated Illustration Card */
+export function TwoSmilesDoodle() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '16px',
+        width: '100%',
+        maxWidth: '300px',
+        padding: '6px 0',
+      }}
+    >
+      {/* 1. Full Radiant Smile with Rotating Sunbeams */}
+      <div
+        style={{
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: '#FFFEFC',
+          borderRadius: '14px',
+          border: '1.2px solid #F7E7A9',
+          padding: '10px 14px',
+          boxShadow: '0 4px 12px rgba(51, 42, 43, 0.05)',
+        }}
+      >
+        <div style={{ position: 'relative', width: 64, height: 64 }}>
+          {/* Rotating Sunbeams */}
+          <svg viewBox="0 0 80 80" width="64" height="64" className="sunbeam-spin" style={{ position: 'absolute', inset: 0 }}>
+            <g stroke="#F7E7A9" strokeWidth="2" strokeLinecap="round">
+              <line x1="40" y1="6" x2="40" y2="14" />
+              <line x1="40" y1="66" x2="40" y2="74" />
+              <line x1="6" y1="40" x2="14" y2="40" />
+              <line x1="66" y1="40" x2="74" y2="40" />
+              <line x1="16" y1="16" x2="22" y2="22" />
+              <line x1="58" y1="58" x2="64" y2="64" />
+              <line x1="16" y1="64" x2="22" y2="58" />
+              <line x1="58" y1="22" x2="64" y2="16" />
+            </g>
+          </svg>
+
+          {/* Happy Radiant Face */}
+          <svg viewBox="0 0 64 64" width="64" height="64" style={{ position: 'relative', zIndex: 1 }}>
+            <circle cx="32" cy="32" r="22" fill="#FFF9F3" stroke="#332A2B" strokeWidth="2" />
+            {/* Happy Eyes ^ ^ */}
+            <path d="M 23 27 C 24 23 28 23 29 27" stroke="#332A2B" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <path d="M 35 27 C 36 23 40 23 41 27" stroke="#332A2B" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            {/* Rosy Cheeks */}
+            <circle cx="20" cy="35" r="3.5" fill="#FFA5BA" opacity="0.8" />
+            <circle cx="44" cy="35" r="3.5" fill="#FFA5BA" opacity="0.8" />
+            {/* Big Toothy Grin */}
+            <path d="M 24 35 C 24 45 40 45 40 35 Z" fill="#C94E68" stroke="#332A2B" strokeWidth="1.8" />
+            <path d="M 26 35 C 28 39 36 39 38 35 Z" fill="#FFF" stroke="#332A2B" strokeWidth="1" />
+          </svg>
+        </div>
+        <span
+          style={{
+            fontFamily: 'var(--font-cursive)',
+            fontSize: '13px',
+            color: 'var(--color-cherry)',
+            fontWeight: 700,
+            marginTop: '4px',
+          }}
+        >
+          Full-ah sirikkura smile ✨
+        </span>
+      </div>
+
+      {/* 2. Quiet Little Look Smile */}
+      <div
+        style={{
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: '#FFFEFC',
+          borderRadius: '14px',
+          border: '1.2px solid #E9AAB9',
+          padding: '10px 14px',
+          boxShadow: '0 4px 12px rgba(51, 42, 43, 0.05)',
+        }}
+      >
+        <div style={{ position: 'relative', width: 64, height: 64 }}>
+          {/* Floating Heart Above */}
+          <span
+            className="heart-beat"
+            style={{
+              position: 'absolute',
+              top: -6,
+              right: 6,
+              fontSize: '14px',
+              zIndex: 2,
+            }}
+          >
+            💗
+          </span>
+
+          <svg viewBox="0 0 64 64" width="64" height="64" style={{ position: 'relative', zIndex: 1 }}>
+            <circle cx="32" cy="32" r="22" fill="#FFF9F3" stroke="#332A2B" strokeWidth="2" />
+            {/* Looking sideways shy eyes */}
+            <circle cx="26" cy="28" r="3.5" fill="#332A2B" />
+            <circle cx="25" cy="27" r="1.2" fill="#FFF" />
+            <path d="M 22 23 C 24 22 28 22 30 23" stroke="#332A2B" strokeWidth="1.5" strokeLinecap="round" />
+
+            <circle cx="38" cy="28" r="3.5" fill="#332A2B" />
+            <circle cx="37" cy="27" r="1.2" fill="#FFF" />
+            <path d="M 34 23 C 36 22 40 22 42 23" stroke="#332A2B" strokeWidth="1.5" strokeLinecap="round" />
+
+            {/* Rosy Blushing Cheeks */}
+            <circle cx="20" cy="36" r="4.5" fill="#FFA5BA" opacity="0.9" className="cheek-glow" />
+            <circle cx="44" cy="36" r="4.5" fill="#FFA5BA" opacity="0.9" className="cheek-glow" />
+
+            {/* Quiet gentle curved smile */}
+            <path d="M 28 38 C 31 41 33 41 36 38" stroke="#332A2B" strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        </div>
+        <span
+          style={{
+            fontFamily: 'var(--font-cursive)',
+            fontSize: '13px',
+            color: 'var(--color-ink)',
+            fontWeight: 700,
+            marginTop: '4px',
+          }}
+        >
+          That quiet look… 🫠
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* 5. Origami Folded Heart Love Letter */
+export function OrigamiHeartDoodle({ size = 68 }: { size?: number }) {
+  return (
+    <div
+      className="doodle-float"
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size,
+        height: size,
+      }}
+    >
+      <svg
+        viewBox="0 0 68 68"
+        width={size}
+        height={size}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Soft Drop Shadow */}
+        <ellipse cx="34" cy="62" rx="22" ry="5" fill="rgba(51, 42, 43, 0.1)" />
+
+        {/* Origami Heart Geometry */}
+        <path d="M 34 56 L 14 36 C 8 30 8 18 18 12 C 27 6 34 16 34 16 Z" fill="#FCE7EC" stroke="#C94E68" strokeWidth="1.8" />
+        <path d="M 34 56 L 54 36 C 60 30 60 18 50 12 C 41 6 34 16 34 16 Z" fill="#F8D3DC" stroke="#C94E68" strokeWidth="1.8" />
+
+        {/* Paper fold facet lines */}
+        <line x1="34" y1="16" x2="34" y2="56" stroke="#C94E68" strokeWidth="1.4" strokeDasharray="2 2" />
+        <line x1="14" y1="36" x2="34" y2="36" stroke="#C94E68" strokeWidth="1" strokeOpacity="0.5" />
+        <line x1="54" y1="36" x2="34" y2="36" stroke="#C94E68" strokeWidth="1" strokeOpacity="0.5" />
+
+        {/* Gold Wax Seal Stamp in the Center */}
+        <circle cx="34" cy="34" r="8" fill="#F7E7A9" stroke="#D97706" strokeWidth="1.4" />
+        <circle cx="34" cy="34" r="6" fill="none" stroke="#D97706" strokeWidth="0.8" strokeDasharray="1.5 1.5" />
+        <text x="34" y="37" fill="#D97706" fontSize="9" fontFamily="var(--font-cursive)" fontWeight="bold" textAnchor="middle">
+          T
+        </text>
+      </svg>
+    </div>
+  );
+}
