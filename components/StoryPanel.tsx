@@ -87,6 +87,9 @@ export function StoryPanel({
   // Sensory Interaction: Page 23 Cheek Pinch Squish
   const [isCheekPinched, setIsCheekPinched] = useState(false);
 
+  // Page 19: 4-in-1 Photobooth vs 4 Polaroids View Toggle
+  const [nickPhotoView, setNickPhotoView] = useState<'photobooth' | 'polaroids'>('photobooth');
+
   const isPage15 = screen.artVariant === 'plotTwistSwitch';
   const isPage15Locked = isPage15 && !isConfirmedPlotTwistNo;
   const isDarkBreakup = screen.index <= 14 || isPage15Locked;
@@ -642,16 +645,86 @@ export function StoryPanel({
             </div>
           )}
 
-          {/* PAGE 19: Tubelight x Tamatar x Bamboobear */}
+          {/* PAGE 19: Tubelight x Tamatar x Bamboobear & 4 PICS IN ONE FRAME (BOTH VIEWS) */}
           {screen.artVariant === 'nicknamesTubelight' && (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <TubelightDoodle size={60} />
-                <span style={{ fontSize: '20px' }}>⚡</span>
-                <TomatoStamp size={50} rotate={6} />
-                <span style={{ fontSize: '20px' }}>🐼</span>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <TubelightDoodle size={48} />
+                <span style={{ fontSize: '18px' }}>⚡</span>
+                <TomatoStamp size={42} rotate={6} />
+                <span style={{ fontSize: '18px' }}>🐼</span>
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center', maxWidth: '320px' }}>
+
+              {/* View Switcher: Both views supported */}
+              <div style={{ display: 'inline-flex', padding: '3px', backgroundColor: 'rgba(201, 78, 104, 0.08)', borderRadius: '20px', gap: '4px' }}>
+                <button
+                  type="button"
+                  onClick={() => setNickPhotoView('photobooth')}
+                  style={{
+                    border: 'none',
+                    backgroundColor: nickPhotoView === 'photobooth' ? 'var(--color-cherry)' : 'transparent',
+                    color: nickPhotoView === 'photobooth' ? '#FFF' : 'var(--color-ink)',
+                    borderRadius: '16px',
+                    padding: '4px 12px',
+                    fontSize: '11.5px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  📸 4 in 1 Frame
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setNickPhotoView('polaroids')}
+                  style={{
+                    border: 'none',
+                    backgroundColor: nickPhotoView === 'polaroids' ? 'var(--color-cherry)' : 'transparent',
+                    color: nickPhotoView === 'polaroids' ? '#FFF' : 'var(--color-ink)',
+                    borderRadius: '16px',
+                    padding: '4px 12px',
+                    fontSize: '11.5px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  🖼️ 4 Polaroids
+                </button>
+              </div>
+
+              {/* 1. 4-in-1 Photobooth Frame */}
+              {nickPhotoView === 'photobooth' && (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', animation: 'fadeIn 0.25s ease' }}>
+                  <PhotoPlaceholder
+                    id="four-in-one"
+                    defaultSrc="/photos/four-in-one.jpg"
+                    caption="4 pics in one frame 📸💗"
+                    width={132}
+                    rotate={-1.5}
+                  />
+                  <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13px', color: 'var(--color-cherry)', fontWeight: 600 }}>
+                    cutuu photobooth frame 🥹
+                  </span>
+                </div>
+              )}
+
+              {/* 2. 4 Individual Polaroids (2x2 Grid) */}
+              {nickPhotoView === 'polaroids' && (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100%', animation: 'fadeIn 0.25s ease' }}>
+                  <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', width: '100%' }}>
+                    <PhotoPlaceholder id="turning-point-1" caption="panda 🐼" width={82} rotate={-2} />
+                    <PhotoPlaceholder id="turning-point-2" caption="bamboo bear 🐻" width={82} rotate={2} />
+                  </div>
+                  <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', width: '100%' }}>
+                    <PhotoPlaceholder id="turning-point-3" caption="meri teddy 🧸" width={82} rotate={-2} />
+                    <PhotoPlaceholder id="turning-point-4" caption="green flag 🌱" width={82} rotate={2} />
+                  </div>
+                </div>
+              )}
+
+              {/* Nickname Pills */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', maxWidth: '320px', marginTop: '2px' }}>
                 {[
                   { name: 'Tubelight yaar 😁', bg: '#F7E7A9' },
                   { name: 'Moti tamatarrr 🍅', bg: '#FAF0F2' },
@@ -666,12 +739,12 @@ export function StoryPanel({
                       border: '1px solid rgba(51, 42, 43, 0.12)',
                       backgroundColor: tag.bg,
                       borderRadius: '8px',
-                      padding: '5px 12px',
+                      padding: '4px 10px',
                       fontFamily: 'var(--font-sans)',
-                      fontSize: '12.5px',
+                      fontSize: '11.5px',
                       fontWeight: 700,
                       color: 'var(--color-ink)',
-                      transform: activeNickIndex === idx ? 'scale(1.12)' : 'scale(1)',
+                      transform: activeNickIndex === idx ? 'scale(1.08)' : 'scale(1)',
                       cursor: 'pointer',
                       transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
@@ -683,11 +756,13 @@ export function StoryPanel({
             </div>
           )}
 
-          {/* PAGE 20: Blue Shirt La Bulb */}
+          {/* PAGE 20: Blue Shirt La Bulb (Doodle alone, no empty photo placeholder) */}
           {screen.artVariant === 'blueShirt' && (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', width: '100%' }}>
-              <BlueShirtDoodle size={68} />
-              <PhotoPlaceholder id="2" caption="indha shirt dhaan 🤭" width={92} rotate={-3} />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '100%' }}>
+              <BlueShirtDoodle size={76} />
+              <span style={{ fontFamily: 'var(--font-hand)', fontSize: '14px', color: 'var(--color-cherry)', fontWeight: 600 }}>
+                “indha shirt dhaan 🤭”
+              </span>
             </div>
           )}
 
@@ -704,10 +779,10 @@ export function StoryPanel({
             </div>
           )}
 
-          {/* PAGE 22: 7 Arts · Side Mirror · Fragrance & Interactive Scent Trail */}
+          {/* PAGE 22: 7 Arts · Side Mirror · Fragrance & Interactive Scent Trail (Doodle alone, image container removed) */}
           {screen.artVariant === 'mirrorFragrance' && (
             <div
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', width: '100%', cursor: 'pointer' }}
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%', cursor: 'pointer' }}
               onMouseMove={(e) => spawnParticles(e, ['🌸', '✨', '💨', '🌹'])}
               onTouchMove={(e) => {
                 if (e.touches[0]) {
@@ -716,11 +791,13 @@ export function StoryPanel({
               }}
             >
               <SideMirror />
-              <PhotoPlaceholder id="3" caption="20-30 km/h smiling 🫠" width={94} rotate={3} />
+              <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13px', color: 'var(--color-cherry)', fontWeight: 600 }}>
+                swipe across mirror to release fragrance 💨✨
+              </span>
             </div>
           )}
 
-          {/* PAGE 23: Every Micro-Detail I Admire (Her Photo ALONE + Cheek Pinch Squish Physics) */}
+          {/* PAGE 23: Every Micro-Detail I Admire (Her Photo ALONE · Normal Horizontal Image + Cheek Pinch Squish Physics) */}
           {screen.artVariant === 'detailsNotice' && (
             <div
               style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', margin: '4px 0' }}
@@ -731,7 +808,13 @@ export function StoryPanel({
               }}
             >
               <div style={{ transform: isCheekPinched ? 'scale(1.12, 0.88)' : 'scale(1)', transition: 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1)', cursor: 'pointer' }}>
-                <PhotoPlaceholder id="her-details" caption="tap to pinch cheeks 🤏🫠" width={122} rotate={-2} />
+                <PhotoPlaceholder
+                  id="her-details"
+                  caption="tap to pinch cheeks 🤏🫠"
+                  width={185}
+                  aspectRatio="4 / 3"
+                  rotate={-1}
+                />
               </div>
               <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13.5px', color: 'var(--color-cherry)', marginTop: '6px', fontWeight: 600 }}>
                 {isCheekPinched ? 'Aiyooo cheeks pinched! Too soft 🤭' : 'tap photo to pinch her cheeks 🤏'}
@@ -858,11 +941,13 @@ export function StoryPanel({
             </div>
           )}
 
-          {/* PAGE 28: Care & Ice Cream */}
+          {/* PAGE 28: Care & Ice Cream (Doodle alone, image container removed) */}
           {screen.artVariant === 'careIceCream' && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <IceCreamDoodle size={56} />
-              <PhotoPlaceholder id="4" caption="hug vangikonga 🫂" width={92} rotate={2} />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <IceCreamDoodle size={64} />
+              <span style={{ fontFamily: 'var(--font-hand)', fontSize: '14px', color: 'var(--color-cherry)', fontWeight: 600 }}>
+                “hug vangikonga 🫂”
+              </span>
             </div>
           )}
 

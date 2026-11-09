@@ -9,6 +9,7 @@ interface PhotoPlaceholderProps {
   caption?: string;
   width?: number | string;
   rotate?: number;
+  aspectRatio?: string;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export function PhotoPlaceholder({
   caption,
   width = 96,
   rotate = 0,
+  aspectRatio = '9 / 16',
   className = '',
 }: PhotoPlaceholderProps) {
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
@@ -121,11 +123,11 @@ export function PhotoPlaceholder({
         style={{ display: 'none' }}
       />
 
-      {/* 9:16 Vertical Photo Container */}
+      {/* Photo Container */}
       <div
         style={{
           width: '100%',
-          aspectRatio: '9 / 16',
+          aspectRatio,
           backgroundColor: '#F5ECE5',
           borderRadius: '3px',
           overflow: 'hidden',
