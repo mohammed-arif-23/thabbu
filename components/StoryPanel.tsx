@@ -38,6 +38,9 @@ import {
   UnromanticRedFlagDoodle,
   PossessiveRadarDoodle,
   DeewanaDolaBenchDoodle,
+  TruthOrDareBulbArt,
+  PattiJewelryBoxArt,
+  ScooterGoldenHourRideArt,
 } from './doodles/Doodles';
 
 interface StoryPanelProps {
@@ -224,6 +227,13 @@ export function StoryPanel({
     'thabu 🤍: “Idhuku ethana ok jii? 🤭”',
   ];
 
+  const isWideScreen =
+    screen.artVariant === 'moonPolaroids' ||
+    screen.artVariant === 'mirrorFragrance' ||
+    screen.artVariant === 'blueShirt' ||
+    screen.artVariant === 'nosePin' ||
+    screen.artVariant === 'detailsNotice';
+
   return (
     <section
       id={`panel-${screen.id}`}
@@ -270,7 +280,7 @@ export function StoryPanel({
         </div>
       )}
 
-      <div className={`card-sheet ${plotChoice === 'no' ? 'romantic-glow-burst' : ''}`}>
+      <div className={`card-sheet ${isWideScreen ? 'card-sheet-wide' : ''} ${plotChoice === 'no' ? 'romantic-glow-burst' : ''}`}>
         {/* Rainy Atmospheric Overlay for Dark Breakup Dossier */}
         {isDarkBreakup && <div className="rain-overlay" aria-hidden="true" />}
 
@@ -597,23 +607,27 @@ export function StoryPanel({
           {/* UNCOUNTED SPECIAL SCREEN: See, This is the moon! (4 Polaroids)     */}
           {/* ================================================================== */}
           {screen.artVariant === 'moonPolaroids' && (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '8px', margin: '4px 0' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                <span style={{ fontSize: '24px' }}>🌙</span>
-                <span style={{ fontFamily: 'var(--font-cursive)', fontSize: '22px', color: 'var(--color-cherry)', fontWeight: 700 }}>
+            <div className="moon-polaroids-board">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '10px' }}>
+                <span style={{ fontSize: '26px' }}>🌙</span>
+                <span style={{ fontFamily: 'var(--font-cursive)', fontSize: '26px', color: 'var(--color-cherry)', fontWeight: 700 }}>
                   my favourite moon
                 </span>
-                <span style={{ fontSize: '18px' }}>✨</span>
+                <span style={{ fontSize: '20px' }}>✨</span>
               </div>
 
-              {/* 4 Polaroids 2x2 Grid */}
-              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', width: '100%' }}>
-                <PhotoPlaceholder id="turning-point-1" caption="panda 🐼" width={92} rotate={-2} />
-                <PhotoPlaceholder id="turning-point-2" caption="bamboo bear 🐻" width={92} rotate={2} />
+              {/* 4 Polaroids Responsive Grid (Wide 4-in-a-row on desktop, 2x2 on mobile) */}
+              <div className="moon-polaroids-grid">
+                <PhotoPlaceholder id="turning-point-1" caption="panda 🐼" width="100%" rotate={-2} />
+                <PhotoPlaceholder id="turning-point-2" caption="bamboo bear 🐻" width="100%" rotate={2} />
+                <PhotoPlaceholder id="turning-point-3" caption="meri teddy 🧸" width="100%" rotate={-1.5} />
+                <PhotoPlaceholder id="turning-point-4" caption="green flag 🌱" width="100%" rotate={2.5} />
               </div>
-              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', width: '100%' }}>
-                <PhotoPlaceholder id="turning-point-3" caption="meri teddy 🧸" width={92} rotate={-2} />
-                <PhotoPlaceholder id="turning-point-4" caption="green flag 🌱" width={92} rotate={2} />
+
+              <div style={{ marginTop: '12px', textAlign: 'center' }}>
+                <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13px', color: 'var(--color-muted-ink)' }}>
+                  tap any polaroid for little sparks ✨
+                </span>
               </div>
             </div>
           )}
@@ -682,18 +696,19 @@ export function StoryPanel({
               </div>
 
               {/* Single Photo */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2px 0' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '4px 0' }}>
                 <PhotoPlaceholder
                   id="four-in-one"
                   defaultSrc="/photos/four-in-one.jpg"
                   caption="bamboo bear 🐼💗"
-                  width={132}
+                  width={160}
+                  aspectRatio="1 / 1"
                   rotate={-1.5}
                 />
               </div>
 
               {/* Nickname Pills */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', maxWidth: '320px', marginTop: '2px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', maxWidth: '340px', marginTop: '4px' }}>
                 {[
                   { name: 'Tubelight yaar 😁', bg: '#F7E7A9' },
                   { name: 'Moti tamatarrr 🍅', bg: '#FAF0F2' },
@@ -725,45 +740,19 @@ export function StoryPanel({
             </div>
           )}
 
-          {/* PAGE 20: Blue Shirt La Bulb (Doodle alone, no empty photo placeholder) */}
+          {/* PAGE 20: Blue Shirt La Bulb (Classroom Truth & Dare Memory Art) */}
           {screen.artVariant === 'blueShirt' && (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '100%' }}>
-              <BlueShirtDoodle size={76} />
-              <span style={{ fontFamily: 'var(--font-hand)', fontSize: '14px', color: 'var(--color-cherry)', fontWeight: 600 }}>
-                “indha shirt dhaan 🤭”
-              </span>
-            </div>
+            <TruthOrDareBulbArt />
           )}
 
-          {/* PAGE 21: Nose Pin */}
+          {/* PAGE 21: Nose Pin (Patti's Royal Velvet Jewelry Presentation Case) */}
           {screen.artVariant === 'nosePin' && (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-              <NosePinDoodle size={60} />
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: 'var(--color-warm-white)', padding: '4px 16px', borderRadius: '16px', border: '1px solid var(--color-petal)' }}>
-                <span style={{ fontSize: '14px' }}>✨</span>
-                <span style={{ fontFamily: 'var(--font-hand)', fontSize: '14.5px', color: 'var(--color-cherry)', fontWeight: 600 }}>
-                  1st Compliment Ever: Pierced by Patti 😌
-                </span>
-              </div>
-            </div>
+            <PattiJewelryBoxArt />
           )}
 
-          {/* PAGE 22: 7 Arts · Side Mirror · Fragrance & Interactive Scent Trail (Doodle alone, image container removed) */}
+          {/* PAGE 22: 7 Arts · Side Mirror · Golden Hour Scooter Ride & Fragrance */}
           {screen.artVariant === 'mirrorFragrance' && (
-            <div
-              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%', cursor: 'pointer' }}
-              onMouseMove={(e) => spawnParticles(e, ['🌸', '✨', '💨', '🌹'])}
-              onTouchMove={(e) => {
-                if (e.touches[0]) {
-                  spawnParticles({ clientX: e.touches[0].clientX, clientY: e.touches[0].clientY }, ['🌸', '✨', '💨', '🌹']);
-                }
-              }}
-            >
-              <SideMirror />
-              <span style={{ fontFamily: 'var(--font-hand)', fontSize: '13px', color: 'var(--color-cherry)', fontWeight: 600 }}>
-                swipe across mirror to release fragrance 💨✨
-              </span>
-            </div>
+            <ScooterGoldenHourRideArt />
           )}
 
           {/* PAGE 23: Every Micro-Detail I Admire (Her Photo ALONE · Normal Horizontal Image + Cheek Pinch Squish Physics) */}
